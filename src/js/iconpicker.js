@@ -590,7 +590,7 @@
                 var isEmpty = (val === '');
 
                 // trim string
-                val = val?.trim?.();
+                val = typeof val !== 'undefined' ? val.trim() : val;
                 var e = false;
                 for (var i = 0; i < this.options.icons.length; i++) {
                     if (this.options.icons[i].title === val) {

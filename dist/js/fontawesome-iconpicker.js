@@ -385,7 +385,7 @@
             return typeof e === "string" || e instanceof String;
         },
         isArray: function(e) {
-            return c.isArray(e);
+            return Array.isArray(e);
         },
         inArray: function(e, a) {
             return c.inArray(e, a) !== -1;
@@ -843,7 +843,7 @@
                 e = "";
             }
             var a = e === "";
-            e = c.trim(e);
+            e = typeof e !== "undefined" ? e.trim() : e;
             var t = false;
             for (var s = 0; s < this.options.icons.length; s++) {
                 if (this.options.icons[s].title === e) {
