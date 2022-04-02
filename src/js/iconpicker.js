@@ -32,7 +32,7 @@
                 return ((typeof val === 'string') || (val instanceof String));
             },
             isArray: function(val) {
-                return $.isArray(val);
+                return Array.isArray(val);
             },
             inArray: function(val, arr) {
                 return ($.inArray(val, arr) !== -1);
@@ -590,7 +590,7 @@
                 var isEmpty = (val === '');
 
                 // trim string
-                val = $.trim(val);
+                val = val?.trim?.();
                 var e = false;
                 for (var i = 0; i < this.options.icons.length; i++) {
                     if (this.options.icons[i].title === val) {
