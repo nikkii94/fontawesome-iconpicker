@@ -14,18 +14,18 @@
     } else {
         e(jQuery);
     }
-})(function(j) {
-    j.ui = j.ui || {};
-    var e = j.ui.version = "1.12.1";
+})(function(V) {
+    V.ui = V.ui || {};
+    var e = V.ui.version = "1.12.1";
     (function() {
-        var r, y = Math.max, x = Math.abs, s = /left|center|right/, i = /top|center|bottom/, f = /[\+\-]\d+(\.[\d]+)?%?/, l = /^\w+/, c = /%$/, a = j.fn.pos;
-        function q(e, a, t) {
-            return [ parseFloat(e[0]) * (c.test(e[0]) ? a / 100 : 1), parseFloat(e[1]) * (c.test(e[1]) ? t / 100 : 1) ];
+        var r, y = Math.max, x = Math.abs, t = /left|center|right/, f = /top|center|bottom/, i = /[\+\-]\d+(\.[\d]+)?%?/, l = /^\w+/, c = /%$/, a = V.fn.pos;
+        function q(e, a, s) {
+            return [ parseFloat(e[0]) * (c.test(e[0]) ? a / 100 : 1), parseFloat(e[1]) * (c.test(e[1]) ? s / 100 : 1) ];
         }
         function C(e, a) {
-            return parseInt(j.css(e, a), 10) || 0;
+            return parseInt(V.css(e, a), 10) || 0;
         }
-        function t(e) {
+        function s(e) {
             var a = e[0];
             if (a.nodeType === 9) {
                 return {
@@ -37,7 +37,7 @@
                     }
                 };
             }
-            if (j.isWindow(a)) {
+            if (V.isWindow(a)) {
                 return {
                     width: e.width(),
                     height: e.height(),
@@ -63,36 +63,36 @@
                 offset: e.offset()
             };
         }
-        j.pos = {
+        V.pos = {
             scrollbarWidth: function() {
                 if (r !== undefined) {
                     return r;
                 }
-                var e, a, t = j("<div " + "style='display:block;position:absolute;width:50px;height:50px;overflow:hidden;'>" + "<div style='height:100px;width:auto;'></div></div>"), s = t.children()[0];
-                j("body").append(t);
-                e = s.offsetWidth;
-                t.css("overflow", "scroll");
-                a = s.offsetWidth;
+                var e, a, s = V("<div " + "style='display:block;position:absolute;width:50px;height:50px;overflow:hidden;'>" + "<div style='height:100px;width:auto;'></div></div>"), t = s.children()[0];
+                V("body").append(s);
+                e = t.offsetWidth;
+                s.css("overflow", "scroll");
+                a = t.offsetWidth;
                 if (e === a) {
-                    a = t[0].clientWidth;
+                    a = s[0].clientWidth;
                 }
-                t.remove();
+                s.remove();
                 return r = e - a;
             },
             getScrollInfo: function(e) {
-                var a = e.isWindow || e.isDocument ? "" : e.element.css("overflow-x"), t = e.isWindow || e.isDocument ? "" : e.element.css("overflow-y"), s = a === "scroll" || a === "auto" && e.width < e.element[0].scrollWidth, r = t === "scroll" || t === "auto" && e.height < e.element[0].scrollHeight;
+                var a = e.isWindow || e.isDocument ? "" : e.element.css("overflow-x"), s = e.isWindow || e.isDocument ? "" : e.element.css("overflow-y"), t = a === "scroll" || a === "auto" && e.width < e.element[0].scrollWidth, r = s === "scroll" || s === "auto" && e.height < e.element[0].scrollHeight;
                 return {
-                    width: r ? j.pos.scrollbarWidth() : 0,
-                    height: s ? j.pos.scrollbarWidth() : 0
+                    width: r ? V.pos.scrollbarWidth() : 0,
+                    height: t ? V.pos.scrollbarWidth() : 0
                 };
             },
             getWithinInfo: function(e) {
-                var a = j(e || window), t = j.isWindow(a[0]), s = !!a[0] && a[0].nodeType === 9, r = !t && !s;
+                var a = V(e || window), s = V.isWindow(a[0]), t = !!a[0] && a[0].nodeType === 9, r = !s && !t;
                 return {
                     element: a,
-                    isWindow: t,
-                    isDocument: s,
-                    offset: r ? j(e).offset() : {
+                    isWindow: s,
+                    isDocument: t,
+                    offset: r ? V(e).offset() : {
                         left: 0,
                         top: 0
                     },
@@ -103,235 +103,235 @@
                 };
             }
         };
-        j.fn.pos = function(h) {
-            if (!h || !h.of) {
+        V.fn.pos = function(o) {
+            if (!o || !o.of) {
                 return a.apply(this, arguments);
             }
-            h = j.extend({}, h);
-            var m, p, d, u, T, e, g = j(h.of), b = j.pos.getWithinInfo(h.within), k = j.pos.getScrollInfo(b), w = (h.collision || "flip").split(" "), v = {};
-            e = t(g);
-            if (g[0].preventDefault) {
-                h.at = "left top";
+            o = V.extend({}, o);
+            var n, T, p, u, d, e, b = V(o.of), g = V.pos.getWithinInfo(o.within), k = V.pos.getScrollInfo(g), w = (o.collision || "flip").split(" "), v = {};
+            e = s(b);
+            if (b[0].preventDefault) {
+                o.at = "left top";
             }
-            p = e.width;
-            d = e.height;
+            T = e.width;
+            p = e.height;
             u = e.offset;
-            T = j.extend({}, u);
-            j.each([ "my", "at" ], function() {
-                var e = (h[this] || "").split(" "), a, t;
+            d = V.extend({}, u);
+            V.each([ "my", "at" ], function() {
+                var e = (o[this] || "").split(" "), a, s;
                 if (e.length === 1) {
-                    e = s.test(e[0]) ? e.concat([ "center" ]) : i.test(e[0]) ? [ "center" ].concat(e) : [ "center", "center" ];
+                    e = t.test(e[0]) ? e.concat([ "center" ]) : f.test(e[0]) ? [ "center" ].concat(e) : [ "center", "center" ];
                 }
-                e[0] = s.test(e[0]) ? e[0] : "center";
-                e[1] = i.test(e[1]) ? e[1] : "center";
-                a = f.exec(e[0]);
-                t = f.exec(e[1]);
-                v[this] = [ a ? a[0] : 0, t ? t[0] : 0 ];
-                h[this] = [ l.exec(e[0])[0], l.exec(e[1])[0] ];
+                e[0] = t.test(e[0]) ? e[0] : "center";
+                e[1] = f.test(e[1]) ? e[1] : "center";
+                a = i.exec(e[0]);
+                s = i.exec(e[1]);
+                v[this] = [ a ? a[0] : 0, s ? s[0] : 0 ];
+                o[this] = [ l.exec(e[0])[0], l.exec(e[1])[0] ];
             });
             if (w.length === 1) {
                 w[1] = w[0];
             }
-            if (h.at[0] === "right") {
-                T.left += p;
-            } else if (h.at[0] === "center") {
-                T.left += p / 2;
+            if (o.at[0] === "right") {
+                d.left += T;
+            } else if (o.at[0] === "center") {
+                d.left += T / 2;
             }
-            if (h.at[1] === "bottom") {
-                T.top += d;
-            } else if (h.at[1] === "center") {
-                T.top += d / 2;
+            if (o.at[1] === "bottom") {
+                d.top += p;
+            } else if (o.at[1] === "center") {
+                d.top += p / 2;
             }
-            m = q(v.at, p, d);
-            T.left += m[0];
-            T.top += m[1];
+            n = q(v.at, T, p);
+            d.left += n[0];
+            d.top += n[1];
             return this.each(function() {
-                var t, e, f = j(this), l = f.outerWidth(), c = f.outerHeight(), a = C(this, "marginLeft"), s = C(this, "marginTop"), r = l + a + C(this, "marginRight") + k.width, i = c + s + C(this, "marginBottom") + k.height, o = j.extend({}, T), n = q(v.my, f.outerWidth(), f.outerHeight());
-                if (h.my[0] === "right") {
-                    o.left -= l;
-                } else if (h.my[0] === "center") {
-                    o.left -= l / 2;
+                var s, e, i = V(this), l = i.outerWidth(), c = i.outerHeight(), a = C(this, "marginLeft"), t = C(this, "marginTop"), r = l + a + C(this, "marginRight") + k.width, f = c + t + C(this, "marginBottom") + k.height, h = V.extend({}, d), m = q(v.my, i.outerWidth(), i.outerHeight());
+                if (o.my[0] === "right") {
+                    h.left -= l;
+                } else if (o.my[0] === "center") {
+                    h.left -= l / 2;
                 }
-                if (h.my[1] === "bottom") {
-                    o.top -= c;
-                } else if (h.my[1] === "center") {
-                    o.top -= c / 2;
+                if (o.my[1] === "bottom") {
+                    h.top -= c;
+                } else if (o.my[1] === "center") {
+                    h.top -= c / 2;
                 }
-                o.left += n[0];
-                o.top += n[1];
-                t = {
+                h.left += m[0];
+                h.top += m[1];
+                s = {
                     marginLeft: a,
-                    marginTop: s
+                    marginTop: t
                 };
-                j.each([ "left", "top" ], function(e, a) {
-                    if (j.ui.pos[w[e]]) {
-                        j.ui.pos[w[e]][a](o, {
-                            targetWidth: p,
-                            targetHeight: d,
+                V.each([ "left", "top" ], function(e, a) {
+                    if (V.ui.pos[w[e]]) {
+                        V.ui.pos[w[e]][a](h, {
+                            targetWidth: T,
+                            targetHeight: p,
                             elemWidth: l,
                             elemHeight: c,
-                            collisionPosition: t,
+                            collisionPosition: s,
                             collisionWidth: r,
-                            collisionHeight: i,
-                            offset: [ m[0] + n[0], m[1] + n[1] ],
-                            my: h.my,
-                            at: h.at,
-                            within: b,
-                            elem: f
+                            collisionHeight: f,
+                            offset: [ n[0] + m[0], n[1] + m[1] ],
+                            my: o.my,
+                            at: o.at,
+                            within: g,
+                            elem: i
                         });
                     }
                 });
-                if (h.using) {
+                if (o.using) {
                     e = function(e) {
-                        var a = u.left - o.left, t = a + p - l, s = u.top - o.top, r = s + d - c, i = {
+                        var a = u.left - h.left, s = a + T - l, t = u.top - h.top, r = t + p - c, f = {
                             target: {
-                                element: g,
+                                element: b,
                                 left: u.left,
                                 top: u.top,
-                                width: p,
-                                height: d
+                                width: T,
+                                height: p
                             },
                             element: {
-                                element: f,
-                                left: o.left,
-                                top: o.top,
+                                element: i,
+                                left: h.left,
+                                top: h.top,
                                 width: l,
                                 height: c
                             },
-                            horizontal: t < 0 ? "left" : a > 0 ? "right" : "center",
-                            vertical: r < 0 ? "top" : s > 0 ? "bottom" : "middle"
+                            horizontal: s < 0 ? "left" : a > 0 ? "right" : "center",
+                            vertical: r < 0 ? "top" : t > 0 ? "bottom" : "middle"
                         };
-                        if (p < l && x(a + t) < p) {
-                            i.horizontal = "center";
+                        if (T < l && x(a + s) < T) {
+                            f.horizontal = "center";
                         }
-                        if (d < c && x(s + r) < d) {
-                            i.vertical = "middle";
+                        if (p < c && x(t + r) < p) {
+                            f.vertical = "middle";
                         }
-                        if (y(x(a), x(t)) > y(x(s), x(r))) {
-                            i.important = "horizontal";
+                        if (y(x(a), x(s)) > y(x(t), x(r))) {
+                            f.important = "horizontal";
                         } else {
-                            i.important = "vertical";
+                            f.important = "vertical";
                         }
-                        h.using.call(this, e, i);
+                        o.using.call(this, e, f);
                     };
                 }
-                f.offset(j.extend(o, {
+                i.offset(V.extend(h, {
                     using: e
                 }));
             });
         };
-        j.ui.pos = {
-            _trigger: function(e, a, t, s) {
+        V.ui.pos = {
+            _trigger: function(e, a, s, t) {
                 if (a.elem) {
                     a.elem.trigger({
-                        type: t,
+                        type: s,
                         position: e,
                         positionData: a,
-                        triggered: s
+                        triggered: t
                     });
                 }
             },
             fit: {
                 left: function(e, a) {
-                    j.ui.pos._trigger(e, a, "posCollide", "fitLeft");
-                    var t = a.within, s = t.isWindow ? t.scrollLeft : t.offset.left, r = t.width, i = e.left - a.collisionPosition.marginLeft, f = s - i, l = i + a.collisionWidth - r - s, c;
+                    V.ui.pos._trigger(e, a, "posCollide", "fitLeft");
+                    var s = a.within, t = s.isWindow ? s.scrollLeft : s.offset.left, r = s.width, f = e.left - a.collisionPosition.marginLeft, i = t - f, l = f + a.collisionWidth - r - t, c;
                     if (a.collisionWidth > r) {
-                        if (f > 0 && l <= 0) {
-                            c = e.left + f + a.collisionWidth - r - s;
-                            e.left += f - c;
-                        } else if (l > 0 && f <= 0) {
-                            e.left = s;
+                        if (i > 0 && l <= 0) {
+                            c = e.left + i + a.collisionWidth - r - t;
+                            e.left += i - c;
+                        } else if (l > 0 && i <= 0) {
+                            e.left = t;
                         } else {
-                            if (f > l) {
-                                e.left = s + r - a.collisionWidth;
+                            if (i > l) {
+                                e.left = t + r - a.collisionWidth;
                             } else {
-                                e.left = s;
+                                e.left = t;
                             }
                         }
-                    } else if (f > 0) {
-                        e.left += f;
+                    } else if (i > 0) {
+                        e.left += i;
                     } else if (l > 0) {
                         e.left -= l;
                     } else {
-                        e.left = y(e.left - i, e.left);
+                        e.left = y(e.left - f, e.left);
                     }
-                    j.ui.pos._trigger(e, a, "posCollided", "fitLeft");
+                    V.ui.pos._trigger(e, a, "posCollided", "fitLeft");
                 },
                 top: function(e, a) {
-                    j.ui.pos._trigger(e, a, "posCollide", "fitTop");
-                    var t = a.within, s = t.isWindow ? t.scrollTop : t.offset.top, r = a.within.height, i = e.top - a.collisionPosition.marginTop, f = s - i, l = i + a.collisionHeight - r - s, c;
+                    V.ui.pos._trigger(e, a, "posCollide", "fitTop");
+                    var s = a.within, t = s.isWindow ? s.scrollTop : s.offset.top, r = a.within.height, f = e.top - a.collisionPosition.marginTop, i = t - f, l = f + a.collisionHeight - r - t, c;
                     if (a.collisionHeight > r) {
-                        if (f > 0 && l <= 0) {
-                            c = e.top + f + a.collisionHeight - r - s;
-                            e.top += f - c;
-                        } else if (l > 0 && f <= 0) {
-                            e.top = s;
+                        if (i > 0 && l <= 0) {
+                            c = e.top + i + a.collisionHeight - r - t;
+                            e.top += i - c;
+                        } else if (l > 0 && i <= 0) {
+                            e.top = t;
                         } else {
-                            if (f > l) {
-                                e.top = s + r - a.collisionHeight;
+                            if (i > l) {
+                                e.top = t + r - a.collisionHeight;
                             } else {
-                                e.top = s;
+                                e.top = t;
                             }
                         }
-                    } else if (f > 0) {
-                        e.top += f;
+                    } else if (i > 0) {
+                        e.top += i;
                     } else if (l > 0) {
                         e.top -= l;
                     } else {
-                        e.top = y(e.top - i, e.top);
+                        e.top = y(e.top - f, e.top);
                     }
-                    j.ui.pos._trigger(e, a, "posCollided", "fitTop");
+                    V.ui.pos._trigger(e, a, "posCollided", "fitTop");
                 }
             },
             flip: {
                 left: function(e, a) {
-                    j.ui.pos._trigger(e, a, "posCollide", "flipLeft");
-                    var t = a.within, s = t.offset.left + t.scrollLeft, r = t.width, i = t.isWindow ? t.scrollLeft : t.offset.left, f = e.left - a.collisionPosition.marginLeft, l = f - i, c = f + a.collisionWidth - r - i, o = a.my[0] === "left" ? -a.elemWidth : a.my[0] === "right" ? a.elemWidth : 0, n = a.at[0] === "left" ? a.targetWidth : a.at[0] === "right" ? -a.targetWidth : 0, h = -2 * a.offset[0], m, p;
+                    V.ui.pos._trigger(e, a, "posCollide", "flipLeft");
+                    var s = a.within, t = s.offset.left + s.scrollLeft, r = s.width, f = s.isWindow ? s.scrollLeft : s.offset.left, i = e.left - a.collisionPosition.marginLeft, l = i - f, c = i + a.collisionWidth - r - f, h = a.my[0] === "left" ? -a.elemWidth : a.my[0] === "right" ? a.elemWidth : 0, m = a.at[0] === "left" ? a.targetWidth : a.at[0] === "right" ? -a.targetWidth : 0, o = -2 * a.offset[0], n, T;
                     if (l < 0) {
-                        m = e.left + o + n + h + a.collisionWidth - r - s;
-                        if (m < 0 || m < x(l)) {
-                            e.left += o + n + h;
+                        n = e.left + h + m + o + a.collisionWidth - r - t;
+                        if (n < 0 || n < x(l)) {
+                            e.left += h + m + o;
                         }
                     } else if (c > 0) {
-                        p = e.left - a.collisionPosition.marginLeft + o + n + h - i;
-                        if (p > 0 || x(p) < c) {
-                            e.left += o + n + h;
+                        T = e.left - a.collisionPosition.marginLeft + h + m + o - f;
+                        if (T > 0 || x(T) < c) {
+                            e.left += h + m + o;
                         }
                     }
-                    j.ui.pos._trigger(e, a, "posCollided", "flipLeft");
+                    V.ui.pos._trigger(e, a, "posCollided", "flipLeft");
                 },
                 top: function(e, a) {
-                    j.ui.pos._trigger(e, a, "posCollide", "flipTop");
-                    var t = a.within, s = t.offset.top + t.scrollTop, r = t.height, i = t.isWindow ? t.scrollTop : t.offset.top, f = e.top - a.collisionPosition.marginTop, l = f - i, c = f + a.collisionHeight - r - i, o = a.my[1] === "top", n = o ? -a.elemHeight : a.my[1] === "bottom" ? a.elemHeight : 0, h = a.at[1] === "top" ? a.targetHeight : a.at[1] === "bottom" ? -a.targetHeight : 0, m = -2 * a.offset[1], p, d;
+                    V.ui.pos._trigger(e, a, "posCollide", "flipTop");
+                    var s = a.within, t = s.offset.top + s.scrollTop, r = s.height, f = s.isWindow ? s.scrollTop : s.offset.top, i = e.top - a.collisionPosition.marginTop, l = i - f, c = i + a.collisionHeight - r - f, h = a.my[1] === "top", m = h ? -a.elemHeight : a.my[1] === "bottom" ? a.elemHeight : 0, o = a.at[1] === "top" ? a.targetHeight : a.at[1] === "bottom" ? -a.targetHeight : 0, n = -2 * a.offset[1], T, p;
                     if (l < 0) {
-                        d = e.top + n + h + m + a.collisionHeight - r - s;
-                        if (d < 0 || d < x(l)) {
-                            e.top += n + h + m;
+                        p = e.top + m + o + n + a.collisionHeight - r - t;
+                        if (p < 0 || p < x(l)) {
+                            e.top += m + o + n;
                         }
                     } else if (c > 0) {
-                        p = e.top - a.collisionPosition.marginTop + n + h + m - i;
-                        if (p > 0 || x(p) < c) {
-                            e.top += n + h + m;
+                        T = e.top - a.collisionPosition.marginTop + m + o + n - f;
+                        if (T > 0 || x(T) < c) {
+                            e.top += m + o + n;
                         }
                     }
-                    j.ui.pos._trigger(e, a, "posCollided", "flipTop");
+                    V.ui.pos._trigger(e, a, "posCollided", "flipTop");
                 }
             },
             flipfit: {
                 left: function() {
-                    j.ui.pos.flip.left.apply(this, arguments);
-                    j.ui.pos.fit.left.apply(this, arguments);
+                    V.ui.pos.flip.left.apply(this, arguments);
+                    V.ui.pos.fit.left.apply(this, arguments);
                 },
                 top: function() {
-                    j.ui.pos.flip.top.apply(this, arguments);
-                    j.ui.pos.fit.top.apply(this, arguments);
+                    V.ui.pos.flip.top.apply(this, arguments);
+                    V.ui.pos.fit.top.apply(this, arguments);
                 }
             }
         };
         (function() {
-            var e, a, t, s, r, i = document.getElementsByTagName("body")[0], f = document.createElement("div");
-            e = document.createElement(i ? "div" : "body");
-            t = {
+            var e, a, s, t, r, f = document.getElementsByTagName("body")[0], i = document.createElement("div");
+            e = document.createElement(f ? "div" : "body");
+            s = {
                 visibility: "hidden",
                 width: 0,
                 height: 0,
@@ -339,27 +339,27 @@
                 margin: 0,
                 background: "none"
             };
-            if (i) {
-                j.extend(t, {
+            if (f) {
+                V.extend(s, {
                     position: "absolute",
                     left: "-1000px",
                     top: "-1000px"
                 });
             }
-            for (r in t) {
-                e.style[r] = t[r];
+            for (r in s) {
+                e.style[r] = s[r];
             }
-            e.appendChild(f);
-            a = i || document.documentElement;
+            e.appendChild(i);
+            a = f || document.documentElement;
             a.insertBefore(e, a.firstChild);
-            f.style.cssText = "position: absolute; left: 10.7432222px;";
-            s = j(f).offset().left;
-            j.support.offsetFractions = s > 10 && s < 11;
+            i.style.cssText = "position: absolute; left: 10.7432222px;";
+            t = V(i).offset().left;
+            V.support.offsetFractions = t > 10 && t < 11;
             e.innerHTML = "";
             a.removeChild(e);
         })();
     })();
-    var a = j.ui.position;
+    var a = V.ui.position;
 });
 
 (function(e) {
@@ -371,7 +371,7 @@
     }
 })(function(c) {
     "use strict";
-    var f = {
+    var i = {
         isEmpty: function(e) {
             return e === false || e === "" || e === null || e === undefined;
         },
@@ -394,16 +394,16 @@
             throw "Font Awesome Icon Picker Exception: " + e;
         }
     };
-    var t = function(e, a) {
-        this._id = t._idCounter++;
+    var s = function(e, a) {
+        this._id = s._idCounter++;
         this.element = c(e).addClass("iconpicker-element");
         this._trigger("iconpickerCreate", {
             iconpickerValue: this.iconpickerValue
         });
-        this.options = c.extend({}, t.defaultOptions, this.element.data(), a);
-        this.options.templates = c.extend({}, t.defaultOptions.templates, this.options.templates);
+        this.options = c.extend({}, s.defaultOptions, this.element.data(), a);
+        this.options.templates = c.extend({}, s.defaultOptions.templates, this.options.templates);
         this.options.originalPlacement = this.options.placement;
-        this.container = f.isElement(this.options.container) ? c(this.options.container) : false;
+        this.container = i.isElement(this.options.container) ? c(this.options.container) : false;
         if (this.container === false) {
             if (this.element.is(".dropdown-toggle")) {
                 this.container = c("~ .dropdown-menu:first", this.element);
@@ -448,8 +448,8 @@
             iconpickerValue: this.iconpickerValue
         });
     };
-    t._idCounter = 0;
-    t.defaultOptions = {
+    s._idCounter = 0;
+    s.defaultOptions = {
         title: false,
         selected: false,
         defaultValue: false,
@@ -478,17 +478,17 @@
             iconpickerItem: '<a role="button" href="javascript:;" class="iconpicker-item"><i></i></a>'
         }
     };
-    t.batch = function(e, a) {
-        var t = Array.prototype.slice.call(arguments, 2);
+    s.batch = function(e, a) {
+        var s = Array.prototype.slice.call(arguments, 2);
         return c(e).each(function() {
             var e = c(this).data("iconpicker");
             if (!!e) {
-                e[a].apply(e, t);
+                e[a].apply(e, s);
             }
         });
     };
-    t.prototype = {
-        constructor: t,
+    s.prototype = {
+        constructor: s,
         options: {},
         _id: 0,
         _trigger: function(e, a) {
@@ -509,12 +509,12 @@
             } else if (!this.options.title) {
                 e.remove();
             }
-            if (this.options.showFooter && !f.isEmpty(this.options.templates.footer)) {
+            if (this.options.showFooter && !i.isEmpty(this.options.templates.footer)) {
                 var a = c(this.options.templates.footer);
                 if (this.hasSeparatedSearchInput() && this.options.searchInFooter) {
                     a.append(c(this.options.templates.search));
                 }
-                if (!f.isEmpty(this.options.templates.buttons)) {
+                if (!i.isEmpty(this.options.templates.buttons)) {
                     a.append(c(this.options.templates.buttons));
                 }
                 this.popover.append(a);
@@ -525,49 +525,49 @@
             return this.popover;
         },
         _createIconpicker: function() {
-            var t = this;
+            var s = this;
             this.iconpicker = c(this.options.templates.iconpicker);
             var e = function(e) {
                 var a = c(this);
                 if (a.is("i")) {
                     a = a.parent();
                 }
-                t._trigger("iconpickerSelect", {
+                s._trigger("iconpickerSelect", {
                     iconpickerItem: a,
-                    iconpickerValue: t.iconpickerValue
+                    iconpickerValue: s.iconpickerValue
                 });
-                if (t.options.mustAccept === false) {
-                    t.update(a.data("iconpickerValue"));
-                    t._trigger("iconpickerSelected", {
+                if (s.options.mustAccept === false) {
+                    s.update(a.data("iconpickerValue"));
+                    s._trigger("iconpickerSelected", {
                         iconpickerItem: this,
-                        iconpickerValue: t.iconpickerValue
+                        iconpickerValue: s.iconpickerValue
                     });
                 } else {
-                    t.update(a.data("iconpickerValue"), true);
+                    s.update(a.data("iconpickerValue"), true);
                 }
-                if (t.options.hideOnSelect && t.options.mustAccept === false) {
-                    t.hide();
+                if (s.options.hideOnSelect && s.options.mustAccept === false) {
+                    s.hide();
                 }
             };
             var a = c(this.options.templates.iconpickerItem);
-            var s = [];
+            var t = [];
             for (var r in this.options.icons) {
                 if (typeof this.options.icons[r].title === "string") {
-                    var i = a.clone();
-                    i.find("i").addClass(this.options.fullClassFormatter(this.options.icons[r].title));
-                    i.data("iconpickerValue", this.options.icons[r].title).on("click.iconpicker", e);
-                    i.attr("title", "." + this.options.icons[r].title);
+                    var f = a.clone();
+                    f.find("i").addClass(this.options.fullClassFormatter(this.options.icons[r].title));
+                    f.data("iconpickerValue", this.options.icons[r].title).on("click.iconpicker", e);
+                    f.attr("title", "." + this.options.icons[r].title);
                     if (this.options.icons[r].searchTerms.length > 0) {
-                        var f = "";
+                        var i = "";
                         for (var l = 0; l < this.options.icons[r].searchTerms.length; l++) {
-                            f = f + this.options.icons[r].searchTerms[l] + " ";
+                            i = i + this.options.icons[r].searchTerms[l] + " ";
                         }
-                        i.attr("data-search-terms", f);
+                        f.attr("data-search-terms", i);
                     }
-                    s.push(i);
+                    t.push(f);
                 }
             }
-            this.iconpicker.find(".iconpicker-items").append(s);
+            this.iconpicker.find(".iconpicker-items").append(t);
             this.popover.find(".popover-content").append(this.iconpicker);
             return this.iconpicker;
         },
@@ -610,7 +610,7 @@
             }
             if (this.hasInput()) {
                 this.input.on("keyup.iconpicker", function(e) {
-                    if (!f.inArray(e.keyCode, [ 38, 40, 37, 39, 16, 17, 18, 9, 8, 91, 93, 20, 46, 186, 190, 46, 78, 188, 44, 86 ])) {
+                    if (!i.inArray(e.keyCode, [ 38, 40, 37, 39, 16, 17, 18, 9, 8, 91, 93, 20, 46, 186, 190, 46, 78, 188, 44, 86 ])) {
                         a.update();
                     } else {
                         a._updateFormGroupStatus(a.getValid(this.value) !== false);
@@ -624,14 +624,14 @@
         _bindWindowEvents: function() {
             var e = c(window.document);
             var a = this;
-            var t = ".iconpicker.inst" + this._id;
-            c(window).on("resize.iconpicker" + t + " orientationchange.iconpicker" + t, function(e) {
+            var s = ".iconpicker.inst" + this._id;
+            c(window).on("resize.iconpicker" + s + " orientationchange.iconpicker" + s, function(e) {
                 if (a.popover.hasClass("in")) {
                     a.updatePlacement();
                 }
             });
             if (!a.isInline()) {
-                e.on("mouseup" + t, function(e) {
+                e.on("mouseup" + s, function(e) {
                     if (!a._isEventInsideIconpicker(e) && !a.isInline()) {
                         a.hide();
                     }
@@ -660,7 +660,7 @@
             this.options.placement = e;
             a = a || this.options.collision;
             a = a === true ? "flip" : a;
-            var t = {
+            var s = {
                 at: "right bottom",
                 my: "right top",
                 of: this.hasInput() && !this.isInputGroup() ? this.input : this.container,
@@ -669,124 +669,124 @@
             };
             this.popover.removeClass("inline topLeftCorner topLeft top topRight topRightCorner " + "rightTop right rightBottom bottomRight bottomRightCorner " + "bottom bottomLeft bottomLeftCorner leftBottom left leftTop");
             if (typeof e === "object") {
-                return this.popover.pos(c.extend({}, t, e));
+                return this.popover.pos(c.extend({}, s, e));
             }
             switch (e) {
               case "inline":
                 {
-                    t = false;
+                    s = false;
                 }
                 break;
 
               case "topLeftCorner":
                 {
-                    t.my = "right bottom";
-                    t.at = "left top";
+                    s.my = "right bottom";
+                    s.at = "left top";
                 }
                 break;
 
               case "topLeft":
                 {
-                    t.my = "left bottom";
-                    t.at = "left top";
+                    s.my = "left bottom";
+                    s.at = "left top";
                 }
                 break;
 
               case "top":
                 {
-                    t.my = "center bottom";
-                    t.at = "center top";
+                    s.my = "center bottom";
+                    s.at = "center top";
                 }
                 break;
 
               case "topRight":
                 {
-                    t.my = "right bottom";
-                    t.at = "right top";
+                    s.my = "right bottom";
+                    s.at = "right top";
                 }
                 break;
 
               case "topRightCorner":
                 {
-                    t.my = "left bottom";
-                    t.at = "right top";
+                    s.my = "left bottom";
+                    s.at = "right top";
                 }
                 break;
 
               case "rightTop":
                 {
-                    t.my = "left bottom";
-                    t.at = "right center";
+                    s.my = "left bottom";
+                    s.at = "right center";
                 }
                 break;
 
               case "right":
                 {
-                    t.my = "left center";
-                    t.at = "right center";
+                    s.my = "left center";
+                    s.at = "right center";
                 }
                 break;
 
               case "rightBottom":
                 {
-                    t.my = "left top";
-                    t.at = "right center";
+                    s.my = "left top";
+                    s.at = "right center";
                 }
                 break;
 
               case "bottomRightCorner":
                 {
-                    t.my = "left top";
-                    t.at = "right bottom";
+                    s.my = "left top";
+                    s.at = "right bottom";
                 }
                 break;
 
               case "bottomRight":
                 {
-                    t.my = "right top";
-                    t.at = "right bottom";
+                    s.my = "right top";
+                    s.at = "right bottom";
                 }
                 break;
 
               case "bottom":
                 {
-                    t.my = "center top";
-                    t.at = "center bottom";
+                    s.my = "center top";
+                    s.at = "center bottom";
                 }
                 break;
 
               case "bottomLeft":
                 {
-                    t.my = "left top";
-                    t.at = "left bottom";
+                    s.my = "left top";
+                    s.at = "left bottom";
                 }
                 break;
 
               case "bottomLeftCorner":
                 {
-                    t.my = "right top";
-                    t.at = "left bottom";
+                    s.my = "right top";
+                    s.at = "left bottom";
                 }
                 break;
 
               case "leftBottom":
                 {
-                    t.my = "right top";
-                    t.at = "left center";
+                    s.my = "right top";
+                    s.at = "left center";
                 }
                 break;
 
               case "left":
                 {
-                    t.my = "right center";
-                    t.at = "left center";
+                    s.my = "right center";
+                    s.at = "left center";
                 }
                 break;
 
               case "leftTop":
                 {
-                    t.my = "right bottom";
-                    t.at = "left center";
+                    s.my = "right bottom";
+                    s.at = "left center";
                 }
                 break;
 
@@ -799,8 +799,8 @@
             this.popover.css({
                 display: this.options.placement === "inline" ? "" : "block"
             });
-            if (t !== false) {
-                this.popover.pos(t).css("maxWidth", c(window).width() - this.container.offset().left - 5);
+            if (s !== false) {
+                this.popover.pos(s).css("maxWidth", c(window).width() - this.container.offset().left - 5);
             } else {
                 this.popover.css({
                     top: "auto",
@@ -839,19 +839,19 @@
             return false;
         },
         getValid: function(e) {
-            if (!f.isString(e)) {
+            if (!i.isString(e)) {
                 e = "";
             }
             var a = e === "";
             e = typeof e !== "undefined" ? e.trim() : e;
-            var t = false;
-            for (var s = 0; s < this.options.icons.length; s++) {
-                if (this.options.icons[s].title === e) {
-                    t = true;
+            var s = false;
+            for (var t = 0; t < this.options.icons.length; t++) {
+                if (this.options.icons[t].title === e) {
+                    s = true;
                     break;
                 }
             }
-            if (t || a) {
+            if (s || a) {
                 return e;
             }
             return false;
@@ -932,30 +932,30 @@
             return this.popover.find(".iconpicker-search");
         },
         filter: function(r) {
-            if (f.isEmpty(r)) {
+            if (i.isEmpty(r)) {
                 this.iconpicker.find(".iconpicker-item").show();
                 return c(false);
             } else {
-                var i = [];
+                var f = [];
                 this.iconpicker.find(".iconpicker-item").each(function() {
                     var e = c(this);
                     var a = e.attr("title").toLowerCase();
-                    var t = e.attr("data-search-terms") ? e.attr("data-search-terms").toLowerCase() : "";
-                    a = a + " " + t;
-                    var s = false;
+                    var s = e.attr("data-search-terms") ? e.attr("data-search-terms").toLowerCase() : "";
+                    a = a + " " + s;
+                    var t = false;
                     try {
-                        s = new RegExp("(^|\\W)" + r, "g");
+                        t = new RegExp("(^|\\W)" + r, "g");
                     } catch (e) {
-                        s = false;
+                        t = false;
                     }
-                    if (s !== false && a.match(s)) {
-                        i.push(e);
+                    if (t !== false && a.match(t)) {
+                        f.push(e);
                         e.show();
                     } else {
                         e.hide();
                     }
                 });
-                return i;
+                return f;
             }
         },
         show: function() {
@@ -1054,30 +1054,60 @@
             return this.options.placement === "inline" || this.popover.hasClass("inline");
         }
     };
-    c.iconpicker = t;
+    c.iconpicker = s;
     c.fn.iconpicker = function(a) {
         return this.each(function() {
             var e = c(this);
             if (!e.data("iconpicker")) {
-                e.data("iconpicker", new t(this, typeof a === "object" ? a : {}));
+                e.data("iconpicker", new s(this, typeof a === "object" ? a : {}));
             }
         });
     };
-    t.defaultOptions = c.extend(t.defaultOptions, {
+    s.defaultOptions = c.extend(s.defaultOptions, {
         icons: [ {
+            title: "fas fa-0",
+            searchTerms: []
+        }, {
+            title: "fas fa-1",
+            searchTerms: []
+        }, {
+            title: "fas fa-2",
+            searchTerms: []
+        }, {
+            title: "fas fa-3",
+            searchTerms: []
+        }, {
+            title: "fas fa-4",
+            searchTerms: []
+        }, {
+            title: "fas fa-5",
+            searchTerms: []
+        }, {
+            title: "fas fa-6",
+            searchTerms: []
+        }, {
+            title: "fas fa-7",
+            searchTerms: []
+        }, {
+            title: "fas fa-8",
+            searchTerms: []
+        }, {
+            title: "fas fa-9",
+            searchTerms: []
+        }, {
+            title: "fab fa-42-group",
+            searchTerms: []
+        }, {
             title: "fab fa-500px",
             searchTerms: []
         }, {
-            title: "fab fa-accessible-icon",
-            searchTerms: [ "accessibility", "handicap", "person", "wheelchair", "wheelchair-alt" ]
-        }, {
-            title: "fab fa-accusoft",
+            title: "fas fa-a",
             searchTerms: []
         }, {
-            title: "fab fa-acquisitions-incorporated",
-            searchTerms: [ "Dungeons & Dragons", "d&d", "dnd", "fantasy", "game", "gaming", "tabletop" ]
+            title: "fab fa-accessible-icon",
+            searchTerms: []
         }, {
-            title: "fas fa-ad",
+            title: "fab fa-accusoft",
             searchTerms: []
         }, {
             title: "fas fa-address-book",
@@ -1092,9 +1122,6 @@
             title: "far fa-address-card",
             searchTerms: []
         }, {
-            title: "fas fa-adjust",
-            searchTerms: [ "contrast" ]
-        }, {
             title: "fab fa-adn",
             searchTerms: []
         }, {
@@ -1104,29 +1131,26 @@
             title: "fab fa-affiliatetheme",
             searchTerms: []
         }, {
-            title: "fas fa-air-freshener",
+            title: "fab fa-airbnb",
             searchTerms: []
         }, {
             title: "fab fa-algolia",
             searchTerms: []
         }, {
             title: "fas fa-align-center",
-            searchTerms: [ "middle", "text" ]
+            searchTerms: []
         }, {
             title: "fas fa-align-justify",
-            searchTerms: [ "text" ]
+            searchTerms: []
         }, {
             title: "fas fa-align-left",
-            searchTerms: [ "text" ]
+            searchTerms: []
         }, {
             title: "fas fa-align-right",
-            searchTerms: [ "text" ]
+            searchTerms: []
         }, {
             title: "fab fa-alipay",
             searchTerms: []
-        }, {
-            title: "fas fa-allergies",
-            searchTerms: [ "freckles", "hand", "intolerances", "pox", "spots" ]
         }, {
             title: "fab fa-amazon",
             searchTerms: []
@@ -1134,53 +1158,53 @@
             title: "fab fa-amazon-pay",
             searchTerms: []
         }, {
-            title: "fas fa-ambulance",
-            searchTerms: [ "help", "machine", "support", "vehicle" ]
-        }, {
-            title: "fas fa-american-sign-language-interpreting",
-            searchTerms: []
-        }, {
             title: "fab fa-amilia",
             searchTerms: []
         }, {
             title: "fas fa-anchor",
-            searchTerms: [ "link" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-anchor-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-anchor-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-anchor-circle-xmark",
+            searchTerms: []
+        }, {
+            title: "fas fa-anchor-lock",
+            searchTerms: []
         }, {
             title: "fab fa-android",
-            searchTerms: [ "robot" ]
+            searchTerms: []
         }, {
             title: "fab fa-angellist",
             searchTerms: []
         }, {
-            title: "fas fa-angle-double-down",
-            searchTerms: [ "arrows" ]
-        }, {
-            title: "fas fa-angle-double-left",
-            searchTerms: [ "arrows", "back", "laquo", "previous", "quote" ]
-        }, {
-            title: "fas fa-angle-double-right",
-            searchTerms: [ "arrows", "forward", "next", "quote", "raquo" ]
-        }, {
-            title: "fas fa-angle-double-up",
-            searchTerms: [ "arrows" ]
-        }, {
             title: "fas fa-angle-down",
-            searchTerms: [ "arrow" ]
+            searchTerms: []
         }, {
             title: "fas fa-angle-left",
-            searchTerms: [ "arrow", "back", "previous" ]
+            searchTerms: []
         }, {
             title: "fas fa-angle-right",
-            searchTerms: [ "arrow", "forward", "next" ]
+            searchTerms: []
         }, {
             title: "fas fa-angle-up",
-            searchTerms: [ "arrow" ]
+            searchTerms: []
         }, {
-            title: "fas fa-angry",
-            searchTerms: [ "disapprove", "emoticon", "face", "mad", "upset" ]
+            title: "fas fa-angles-down",
+            searchTerms: []
         }, {
-            title: "far fa-angry",
-            searchTerms: [ "disapprove", "emoticon", "face", "mad", "upset" ]
+            title: "fas fa-angles-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-angles-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-angles-up",
+            searchTerms: []
         }, {
             title: "fab fa-angrycreative",
             searchTerms: []
@@ -1189,7 +1213,7 @@
             searchTerms: []
         }, {
             title: "fas fa-ankh",
-            searchTerms: [ "amulet", "copper", "coptic christianity", "copts", "crux ansata", "egyptian", "venus" ]
+            searchTerms: []
         }, {
             title: "fab fa-app-store",
             searchTerms: []
@@ -1201,99 +1225,201 @@
             searchTerms: []
         }, {
             title: "fab fa-apple",
-            searchTerms: [ "food", "fruit", "mac", "osx" ]
-        }, {
-            title: "fas fa-apple-alt",
-            searchTerms: [ "fall", "food", "fruit", "fuji", "macintosh", "seasonal" ]
+            searchTerms: []
         }, {
             title: "fab fa-apple-pay",
             searchTerms: []
         }, {
-            title: "fas fa-archive",
-            searchTerms: [ "box", "package", "storage" ]
+            title: "fas fa-apple-whole",
+            searchTerms: []
         }, {
             title: "fas fa-archway",
-            searchTerms: [ "arc", "monument", "road", "street" ]
-        }, {
-            title: "fas fa-arrow-alt-circle-down",
-            searchTerms: [ "arrow-circle-o-down", "download" ]
-        }, {
-            title: "far fa-arrow-alt-circle-down",
-            searchTerms: [ "arrow-circle-o-down", "download" ]
-        }, {
-            title: "fas fa-arrow-alt-circle-left",
-            searchTerms: [ "arrow-circle-o-left", "back", "previous" ]
-        }, {
-            title: "far fa-arrow-alt-circle-left",
-            searchTerms: [ "arrow-circle-o-left", "back", "previous" ]
-        }, {
-            title: "fas fa-arrow-alt-circle-right",
-            searchTerms: [ "arrow-circle-o-right", "forward", "next" ]
-        }, {
-            title: "far fa-arrow-alt-circle-right",
-            searchTerms: [ "arrow-circle-o-right", "forward", "next" ]
-        }, {
-            title: "fas fa-arrow-alt-circle-up",
-            searchTerms: [ "arrow-circle-o-up" ]
-        }, {
-            title: "far fa-arrow-alt-circle-up",
-            searchTerms: [ "arrow-circle-o-up" ]
-        }, {
-            title: "fas fa-arrow-circle-down",
-            searchTerms: [ "download" ]
-        }, {
-            title: "fas fa-arrow-circle-left",
-            searchTerms: [ "back", "previous" ]
-        }, {
-            title: "fas fa-arrow-circle-right",
-            searchTerms: [ "forward", "next" ]
-        }, {
-            title: "fas fa-arrow-circle-up",
             searchTerms: []
         }, {
             title: "fas fa-arrow-down",
-            searchTerms: [ "download" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-down-1-9",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-down-9-1",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-down-a-z",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-down-long",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-down-short-wide",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-down-up-across-line",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-down-up-lock",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-down-wide-short",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-down-z-a",
+            searchTerms: []
         }, {
             title: "fas fa-arrow-left",
-            searchTerms: [ "back", "previous" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-left-long",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-pointer",
+            searchTerms: []
         }, {
             title: "fas fa-arrow-right",
-            searchTerms: [ "forward", "next" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-right-arrow-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-right-from-bracket",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-right-long",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-right-to-bracket",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-right-to-city",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-rotate-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-rotate-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-trend-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-trend-up",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-turn-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-turn-up",
+            searchTerms: []
         }, {
             title: "fas fa-arrow-up",
             searchTerms: []
         }, {
-            title: "fas fa-arrows-alt",
-            searchTerms: [ "arrow", "arrows", "bigger", "enlarge", "expand", "fullscreen", "move", "position", "reorder", "resize" ]
+            title: "fas fa-arrow-up-1-9",
+            searchTerms: []
         }, {
-            title: "fas fa-arrows-alt-h",
-            searchTerms: [ "arrows-h", "resize" ]
+            title: "fas fa-arrow-up-9-1",
+            searchTerms: []
         }, {
-            title: "fas fa-arrows-alt-v",
-            searchTerms: [ "arrows-v", "resize" ]
+            title: "fas fa-arrow-up-a-z",
+            searchTerms: []
         }, {
-            title: "fas fa-assistive-listening-systems",
+            title: "fas fa-arrow-up-from-bracket",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-up-from-ground-water",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-up-from-water-pump",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-up-long",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-up-right-dots",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-up-right-from-square",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-up-short-wide",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-up-wide-short",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrow-up-z-a",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-down-to-line",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-down-to-people",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-left-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-left-right-to-line",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-rotate",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-spin",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-split-up-and-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-to-circle",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-to-dot",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-to-eye",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-turn-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-turn-to-dots",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-up-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-up-down-left-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-arrows-up-to-line",
+            searchTerms: []
+        }, {
+            title: "fab fa-artstation",
             searchTerms: []
         }, {
             title: "fas fa-asterisk",
-            searchTerms: [ "details" ]
+            searchTerms: []
         }, {
             title: "fab fa-asymmetrik",
             searchTerms: []
         }, {
             title: "fas fa-at",
-            searchTerms: [ "e-mail", "email" ]
+            searchTerms: []
         }, {
-            title: "fas fa-atlas",
-            searchTerms: [ "book", "directions", "geography", "map", "wayfinding" ]
+            title: "fab fa-atlassian",
+            searchTerms: []
         }, {
             title: "fas fa-atom",
-            searchTerms: [ "atheism", "chemistry", "science" ]
+            searchTerms: []
         }, {
             title: "fab fa-audible",
             searchTerms: []
         }, {
             title: "fas fa-audio-description",
+            searchTerms: []
+        }, {
+            title: "fas fa-austral-sign",
             searchTerms: []
         }, {
             title: "fab fa-autoprefixer",
@@ -1306,76 +1432,124 @@
             searchTerms: []
         }, {
             title: "fas fa-award",
-            searchTerms: [ "honor", "praise", "prize", "recognition", "ribbon" ]
+            searchTerms: []
         }, {
             title: "fab fa-aws",
             searchTerms: []
         }, {
-            title: "fas fa-backspace",
-            searchTerms: [ "command", "delete", "keyboard", "undo" ]
+            title: "fas fa-b",
+            searchTerms: []
+        }, {
+            title: "fas fa-baby",
+            searchTerms: []
+        }, {
+            title: "fas fa-baby-carriage",
+            searchTerms: []
         }, {
             title: "fas fa-backward",
-            searchTerms: [ "previous", "rewind" ]
+            searchTerms: []
         }, {
-            title: "fas fa-balance-scale",
-            searchTerms: [ "balanced", "justice", "legal", "measure", "weight" ]
+            title: "fas fa-backward-fast",
+            searchTerms: []
+        }, {
+            title: "fas fa-backward-step",
+            searchTerms: []
+        }, {
+            title: "fas fa-bacon",
+            searchTerms: []
+        }, {
+            title: "fas fa-bacteria",
+            searchTerms: []
+        }, {
+            title: "fas fa-bacterium",
+            searchTerms: []
+        }, {
+            title: "fas fa-bag-shopping",
+            searchTerms: []
+        }, {
+            title: "fas fa-bahai",
+            searchTerms: []
+        }, {
+            title: "fas fa-baht-sign",
+            searchTerms: []
         }, {
             title: "fas fa-ban",
-            searchTerms: [ "abort", "ban", "block", "cancel", "delete", "hide", "prohibit", "remove", "stop", "trash" ]
+            searchTerms: []
         }, {
-            title: "fas fa-band-aid",
-            searchTerms: [ "bandage", "boo boo", "ouch" ]
+            title: "fas fa-ban-smoking",
+            searchTerms: []
+        }, {
+            title: "fas fa-bandage",
+            searchTerms: []
         }, {
             title: "fab fa-bandcamp",
             searchTerms: []
         }, {
             title: "fas fa-barcode",
-            searchTerms: [ "scan" ]
-        }, {
-            title: "fas fa-bars",
-            searchTerms: [ "checklist", "drag", "hamburger", "list", "menu", "nav", "navigation", "ol", "reorder", "settings", "todo", "ul" ]
-        }, {
-            title: "fas fa-baseball-ball",
             searchTerms: []
         }, {
-            title: "fas fa-basketball-ball",
+            title: "fas fa-bars",
+            searchTerms: []
+        }, {
+            title: "fas fa-bars-progress",
+            searchTerms: []
+        }, {
+            title: "fas fa-bars-staggered",
+            searchTerms: []
+        }, {
+            title: "fas fa-baseball",
+            searchTerms: []
+        }, {
+            title: "fas fa-baseball-bat-ball",
+            searchTerms: []
+        }, {
+            title: "fas fa-basket-shopping",
+            searchTerms: []
+        }, {
+            title: "fas fa-basketball",
             searchTerms: []
         }, {
             title: "fas fa-bath",
             searchTerms: []
         }, {
             title: "fas fa-battery-empty",
-            searchTerms: [ "power", "status" ]
+            searchTerms: []
         }, {
             title: "fas fa-battery-full",
-            searchTerms: [ "power", "status" ]
+            searchTerms: []
         }, {
             title: "fas fa-battery-half",
-            searchTerms: [ "power", "status" ]
+            searchTerms: []
         }, {
             title: "fas fa-battery-quarter",
-            searchTerms: [ "power", "status" ]
+            searchTerms: []
         }, {
             title: "fas fa-battery-three-quarters",
-            searchTerms: [ "power", "status" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-battle-net",
+            searchTerms: []
         }, {
             title: "fas fa-bed",
-            searchTerms: [ "lodging", "sleep", "travel" ]
+            searchTerms: []
         }, {
-            title: "fas fa-beer",
-            searchTerms: [ "alcohol", "bar", "beverage", "drink", "liquor", "mug", "stein" ]
+            title: "fas fa-bed-pulse",
+            searchTerms: []
+        }, {
+            title: "fas fa-beer-mug-empty",
+            searchTerms: []
         }, {
             title: "fab fa-behance",
             searchTerms: []
         }, {
-            title: "fab fa-behance-square",
+            title: "fas fa-bell",
             searchTerms: []
         }, {
-            title: "fas fa-bell",
-            searchTerms: [ "alert", "notification", "reminder" ]
-        }, {
             title: "far fa-bell",
-            searchTerms: [ "alert", "notification", "reminder" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-bell-concierge",
+            searchTerms: []
         }, {
             title: "fas fa-bell-slash",
             searchTerms: []
@@ -1384,13 +1558,13 @@
             searchTerms: []
         }, {
             title: "fas fa-bezier-curve",
-            searchTerms: [ "curves", "illustrator", "lines", "path", "vector" ]
-        }, {
-            title: "fas fa-bible",
-            searchTerms: [ "book", "catholicism", "christianity" ]
+            searchTerms: []
         }, {
             title: "fas fa-bicycle",
-            searchTerms: [ "bike", "gears", "transportation", "vehicle" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-bilibili",
+            searchTerms: []
         }, {
             title: "fab fa-bimobject",
             searchTerms: []
@@ -1398,13 +1572,16 @@
             title: "fas fa-binoculars",
             searchTerms: []
         }, {
-            title: "fas fa-birthday-cake",
+            title: "fas fa-biohazard",
             searchTerms: []
         }, {
             title: "fab fa-bitbucket",
-            searchTerms: [ "bitbucket-square", "git" ]
+            searchTerms: []
         }, {
             title: "fab fa-bitcoin",
+            searchTerms: []
+        }, {
+            title: "fas fa-bitcoin-sign",
             searchTerms: []
         }, {
             title: "fab fa-bity",
@@ -1420,9 +1597,9 @@
             searchTerms: []
         }, {
             title: "fas fa-blender-phone",
-            searchTerms: [ "appliance", "fantasy", "silly" ]
+            searchTerms: []
         }, {
-            title: "fas fa-blind",
+            title: "fas fa-blog",
             searchTerms: []
         }, {
             title: "fab fa-blogger",
@@ -1441,7 +1618,10 @@
             searchTerms: []
         }, {
             title: "fas fa-bolt",
-            searchTerms: [ "electricity", "lightning", "weather", "zap" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-bolt-lightning",
+            searchTerms: []
         }, {
             title: "fas fa-bomb",
             searchTerms: []
@@ -1450,214 +1630,376 @@
             searchTerms: []
         }, {
             title: "fas fa-bong",
-            searchTerms: [ "aparatus", "cannabis", "marijuana", "pipe", "smoke", "smoking" ]
+            searchTerms: []
         }, {
             title: "fas fa-book",
-            searchTerms: [ "documentation", "read" ]
+            searchTerms: []
         }, {
-            title: "fas fa-book-dead",
-            searchTerms: [ "Dungeons & Dragons", "crossbones", "d&d", "dark arts", "death", "dnd", "documentation", "evil", "fantasy", "halloween", "holiday", "read", "skull", "spell" ]
+            title: "fas fa-book-atlas",
+            searchTerms: []
+        }, {
+            title: "fas fa-book-bible",
+            searchTerms: []
+        }, {
+            title: "fas fa-book-bookmark",
+            searchTerms: []
+        }, {
+            title: "fas fa-book-journal-whills",
+            searchTerms: []
+        }, {
+            title: "fas fa-book-medical",
+            searchTerms: []
         }, {
             title: "fas fa-book-open",
-            searchTerms: [ "flyer", "notebook", "open book", "pamphlet", "reading" ]
+            searchTerms: []
         }, {
-            title: "fas fa-book-reader",
-            searchTerms: [ "library" ]
+            title: "fas fa-book-open-reader",
+            searchTerms: []
+        }, {
+            title: "fas fa-book-quran",
+            searchTerms: []
+        }, {
+            title: "fas fa-book-skull",
+            searchTerms: []
+        }, {
+            title: "fas fa-book-tanakh",
+            searchTerms: []
         }, {
             title: "fas fa-bookmark",
-            searchTerms: [ "save" ]
+            searchTerms: []
         }, {
             title: "far fa-bookmark",
-            searchTerms: [ "save" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-bootstrap",
+            searchTerms: []
+        }, {
+            title: "fas fa-border-all",
+            searchTerms: []
+        }, {
+            title: "fas fa-border-none",
+            searchTerms: []
+        }, {
+            title: "fas fa-border-top-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-bore-hole",
+            searchTerms: []
+        }, {
+            title: "fab fa-bots",
+            searchTerms: []
+        }, {
+            title: "fas fa-bottle-droplet",
+            searchTerms: []
+        }, {
+            title: "fas fa-bottle-water",
+            searchTerms: []
+        }, {
+            title: "fas fa-bowl-food",
+            searchTerms: []
+        }, {
+            title: "fas fa-bowl-rice",
+            searchTerms: []
         }, {
             title: "fas fa-bowling-ball",
             searchTerms: []
         }, {
             title: "fas fa-box",
-            searchTerms: [ "package" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-box-archive",
+            searchTerms: []
         }, {
             title: "fas fa-box-open",
             searchTerms: []
         }, {
-            title: "fas fa-boxes",
+            title: "fas fa-box-tissue",
+            searchTerms: []
+        }, {
+            title: "fas fa-boxes-packing",
+            searchTerms: []
+        }, {
+            title: "fas fa-boxes-stacked",
             searchTerms: []
         }, {
             title: "fas fa-braille",
             searchTerms: []
         }, {
             title: "fas fa-brain",
-            searchTerms: [ "cerebellum", "gray matter", "intellect", "medulla oblongata", "mind", "noodle", "wit" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-brazilian-real-sign",
+            searchTerms: []
+        }, {
+            title: "fas fa-bread-slice",
+            searchTerms: []
+        }, {
+            title: "fas fa-bridge",
+            searchTerms: []
+        }, {
+            title: "fas fa-bridge-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-bridge-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-bridge-circle-xmark",
+            searchTerms: []
+        }, {
+            title: "fas fa-bridge-lock",
+            searchTerms: []
+        }, {
+            title: "fas fa-bridge-water",
+            searchTerms: []
         }, {
             title: "fas fa-briefcase",
-            searchTerms: [ "bag", "business", "luggage", "office", "work" ]
+            searchTerms: []
         }, {
             title: "fas fa-briefcase-medical",
-            searchTerms: [ "health briefcase" ]
-        }, {
-            title: "fas fa-broadcast-tower",
-            searchTerms: [ "airwaves", "radio", "waves" ]
+            searchTerms: []
         }, {
             title: "fas fa-broom",
-            searchTerms: [ "clean", "firebolt", "fly", "halloween", "holiday", "nimbus 2000", "quidditch", "sweep", "witch" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-broom-ball",
+            searchTerms: []
         }, {
             title: "fas fa-brush",
-            searchTerms: [ "bristles", "color", "handle", "painting" ]
+            searchTerms: []
         }, {
             title: "fab fa-btc",
             searchTerms: []
         }, {
+            title: "fas fa-bucket",
+            searchTerms: []
+        }, {
+            title: "fab fa-buffer",
+            searchTerms: []
+        }, {
             title: "fas fa-bug",
-            searchTerms: [ "insect", "report" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-bug-slash",
+            searchTerms: []
+        }, {
+            title: "fas fa-bugs",
+            searchTerms: []
         }, {
             title: "fas fa-building",
-            searchTerms: [ "apartment", "business", "company", "office", "work" ]
+            searchTerms: []
         }, {
             title: "far fa-building",
-            searchTerms: [ "apartment", "business", "company", "office", "work" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-building-circle-arrow-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-building-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-building-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-building-circle-xmark",
+            searchTerms: []
+        }, {
+            title: "fas fa-building-columns",
+            searchTerms: []
+        }, {
+            title: "fas fa-building-flag",
+            searchTerms: []
+        }, {
+            title: "fas fa-building-lock",
+            searchTerms: []
+        }, {
+            title: "fas fa-building-ngo",
+            searchTerms: []
+        }, {
+            title: "fas fa-building-shield",
+            searchTerms: []
+        }, {
+            title: "fas fa-building-un",
+            searchTerms: []
+        }, {
+            title: "fas fa-building-user",
+            searchTerms: []
+        }, {
+            title: "fas fa-building-wheat",
+            searchTerms: []
         }, {
             title: "fas fa-bullhorn",
-            searchTerms: [ "announcement", "broadcast", "louder", "megaphone", "share" ]
+            searchTerms: []
         }, {
             title: "fas fa-bullseye",
-            searchTerms: [ "target" ]
+            searchTerms: []
         }, {
-            title: "fas fa-burn",
-            searchTerms: [ "energy" ]
+            title: "fas fa-burger",
+            searchTerms: []
         }, {
             title: "fab fa-buromobelexperte",
             searchTerms: []
         }, {
-            title: "fas fa-bus",
-            searchTerms: [ "machine", "public transportation", "transportation", "vehicle" ]
+            title: "fas fa-burst",
+            searchTerms: []
         }, {
-            title: "fas fa-bus-alt",
-            searchTerms: [ "machine", "public transportation", "transportation", "vehicle" ]
+            title: "fas fa-bus",
+            searchTerms: []
+        }, {
+            title: "fas fa-bus-simple",
+            searchTerms: []
         }, {
             title: "fas fa-business-time",
-            searchTerms: [ "briefcase", "business socks", "clock", "flight of the conchords", "wednesday" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-buy-n-large",
+            searchTerms: []
         }, {
             title: "fab fa-buysellads",
+            searchTerms: []
+        }, {
+            title: "fas fa-c",
+            searchTerms: []
+        }, {
+            title: "fas fa-cable-car",
+            searchTerms: []
+        }, {
+            title: "fas fa-cake-candles",
             searchTerms: []
         }, {
             title: "fas fa-calculator",
             searchTerms: []
         }, {
             title: "fas fa-calendar",
-            searchTerms: [ "calendar-o", "date", "event", "schedule", "time", "when" ]
+            searchTerms: []
         }, {
             title: "far fa-calendar",
-            searchTerms: [ "calendar-o", "date", "event", "schedule", "time", "when" ]
-        }, {
-            title: "fas fa-calendar-alt",
-            searchTerms: [ "calendar", "date", "event", "schedule", "time", "when" ]
-        }, {
-            title: "far fa-calendar-alt",
-            searchTerms: [ "calendar", "date", "event", "schedule", "time", "when" ]
+            searchTerms: []
         }, {
             title: "fas fa-calendar-check",
-            searchTerms: [ "accept", "agree", "appointment", "confirm", "correct", "done", "ok", "select", "success", "todo" ]
+            searchTerms: []
         }, {
             title: "far fa-calendar-check",
-            searchTerms: [ "accept", "agree", "appointment", "confirm", "correct", "done", "ok", "select", "success", "todo" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-calendar-day",
+            searchTerms: []
+        }, {
+            title: "fas fa-calendar-days",
+            searchTerms: []
+        }, {
+            title: "far fa-calendar-days",
+            searchTerms: []
         }, {
             title: "fas fa-calendar-minus",
-            searchTerms: [ "delete", "negative", "remove" ]
+            searchTerms: []
         }, {
             title: "far fa-calendar-minus",
-            searchTerms: [ "delete", "negative", "remove" ]
+            searchTerms: []
         }, {
             title: "fas fa-calendar-plus",
-            searchTerms: [ "add", "create", "new", "positive" ]
+            searchTerms: []
         }, {
             title: "far fa-calendar-plus",
-            searchTerms: [ "add", "create", "new", "positive" ]
+            searchTerms: []
         }, {
-            title: "fas fa-calendar-times",
-            searchTerms: [ "archive", "delete", "remove", "x" ]
+            title: "fas fa-calendar-week",
+            searchTerms: []
         }, {
-            title: "far fa-calendar-times",
-            searchTerms: [ "archive", "delete", "remove", "x" ]
+            title: "fas fa-calendar-xmark",
+            searchTerms: []
+        }, {
+            title: "far fa-calendar-xmark",
+            searchTerms: []
         }, {
             title: "fas fa-camera",
-            searchTerms: [ "photo", "picture", "record" ]
+            searchTerms: []
         }, {
             title: "fas fa-camera-retro",
-            searchTerms: [ "photo", "picture", "record" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-camera-rotate",
+            searchTerms: []
         }, {
             title: "fas fa-campground",
-            searchTerms: [ "camping", "fall", "outdoors", "seasonal", "tent" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-canadian-maple-leaf",
+            searchTerms: []
+        }, {
+            title: "fas fa-candy-cane",
+            searchTerms: []
         }, {
             title: "fas fa-cannabis",
-            searchTerms: [ "bud", "chronic", "drugs", "endica", "endo", "ganja", "marijuana", "mary jane", "pot", "reefer", "sativa", "spliff", "weed", "whacky-tabacky" ]
+            searchTerms: []
         }, {
             title: "fas fa-capsules",
-            searchTerms: [ "drugs", "medicine" ]
+            searchTerms: []
         }, {
             title: "fas fa-car",
-            searchTerms: [ "machine", "transportation", "vehicle" ]
-        }, {
-            title: "fas fa-car-alt",
             searchTerms: []
         }, {
             title: "fas fa-car-battery",
             searchTerms: []
         }, {
-            title: "fas fa-car-crash",
+            title: "fas fa-car-burst",
+            searchTerms: []
+        }, {
+            title: "fas fa-car-on",
+            searchTerms: []
+        }, {
+            title: "fas fa-car-rear",
             searchTerms: []
         }, {
             title: "fas fa-car-side",
             searchTerms: []
         }, {
+            title: "fas fa-car-tunnel",
+            searchTerms: []
+        }, {
+            title: "fas fa-caravan",
+            searchTerms: []
+        }, {
             title: "fas fa-caret-down",
-            searchTerms: [ "arrow", "dropdown", "menu", "more", "triangle down" ]
+            searchTerms: []
         }, {
             title: "fas fa-caret-left",
-            searchTerms: [ "arrow", "back", "previous", "triangle left" ]
+            searchTerms: []
         }, {
             title: "fas fa-caret-right",
-            searchTerms: [ "arrow", "forward", "next", "triangle right" ]
-        }, {
-            title: "fas fa-caret-square-down",
-            searchTerms: [ "caret-square-o-down", "dropdown", "menu", "more" ]
-        }, {
-            title: "far fa-caret-square-down",
-            searchTerms: [ "caret-square-o-down", "dropdown", "menu", "more" ]
-        }, {
-            title: "fas fa-caret-square-left",
-            searchTerms: [ "back", "caret-square-o-left", "previous" ]
-        }, {
-            title: "far fa-caret-square-left",
-            searchTerms: [ "back", "caret-square-o-left", "previous" ]
-        }, {
-            title: "fas fa-caret-square-right",
-            searchTerms: [ "caret-square-o-right", "forward", "next" ]
-        }, {
-            title: "far fa-caret-square-right",
-            searchTerms: [ "caret-square-o-right", "forward", "next" ]
-        }, {
-            title: "fas fa-caret-square-up",
-            searchTerms: [ "caret-square-o-up" ]
-        }, {
-            title: "far fa-caret-square-up",
-            searchTerms: [ "caret-square-o-up" ]
+            searchTerms: []
         }, {
             title: "fas fa-caret-up",
-            searchTerms: [ "arrow", "triangle up" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-carrot",
+            searchTerms: []
         }, {
             title: "fas fa-cart-arrow-down",
-            searchTerms: [ "shopping" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-cart-flatbed",
+            searchTerms: []
+        }, {
+            title: "fas fa-cart-flatbed-suitcase",
+            searchTerms: []
         }, {
             title: "fas fa-cart-plus",
-            searchTerms: [ "add", "create", "new", "positive", "shopping" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-cart-shopping",
+            searchTerms: []
+        }, {
+            title: "fas fa-cash-register",
+            searchTerms: []
         }, {
             title: "fas fa-cat",
-            searchTerms: [ "feline", "halloween", "holiday", "kitten", "kitty", "meow", "pet" ]
+            searchTerms: []
         }, {
             title: "fab fa-cc-amazon-pay",
             searchTerms: []
         }, {
             title: "fab fa-cc-amex",
-            searchTerms: [ "amex" ]
+            searchTerms: []
         }, {
             title: "fab fa-cc-apple-pay",
             searchTerms: []
@@ -1683,61 +2025,79 @@
             title: "fab fa-cc-visa",
             searchTerms: []
         }, {
+            title: "fas fa-cedi-sign",
+            searchTerms: []
+        }, {
+            title: "fas fa-cent-sign",
+            searchTerms: []
+        }, {
             title: "fab fa-centercode",
             searchTerms: []
         }, {
+            title: "fab fa-centos",
+            searchTerms: []
+        }, {
             title: "fas fa-certificate",
-            searchTerms: [ "badge", "star" ]
+            searchTerms: []
         }, {
             title: "fas fa-chair",
-            searchTerms: [ "furniture", "seat" ]
+            searchTerms: []
         }, {
             title: "fas fa-chalkboard",
-            searchTerms: [ "blackboard", "learning", "school", "teaching", "whiteboard", "writing" ]
+            searchTerms: []
         }, {
-            title: "fas fa-chalkboard-teacher",
-            searchTerms: [ "blackboard", "instructor", "learning", "professor", "school", "whiteboard", "writing" ]
+            title: "fas fa-chalkboard-user",
+            searchTerms: []
+        }, {
+            title: "fas fa-champagne-glasses",
+            searchTerms: []
         }, {
             title: "fas fa-charging-station",
             searchTerms: []
         }, {
             title: "fas fa-chart-area",
-            searchTerms: [ "analytics", "area-chart", "graph" ]
+            searchTerms: []
         }, {
             title: "fas fa-chart-bar",
-            searchTerms: [ "analytics", "bar-chart", "graph" ]
+            searchTerms: []
         }, {
             title: "far fa-chart-bar",
-            searchTerms: [ "analytics", "bar-chart", "graph" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-chart-column",
+            searchTerms: []
+        }, {
+            title: "fas fa-chart-gantt",
+            searchTerms: []
         }, {
             title: "fas fa-chart-line",
-            searchTerms: [ "activity", "analytics", "dashboard", "graph", "line-chart" ]
+            searchTerms: []
         }, {
             title: "fas fa-chart-pie",
-            searchTerms: [ "analytics", "graph", "pie-chart" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-chart-simple",
+            searchTerms: []
         }, {
             title: "fas fa-check",
-            searchTerms: [ "accept", "agree", "checkmark", "confirm", "correct", "done", "notice", "notification", "notify", "ok", "select", "success", "tick", "todo", "yes" ]
-        }, {
-            title: "fas fa-check-circle",
-            searchTerms: [ "accept", "agree", "confirm", "correct", "done", "ok", "select", "success", "todo", "yes" ]
-        }, {
-            title: "far fa-check-circle",
-            searchTerms: [ "accept", "agree", "confirm", "correct", "done", "ok", "select", "success", "todo", "yes" ]
+            searchTerms: []
         }, {
             title: "fas fa-check-double",
-            searchTerms: [ "accept", "agree", "checkmark", "confirm", "correct", "done", "notice", "notification", "notify", "ok", "select", "success", "tick", "todo" ]
+            searchTerms: []
         }, {
-            title: "fas fa-check-square",
-            searchTerms: [ "accept", "agree", "checkmark", "confirm", "correct", "done", "ok", "select", "success", "todo", "yes" ]
+            title: "fas fa-check-to-slot",
+            searchTerms: []
         }, {
-            title: "far fa-check-square",
-            searchTerms: [ "accept", "agree", "checkmark", "confirm", "correct", "done", "ok", "select", "success", "todo", "yes" ]
+            title: "fas fa-cheese",
+            searchTerms: []
         }, {
             title: "fas fa-chess",
             searchTerms: []
         }, {
             title: "fas fa-chess-bishop",
+            searchTerms: []
+        }, {
+            title: "far fa-chess-bishop",
             searchTerms: []
         }, {
             title: "fas fa-chess-board",
@@ -1746,38 +2106,41 @@
             title: "fas fa-chess-king",
             searchTerms: []
         }, {
+            title: "far fa-chess-king",
+            searchTerms: []
+        }, {
             title: "fas fa-chess-knight",
+            searchTerms: []
+        }, {
+            title: "far fa-chess-knight",
             searchTerms: []
         }, {
             title: "fas fa-chess-pawn",
             searchTerms: []
         }, {
+            title: "far fa-chess-pawn",
+            searchTerms: []
+        }, {
             title: "fas fa-chess-queen",
+            searchTerms: []
+        }, {
+            title: "far fa-chess-queen",
             searchTerms: []
         }, {
             title: "fas fa-chess-rook",
             searchTerms: []
         }, {
-            title: "fas fa-chevron-circle-down",
-            searchTerms: [ "arrow", "dropdown", "menu", "more" ]
-        }, {
-            title: "fas fa-chevron-circle-left",
-            searchTerms: [ "arrow", "back", "previous" ]
-        }, {
-            title: "fas fa-chevron-circle-right",
-            searchTerms: [ "arrow", "forward", "next" ]
-        }, {
-            title: "fas fa-chevron-circle-up",
-            searchTerms: [ "arrow" ]
+            title: "far fa-chess-rook",
+            searchTerms: []
         }, {
             title: "fas fa-chevron-down",
             searchTerms: []
         }, {
             title: "fas fa-chevron-left",
-            searchTerms: [ "back", "bracket", "previous" ]
+            searchTerms: []
         }, {
             title: "fas fa-chevron-right",
-            searchTerms: [ "bracket", "forward", "next" ]
+            searchTerms: []
         }, {
             title: "fas fa-chevron-up",
             searchTerms: []
@@ -1785,83 +2148,242 @@
             title: "fas fa-child",
             searchTerms: []
         }, {
+            title: "fas fa-child-dress",
+            searchTerms: []
+        }, {
+            title: "fas fa-child-reaching",
+            searchTerms: []
+        }, {
+            title: "fas fa-child-rifle",
+            searchTerms: []
+        }, {
+            title: "fas fa-children",
+            searchTerms: []
+        }, {
             title: "fab fa-chrome",
-            searchTerms: [ "browser" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-chromecast",
+            searchTerms: []
         }, {
             title: "fas fa-church",
-            searchTerms: [ "building", "community", "religion" ]
+            searchTerms: []
         }, {
             title: "fas fa-circle",
-            searchTerms: [ "circle-thin", "dot", "notification" ]
+            searchTerms: []
         }, {
             title: "far fa-circle",
-            searchTerms: [ "circle-thin", "dot", "notification" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-arrow-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-arrow-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-arrow-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-arrow-up",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-check",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-chevron-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-chevron-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-chevron-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-chevron-up",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-dollar-to-slot",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-dot",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-dot",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-down",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-h",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-half-stroke",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-info",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-left",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-minus",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-nodes",
+            searchTerms: []
         }, {
             title: "fas fa-circle-notch",
-            searchTerms: [ "circle-o-notch" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-pause",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-pause",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-play",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-play",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-plus",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-question",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-question",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-radiation",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-right",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-stop",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-stop",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-up",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-up",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-user",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-user",
+            searchTerms: []
+        }, {
+            title: "fas fa-circle-xmark",
+            searchTerms: []
+        }, {
+            title: "far fa-circle-xmark",
+            searchTerms: []
         }, {
             title: "fas fa-city",
-            searchTerms: [ "buildings", "busy", "skyscrapers", "urban", "windows" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-clapperboard",
+            searchTerms: []
         }, {
             title: "fas fa-clipboard",
-            searchTerms: [ "paste" ]
+            searchTerms: []
         }, {
             title: "far fa-clipboard",
-            searchTerms: [ "paste" ]
+            searchTerms: []
         }, {
             title: "fas fa-clipboard-check",
-            searchTerms: [ "accept", "agree", "confirm", "done", "ok", "select", "success", "todo", "yes" ]
+            searchTerms: []
         }, {
             title: "fas fa-clipboard-list",
-            searchTerms: [ "checklist", "completed", "done", "finished", "intinerary", "ol", "schedule", "todo", "ul" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-clipboard-question",
+            searchTerms: []
+        }, {
+            title: "fas fa-clipboard-user",
+            searchTerms: []
         }, {
             title: "fas fa-clock",
-            searchTerms: [ "date", "late", "schedule", "timer", "timestamp", "watch" ]
+            searchTerms: []
         }, {
             title: "far fa-clock",
-            searchTerms: [ "date", "late", "schedule", "timer", "timestamp", "watch" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-clock-rotate-left",
+            searchTerms: []
         }, {
             title: "fas fa-clone",
-            searchTerms: [ "copy", "duplicate" ]
+            searchTerms: []
         }, {
             title: "far fa-clone",
-            searchTerms: [ "copy", "duplicate" ]
+            searchTerms: []
         }, {
             title: "fas fa-closed-captioning",
-            searchTerms: [ "cc" ]
+            searchTerms: []
         }, {
             title: "far fa-closed-captioning",
-            searchTerms: [ "cc" ]
+            searchTerms: []
         }, {
             title: "fas fa-cloud",
-            searchTerms: [ "save" ]
+            searchTerms: []
         }, {
-            title: "fas fa-cloud-download-alt",
-            searchTerms: [ "import" ]
+            title: "fas fa-cloud-arrow-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-cloud-arrow-up",
+            searchTerms: []
+        }, {
+            title: "fas fa-cloud-bolt",
+            searchTerms: []
         }, {
             title: "fas fa-cloud-meatball",
             searchTerms: []
         }, {
             title: "fas fa-cloud-moon",
-            searchTerms: [ "crescent", "evening", "halloween", "holiday", "lunar", "night", "sky" ]
+            searchTerms: []
         }, {
             title: "fas fa-cloud-moon-rain",
             searchTerms: []
         }, {
             title: "fas fa-cloud-rain",
-            searchTerms: [ "precipitation" ]
+            searchTerms: []
         }, {
             title: "fas fa-cloud-showers-heavy",
-            searchTerms: [ "precipitation", "rain", "storm" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-cloud-showers-water",
+            searchTerms: []
         }, {
             title: "fas fa-cloud-sun",
-            searchTerms: [ "day", "daytime", "fall", "outdoors", "seasonal" ]
+            searchTerms: []
         }, {
             title: "fas fa-cloud-sun-rain",
             searchTerms: []
         }, {
-            title: "fas fa-cloud-upload-alt",
-            searchTerms: [ "cloud-upload" ]
+            title: "fab fa-cloudflare",
+            searchTerms: []
         }, {
             title: "fab fa-cloudscale",
             searchTerms: []
@@ -1872,14 +2394,32 @@
             title: "fab fa-cloudversify",
             searchTerms: []
         }, {
-            title: "fas fa-cocktail",
-            searchTerms: [ "alcohol", "beverage", "drink" ]
+            title: "fas fa-clover",
+            searchTerms: []
+        }, {
+            title: "fab fa-cmplid",
+            searchTerms: []
         }, {
             title: "fas fa-code",
-            searchTerms: [ "brackets", "html" ]
+            searchTerms: []
         }, {
             title: "fas fa-code-branch",
-            searchTerms: [ "branch", "code-fork", "fork", "git", "github", "rebase", "svn", "vcs", "version" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-code-commit",
+            searchTerms: []
+        }, {
+            title: "fas fa-code-compare",
+            searchTerms: []
+        }, {
+            title: "fas fa-code-fork",
+            searchTerms: []
+        }, {
+            title: "fas fa-code-merge",
+            searchTerms: []
+        }, {
+            title: "fas fa-code-pull-request",
+            searchTerms: []
         }, {
             title: "fab fa-codepen",
             searchTerms: []
@@ -1887,32 +2427,17 @@
             title: "fab fa-codiepie",
             searchTerms: []
         }, {
-            title: "fas fa-coffee",
-            searchTerms: [ "beverage", "breakfast", "cafe", "drink", "fall", "morning", "mug", "seasonal", "tea" ]
-        }, {
-            title: "fas fa-cog",
-            searchTerms: [ "settings" ]
-        }, {
-            title: "fas fa-cogs",
-            searchTerms: [ "gears", "settings" ]
-        }, {
             title: "fas fa-coins",
             searchTerms: []
         }, {
-            title: "fas fa-columns",
-            searchTerms: [ "dashboard", "panes", "split" ]
+            title: "fas fa-colon-sign",
+            searchTerms: []
         }, {
             title: "fas fa-comment",
-            searchTerms: [ "bubble", "chat", "conversation", "feedback", "message", "note", "notification", "sms", "speech", "texting" ]
+            searchTerms: []
         }, {
             title: "far fa-comment",
-            searchTerms: [ "bubble", "chat", "conversation", "feedback", "message", "note", "notification", "sms", "speech", "texting" ]
-        }, {
-            title: "fas fa-comment-alt",
-            searchTerms: [ "bubble", "chat", "commenting", "conversation", "feedback", "message", "note", "notification", "sms", "speech", "texting" ]
-        }, {
-            title: "far fa-comment-alt",
-            searchTerms: [ "bubble", "chat", "commenting", "conversation", "feedback", "message", "note", "notification", "sms", "speech", "texting" ]
+            searchTerms: []
         }, {
             title: "fas fa-comment-dollar",
             searchTerms: []
@@ -1923,32 +2448,47 @@
             title: "far fa-comment-dots",
             searchTerms: []
         }, {
+            title: "fas fa-comment-medical",
+            searchTerms: []
+        }, {
             title: "fas fa-comment-slash",
             searchTerms: []
         }, {
+            title: "fas fa-comment-sms",
+            searchTerms: []
+        }, {
             title: "fas fa-comments",
-            searchTerms: [ "bubble", "chat", "conversation", "feedback", "message", "note", "notification", "sms", "speech", "texting" ]
+            searchTerms: []
         }, {
             title: "far fa-comments",
-            searchTerms: [ "bubble", "chat", "conversation", "feedback", "message", "note", "notification", "sms", "speech", "texting" ]
+            searchTerms: []
         }, {
             title: "fas fa-comments-dollar",
             searchTerms: []
         }, {
             title: "fas fa-compact-disc",
-            searchTerms: [ "bluray", "cd", "disc", "media" ]
+            searchTerms: []
         }, {
             title: "fas fa-compass",
-            searchTerms: [ "directory", "location", "menu", "safari" ]
+            searchTerms: []
         }, {
             title: "far fa-compass",
-            searchTerms: [ "directory", "location", "menu", "safari" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-compass-drafting",
+            searchTerms: []
         }, {
             title: "fas fa-compress",
-            searchTerms: [ "collapse", "combine", "contract", "merge", "smaller" ]
+            searchTerms: []
         }, {
-            title: "fas fa-concierge-bell",
-            searchTerms: [ "attention", "hotel", "service", "support" ]
+            title: "fas fa-computer",
+            searchTerms: []
+        }, {
+            title: "fas fa-computer-mouse",
+            searchTerms: []
+        }, {
+            title: "fab fa-confluence",
+            searchTerms: []
         }, {
             title: "fab fa-connectdevelop",
             searchTerms: []
@@ -1957,16 +2497,16 @@
             searchTerms: []
         }, {
             title: "fas fa-cookie",
-            searchTerms: [ "baked good", "chips", "food", "snack", "sweet", "treat" ]
+            searchTerms: []
         }, {
             title: "fas fa-cookie-bite",
-            searchTerms: [ "baked good", "bitten", "chips", "eating", "food", "snack", "sweet", "treat" ]
+            searchTerms: []
         }, {
             title: "fas fa-copy",
-            searchTerms: [ "clone", "duplicate", "file", "files-o" ]
+            searchTerms: []
         }, {
             title: "far fa-copy",
-            searchTerms: [ "clone", "duplicate", "file", "files-o" ]
+            searchTerms: []
         }, {
             title: "fas fa-copyright",
             searchTerms: []
@@ -1974,8 +2514,14 @@
             title: "far fa-copyright",
             searchTerms: []
         }, {
+            title: "fab fa-cotton-bureau",
+            searchTerms: []
+        }, {
             title: "fas fa-couch",
-            searchTerms: [ "furniture", "sofa" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-cow",
+            searchTerms: []
         }, {
             title: "fab fa-cpanel",
             searchTerms: []
@@ -2023,55 +2569,67 @@
             searchTerms: []
         }, {
             title: "fas fa-credit-card",
-            searchTerms: [ "buy", "checkout", "credit-card-alt", "debit", "money", "payment", "purchase" ]
+            searchTerms: []
         }, {
             title: "far fa-credit-card",
-            searchTerms: [ "buy", "checkout", "credit-card-alt", "debit", "money", "payment", "purchase" ]
+            searchTerms: []
         }, {
             title: "fab fa-critical-role",
-            searchTerms: [ "Dungeons & Dragons", "d&d", "dnd", "fantasy", "game", "gaming", "tabletop" ]
+            searchTerms: []
         }, {
             title: "fas fa-crop",
-            searchTerms: [ "design" ]
+            searchTerms: []
         }, {
-            title: "fas fa-crop-alt",
+            title: "fas fa-crop-simple",
             searchTerms: []
         }, {
             title: "fas fa-cross",
-            searchTerms: [ "catholicism", "christianity" ]
+            searchTerms: []
         }, {
             title: "fas fa-crosshairs",
-            searchTerms: [ "gpd", "picker", "position" ]
+            searchTerms: []
         }, {
             title: "fas fa-crow",
-            searchTerms: [ "bird", "bullfrog", "fauna", "halloween", "holiday", "toad" ]
+            searchTerms: []
         }, {
             title: "fas fa-crown",
             searchTerms: []
         }, {
+            title: "fas fa-crutch",
+            searchTerms: []
+        }, {
+            title: "fas fa-cruzeiro-sign",
+            searchTerms: []
+        }, {
             title: "fab fa-css3",
-            searchTerms: [ "code" ]
+            searchTerms: []
         }, {
             title: "fab fa-css3-alt",
             searchTerms: []
         }, {
             title: "fas fa-cube",
-            searchTerms: [ "package" ]
+            searchTerms: []
         }, {
             title: "fas fa-cubes",
-            searchTerms: [ "packages" ]
+            searchTerms: []
         }, {
-            title: "fas fa-cut",
-            searchTerms: [ "scissors" ]
+            title: "fas fa-cubes-stacked",
+            searchTerms: []
         }, {
             title: "fab fa-cuttlefish",
+            searchTerms: []
+        }, {
+            title: "fas fa-d",
             searchTerms: []
         }, {
             title: "fab fa-d-and-d",
             searchTerms: []
         }, {
             title: "fab fa-d-and-d-beyond",
-            searchTerms: [ "Dungeons & Dragons", "d&d", "dnd", "fantasy", "gaming", "tabletop" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-dailymotion",
+            searchTerms: []
         }, {
             title: "fab fa-dashcube",
             searchTerms: []
@@ -2079,14 +2637,17 @@
             title: "fas fa-database",
             searchTerms: []
         }, {
-            title: "fas fa-deaf",
+            title: "fab fa-deezer",
+            searchTerms: []
+        }, {
+            title: "fas fa-delete-left",
             searchTerms: []
         }, {
             title: "fab fa-delicious",
             searchTerms: []
         }, {
             title: "fas fa-democrat",
-            searchTerms: [ "american", "democratic party", "donkey", "election", "left", "left-wing", "liberal", "politics", "usa" ]
+            searchTerms: []
         }, {
             title: "fab fa-deploydog",
             searchTerms: []
@@ -2095,7 +2656,7 @@
             searchTerms: []
         }, {
             title: "fas fa-desktop",
-            searchTerms: [ "computer", "cpu", "demo", "desktop", "device", "machine", "monitor", "pc", "screen" ]
+            searchTerms: []
         }, {
             title: "fab fa-dev",
             searchTerms: []
@@ -2104,48 +2665,63 @@
             searchTerms: []
         }, {
             title: "fas fa-dharmachakra",
-            searchTerms: [ "buddhism", "buddhist", "wheel of dharma" ]
+            searchTerms: []
         }, {
-            title: "fas fa-diagnoses",
+            title: "fab fa-dhl",
+            searchTerms: []
+        }, {
+            title: "fas fa-diagram-next",
+            searchTerms: []
+        }, {
+            title: "fas fa-diagram-predecessor",
+            searchTerms: []
+        }, {
+            title: "fas fa-diagram-project",
+            searchTerms: []
+        }, {
+            title: "fas fa-diagram-successor",
+            searchTerms: []
+        }, {
+            title: "fas fa-diamond",
+            searchTerms: []
+        }, {
+            title: "fas fa-diamond-turn-right",
+            searchTerms: []
+        }, {
+            title: "fab fa-diaspora",
             searchTerms: []
         }, {
             title: "fas fa-dice",
-            searchTerms: [ "chance", "gambling", "game", "roll" ]
+            searchTerms: []
         }, {
             title: "fas fa-dice-d20",
-            searchTerms: [ "Dungeons & Dragons", "chance", "d&d", "dnd", "fantasy", "gambling", "game", "roll" ]
+            searchTerms: []
         }, {
             title: "fas fa-dice-d6",
-            searchTerms: [ "Dungeons & Dragons", "chance", "d&d", "dnd", "fantasy", "gambling", "game", "roll" ]
+            searchTerms: []
         }, {
             title: "fas fa-dice-five",
-            searchTerms: [ "chance", "gambling", "game", "roll" ]
+            searchTerms: []
         }, {
             title: "fas fa-dice-four",
-            searchTerms: [ "chance", "gambling", "game", "roll" ]
+            searchTerms: []
         }, {
             title: "fas fa-dice-one",
-            searchTerms: [ "chance", "gambling", "game", "roll" ]
+            searchTerms: []
         }, {
             title: "fas fa-dice-six",
-            searchTerms: [ "chance", "gambling", "game", "roll" ]
+            searchTerms: []
         }, {
             title: "fas fa-dice-three",
-            searchTerms: [ "chance", "gambling", "game", "roll" ]
+            searchTerms: []
         }, {
             title: "fas fa-dice-two",
-            searchTerms: [ "chance", "gambling", "game", "roll" ]
+            searchTerms: []
         }, {
             title: "fab fa-digg",
             searchTerms: []
         }, {
             title: "fab fa-digital-ocean",
-            searchTerms: []
-        }, {
-            title: "fas fa-digital-tachograph",
-            searchTerms: []
-        }, {
-            title: "fas fa-directions",
             searchTerms: []
         }, {
             title: "fab fa-discord",
@@ -2154,17 +2730,17 @@
             title: "fab fa-discourse",
             searchTerms: []
         }, {
+            title: "fas fa-disease",
+            searchTerms: []
+        }, {
+            title: "fas fa-display",
+            searchTerms: []
+        }, {
             title: "fas fa-divide",
             searchTerms: []
         }, {
-            title: "fas fa-dizzy",
-            searchTerms: [ "dazed", "disapprove", "emoticon", "face" ]
-        }, {
-            title: "far fa-dizzy",
-            searchTerms: [ "dazed", "disapprove", "emoticon", "face" ]
-        }, {
             title: "fas fa-dna",
-            searchTerms: [ "double helix", "helix" ]
+            searchTerms: []
         }, {
             title: "fab fa-dochub",
             searchTerms: []
@@ -2173,19 +2749,16 @@
             searchTerms: []
         }, {
             title: "fas fa-dog",
-            searchTerms: [ "canine", "fauna", "mammmal", "pet", "pooch", "puppy", "woof" ]
+            searchTerms: []
         }, {
             title: "fas fa-dollar-sign",
-            searchTerms: [ "$", "dollar-sign", "money", "price", "usd" ]
+            searchTerms: []
         }, {
             title: "fas fa-dolly",
             searchTerms: []
         }, {
-            title: "fas fa-dolly-flatbed",
+            title: "fas fa-dong-sign",
             searchTerms: []
-        }, {
-            title: "fas fa-donate",
-            searchTerms: [ "generosity", "give" ]
         }, {
             title: "fas fa-door-closed",
             searchTerms: []
@@ -2193,26 +2766,23 @@
             title: "fas fa-door-open",
             searchTerms: []
         }, {
-            title: "fas fa-dot-circle",
-            searchTerms: [ "bullseye", "notification", "target" ]
-        }, {
-            title: "far fa-dot-circle",
-            searchTerms: [ "bullseye", "notification", "target" ]
-        }, {
             title: "fas fa-dove",
-            searchTerms: [ "bird", "fauna", "flying", "peace" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-down-left-and-up-right-to-center",
+            searchTerms: []
+        }, {
+            title: "fas fa-down-long",
+            searchTerms: []
         }, {
             title: "fas fa-download",
-            searchTerms: [ "import" ]
+            searchTerms: []
         }, {
             title: "fab fa-draft2digital",
             searchTerms: []
         }, {
-            title: "fas fa-drafting-compass",
-            searchTerms: [ "mechanical drawing", "plot", "plotting" ]
-        }, {
             title: "fas fa-dragon",
-            searchTerms: [ "Dungeons & Dragons", "d&d", "dnd", "fantasy" ]
+            searchTerms: []
         }, {
             title: "fas fa-draw-polygon",
             searchTerms: []
@@ -2220,17 +2790,20 @@
             title: "fab fa-dribbble",
             searchTerms: []
         }, {
-            title: "fab fa-dribbble-square",
-            searchTerms: []
-        }, {
             title: "fab fa-dropbox",
             searchTerms: []
         }, {
+            title: "fas fa-droplet",
+            searchTerms: []
+        }, {
+            title: "fas fa-droplet-slash",
+            searchTerms: []
+        }, {
             title: "fas fa-drum",
-            searchTerms: [ "instrument", "music", "percussion", "snare", "sound" ]
+            searchTerms: []
         }, {
             title: "fas fa-drum-steelpan",
-            searchTerms: [ "calypso", "instrument", "music", "percussion", "reggae", "snare", "sound", "steel", "tropical" ]
+            searchTerms: []
         }, {
             title: "fas fa-drumstick-bite",
             searchTerms: []
@@ -2239,28 +2812,58 @@
             searchTerms: []
         }, {
             title: "fas fa-dumbbell",
-            searchTerms: [ "exercise", "gym", "strength", "weight", "weight-lifting" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-dumpster",
+            searchTerms: []
+        }, {
+            title: "fas fa-dumpster-fire",
+            searchTerms: []
         }, {
             title: "fas fa-dungeon",
-            searchTerms: [ "Dungeons & Dragons", "d&d", "dnd", "door", "entrance", "fantasy", "gate" ]
+            searchTerms: []
         }, {
             title: "fab fa-dyalog",
             searchTerms: []
         }, {
+            title: "fas fa-e",
+            searchTerms: []
+        }, {
+            title: "fas fa-ear-deaf",
+            searchTerms: []
+        }, {
+            title: "fas fa-ear-listen",
+            searchTerms: []
+        }, {
             title: "fab fa-earlybirds",
+            searchTerms: []
+        }, {
+            title: "fas fa-earth-africa",
+            searchTerms: []
+        }, {
+            title: "fas fa-earth-americas",
+            searchTerms: []
+        }, {
+            title: "fas fa-earth-asia",
+            searchTerms: []
+        }, {
+            title: "fas fa-earth-europe",
+            searchTerms: []
+        }, {
+            title: "fas fa-earth-oceania",
             searchTerms: []
         }, {
             title: "fab fa-ebay",
             searchTerms: []
         }, {
             title: "fab fa-edge",
-            searchTerms: [ "browser", "ie" ]
+            searchTerms: []
         }, {
-            title: "fas fa-edit",
-            searchTerms: [ "edit", "pen", "pencil", "update", "write" ]
+            title: "fab fa-edge-legacy",
+            searchTerms: []
         }, {
-            title: "far fa-edit",
-            searchTerms: [ "edit", "pen", "pencil", "update", "write" ]
+            title: "fas fa-egg",
+            searchTerms: []
         }, {
             title: "fas fa-eject",
             searchTerms: []
@@ -2268,11 +2871,14 @@
             title: "fab fa-elementor",
             searchTerms: []
         }, {
-            title: "fas fa-ellipsis-h",
-            searchTerms: [ "dots", "drag", "kebab", "list", "menu", "nav", "navigation", "ol", "reorder", "settings", "ul" ]
+            title: "fas fa-elevator",
+            searchTerms: []
         }, {
-            title: "fas fa-ellipsis-v",
-            searchTerms: [ "dots", "drag", "kebab", "list", "menu", "nav", "navigation", "ol", "reorder", "settings", "ul" ]
+            title: "fas fa-ellipsis",
+            searchTerms: []
+        }, {
+            title: "fas fa-ellipsis-vertical",
+            searchTerms: []
         }, {
             title: "fab fa-ello",
             searchTerms: []
@@ -2284,31 +2890,34 @@
             searchTerms: []
         }, {
             title: "fas fa-envelope",
-            searchTerms: [ "e-mail", "email", "letter", "mail", "message", "notification", "support" ]
+            searchTerms: []
         }, {
             title: "far fa-envelope",
-            searchTerms: [ "e-mail", "email", "letter", "mail", "message", "notification", "support" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-envelope-circle-check",
+            searchTerms: []
         }, {
             title: "fas fa-envelope-open",
-            searchTerms: [ "e-mail", "email", "letter", "mail", "message", "notification", "support" ]
+            searchTerms: []
         }, {
             title: "far fa-envelope-open",
-            searchTerms: [ "e-mail", "email", "letter", "mail", "message", "notification", "support" ]
+            searchTerms: []
         }, {
             title: "fas fa-envelope-open-text",
             searchTerms: []
         }, {
-            title: "fas fa-envelope-square",
-            searchTerms: [ "e-mail", "email", "letter", "mail", "message", "notification", "support" ]
+            title: "fas fa-envelopes-bulk",
+            searchTerms: []
         }, {
             title: "fab fa-envira",
-            searchTerms: [ "leaf" ]
+            searchTerms: []
         }, {
             title: "fas fa-equals",
             searchTerms: []
         }, {
             title: "fas fa-eraser",
-            searchTerms: [ "delete", "remove" ]
+            searchTerms: []
         }, {
             title: "fab fa-erlang",
             searchTerms: []
@@ -2316,112 +2925,343 @@
             title: "fab fa-ethereum",
             searchTerms: []
         }, {
+            title: "fas fa-ethernet",
+            searchTerms: []
+        }, {
             title: "fab fa-etsy",
             searchTerms: []
         }, {
             title: "fas fa-euro-sign",
-            searchTerms: [ "eur" ]
+            searchTerms: []
         }, {
-            title: "fas fa-exchange-alt",
-            searchTerms: [ "arrow", "arrows", "exchange", "reciprocate", "return", "swap", "transfer" ]
+            title: "fab fa-evernote",
+            searchTerms: []
         }, {
             title: "fas fa-exclamation",
-            searchTerms: [ "alert", "danger", "error", "important", "notice", "notification", "notify", "problem", "warning" ]
-        }, {
-            title: "fas fa-exclamation-circle",
-            searchTerms: [ "alert", "danger", "error", "important", "notice", "notification", "notify", "problem", "warning" ]
-        }, {
-            title: "fas fa-exclamation-triangle",
-            searchTerms: [ "alert", "danger", "error", "important", "notice", "notification", "notify", "problem", "warning" ]
+            searchTerms: []
         }, {
             title: "fas fa-expand",
-            searchTerms: [ "bigger", "enlarge", "resize" ]
-        }, {
-            title: "fas fa-expand-arrows-alt",
-            searchTerms: [ "arrows-alt", "bigger", "enlarge", "move", "resize" ]
+            searchTerms: []
         }, {
             title: "fab fa-expeditedssl",
             searchTerms: []
         }, {
-            title: "fas fa-external-link-alt",
-            searchTerms: [ "external-link", "new", "open" ]
-        }, {
-            title: "fas fa-external-link-square-alt",
-            searchTerms: [ "external-link-square", "new", "open" ]
+            title: "fas fa-explosion",
+            searchTerms: []
         }, {
             title: "fas fa-eye",
-            searchTerms: [ "optic", "see", "seen", "show", "sight", "views", "visible" ]
+            searchTerms: []
         }, {
             title: "far fa-eye",
-            searchTerms: [ "optic", "see", "seen", "show", "sight", "views", "visible" ]
+            searchTerms: []
         }, {
             title: "fas fa-eye-dropper",
-            searchTerms: [ "eyedropper" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-eye-low-vision",
+            searchTerms: []
         }, {
             title: "fas fa-eye-slash",
-            searchTerms: [ "blind", "hide", "show", "toggle", "unseen", "views", "visible", "visiblity" ]
+            searchTerms: []
         }, {
             title: "far fa-eye-slash",
-            searchTerms: [ "blind", "hide", "show", "toggle", "unseen", "views", "visible", "visiblity" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-f",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-angry",
+            searchTerms: []
+        }, {
+            title: "far fa-face-angry",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-dizzy",
+            searchTerms: []
+        }, {
+            title: "far fa-face-dizzy",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-flushed",
+            searchTerms: []
+        }, {
+            title: "far fa-face-flushed",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-frown",
+            searchTerms: []
+        }, {
+            title: "far fa-face-frown",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-frown-open",
+            searchTerms: []
+        }, {
+            title: "far fa-face-frown-open",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grimace",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grimace",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-beam",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-beam",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-beam-sweat",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-beam-sweat",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-hearts",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-hearts",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-squint",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-squint",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-squint-tears",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-squint-tears",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-stars",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-stars",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-tears",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-tears",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-tongue",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-tongue",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-tongue-squint",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-tongue-squint",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-tongue-wink",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-tongue-wink",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-wide",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-wide",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-grin-wink",
+            searchTerms: []
+        }, {
+            title: "far fa-face-grin-wink",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-kiss",
+            searchTerms: []
+        }, {
+            title: "far fa-face-kiss",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-kiss-beam",
+            searchTerms: []
+        }, {
+            title: "far fa-face-kiss-beam",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-kiss-wink-heart",
+            searchTerms: []
+        }, {
+            title: "far fa-face-kiss-wink-heart",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-laugh",
+            searchTerms: []
+        }, {
+            title: "far fa-face-laugh",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-laugh-beam",
+            searchTerms: []
+        }, {
+            title: "far fa-face-laugh-beam",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-laugh-squint",
+            searchTerms: []
+        }, {
+            title: "far fa-face-laugh-squint",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-laugh-wink",
+            searchTerms: []
+        }, {
+            title: "far fa-face-laugh-wink",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-meh",
+            searchTerms: []
+        }, {
+            title: "far fa-face-meh",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-meh-blank",
+            searchTerms: []
+        }, {
+            title: "far fa-face-meh-blank",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-rolling-eyes",
+            searchTerms: []
+        }, {
+            title: "far fa-face-rolling-eyes",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-sad-cry",
+            searchTerms: []
+        }, {
+            title: "far fa-face-sad-cry",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-sad-tear",
+            searchTerms: []
+        }, {
+            title: "far fa-face-sad-tear",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-smile",
+            searchTerms: []
+        }, {
+            title: "far fa-face-smile",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-smile-beam",
+            searchTerms: []
+        }, {
+            title: "far fa-face-smile-beam",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-smile-wink",
+            searchTerms: []
+        }, {
+            title: "far fa-face-smile-wink",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-surprise",
+            searchTerms: []
+        }, {
+            title: "far fa-face-surprise",
+            searchTerms: []
+        }, {
+            title: "fas fa-face-tired",
+            searchTerms: []
+        }, {
+            title: "far fa-face-tired",
+            searchTerms: []
         }, {
             title: "fab fa-facebook",
-            searchTerms: [ "facebook-official", "social network" ]
+            searchTerms: []
         }, {
             title: "fab fa-facebook-f",
-            searchTerms: [ "facebook" ]
+            searchTerms: []
         }, {
             title: "fab fa-facebook-messenger",
             searchTerms: []
         }, {
-            title: "fab fa-facebook-square",
-            searchTerms: [ "social network" ]
+            title: "fas fa-fan",
+            searchTerms: []
         }, {
             title: "fab fa-fantasy-flight-games",
-            searchTerms: [ "Dungeons & Dragons", "d&d", "dnd", "fantasy", "game", "gaming", "tabletop" ]
+            searchTerms: []
         }, {
-            title: "fas fa-fast-backward",
-            searchTerms: [ "beginning", "first", "previous", "rewind", "start" ]
+            title: "fas fa-faucet",
+            searchTerms: []
         }, {
-            title: "fas fa-fast-forward",
-            searchTerms: [ "end", "last", "next" ]
+            title: "fas fa-faucet-drip",
+            searchTerms: []
         }, {
             title: "fas fa-fax",
             searchTerms: []
         }, {
             title: "fas fa-feather",
-            searchTerms: [ "bird", "light", "plucked", "quill" ]
+            searchTerms: []
         }, {
-            title: "fas fa-feather-alt",
-            searchTerms: [ "bird", "light", "plucked", "quill" ]
+            title: "fas fa-feather-pointed",
+            searchTerms: []
         }, {
-            title: "fas fa-female",
-            searchTerms: [ "human", "person", "profile", "user", "woman" ]
+            title: "fab fa-fedex",
+            searchTerms: []
         }, {
-            title: "fas fa-fighter-jet",
-            searchTerms: [ "airplane", "fast", "fly", "goose", "maverick", "plane", "quick", "top gun", "transportation", "travel" ]
+            title: "fab fa-fedora",
+            searchTerms: []
+        }, {
+            title: "fas fa-ferry",
+            searchTerms: []
+        }, {
+            title: "fab fa-figma",
+            searchTerms: []
         }, {
             title: "fas fa-file",
-            searchTerms: [ "document", "new", "page", "pdf", "resume" ]
+            searchTerms: []
         }, {
             title: "far fa-file",
-            searchTerms: [ "document", "new", "page", "pdf", "resume" ]
+            searchTerms: []
         }, {
-            title: "fas fa-file-alt",
-            searchTerms: [ "document", "file-text", "invoice", "new", "page", "pdf" ]
+            title: "fas fa-file-arrow-down",
+            searchTerms: []
         }, {
-            title: "far fa-file-alt",
-            searchTerms: [ "document", "file-text", "invoice", "new", "page", "pdf" ]
-        }, {
-            title: "fas fa-file-archive",
-            searchTerms: [ ".zip", "bundle", "compress", "compression", "download", "zip" ]
-        }, {
-            title: "far fa-file-archive",
-            searchTerms: [ ".zip", "bundle", "compress", "compression", "download", "zip" ]
+            title: "fas fa-file-arrow-up",
+            searchTerms: []
         }, {
             title: "fas fa-file-audio",
             searchTerms: []
         }, {
             title: "far fa-file-audio",
+            searchTerms: []
+        }, {
+            title: "fas fa-file-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-file-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-file-circle-minus",
+            searchTerms: []
+        }, {
+            title: "fas fa-file-circle-plus",
+            searchTerms: []
+        }, {
+            title: "fas fa-file-circle-question",
+            searchTerms: []
+        }, {
+            title: "fas fa-file-circle-xmark",
             searchTerms: []
         }, {
             title: "fas fa-file-code",
@@ -2431,12 +3271,9 @@
             searchTerms: []
         }, {
             title: "fas fa-file-contract",
-            searchTerms: [ "agreement", "binding", "document", "legal", "signature" ]
+            searchTerms: []
         }, {
             title: "fas fa-file-csv",
-            searchTerms: [ "spreadsheets" ]
-        }, {
-            title: "fas fa-file-download",
             searchTerms: []
         }, {
             title: "fas fa-file-excel",
@@ -2458,21 +3295,27 @@
             searchTerms: []
         }, {
             title: "fas fa-file-invoice",
-            searchTerms: [ "bill", "document", "receipt" ]
-        }, {
-            title: "fas fa-file-invoice-dollar",
-            searchTerms: [ "$", "bill", "document", "dollar-sign", "money", "receipt", "usd" ]
-        }, {
-            title: "fas fa-file-medical",
             searchTerms: []
         }, {
-            title: "fas fa-file-medical-alt",
+            title: "fas fa-file-invoice-dollar",
+            searchTerms: []
+        }, {
+            title: "fas fa-file-lines",
+            searchTerms: []
+        }, {
+            title: "far fa-file-lines",
+            searchTerms: []
+        }, {
+            title: "fas fa-file-medical",
             searchTerms: []
         }, {
             title: "fas fa-file-pdf",
             searchTerms: []
         }, {
             title: "far fa-file-pdf",
+            searchTerms: []
+        }, {
+            title: "fas fa-file-pen",
             searchTerms: []
         }, {
             title: "fas fa-file-powerpoint",
@@ -2482,12 +3325,12 @@
             searchTerms: []
         }, {
             title: "fas fa-file-prescription",
-            searchTerms: [ "drugs", "medical", "medicine", "rx" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-file-shield",
+            searchTerms: []
         }, {
             title: "fas fa-file-signature",
-            searchTerms: [ "John Hancock", "contract", "document", "name" ]
-        }, {
-            title: "fas fa-file-upload",
             searchTerms: []
         }, {
             title: "fas fa-file-video",
@@ -2496,37 +3339,61 @@
             title: "far fa-file-video",
             searchTerms: []
         }, {
+            title: "fas fa-file-waveform",
+            searchTerms: []
+        }, {
             title: "fas fa-file-word",
             searchTerms: []
         }, {
             title: "far fa-file-word",
             searchTerms: []
         }, {
+            title: "fas fa-file-zipper",
+            searchTerms: []
+        }, {
+            title: "far fa-file-zipper",
+            searchTerms: []
+        }, {
             title: "fas fa-fill",
-            searchTerms: [ "bucket", "color", "paint", "paint bucket" ]
+            searchTerms: []
         }, {
             title: "fas fa-fill-drip",
-            searchTerms: [ "bucket", "color", "drop", "paint", "paint bucket", "spill" ]
+            searchTerms: []
         }, {
             title: "fas fa-film",
-            searchTerms: [ "movie" ]
+            searchTerms: []
         }, {
             title: "fas fa-filter",
-            searchTerms: [ "funnel", "options" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-filter-circle-dollar",
+            searchTerms: []
+        }, {
+            title: "fas fa-filter-circle-xmark",
+            searchTerms: []
         }, {
             title: "fas fa-fingerprint",
-            searchTerms: [ "human", "id", "identification", "lock", "smudge", "touch", "unique", "unlock" ]
+            searchTerms: []
         }, {
             title: "fas fa-fire",
-            searchTerms: [ "caliente", "flame", "heat", "hot", "popular" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-fire-burner",
+            searchTerms: []
         }, {
             title: "fas fa-fire-extinguisher",
             searchTerms: []
         }, {
-            title: "fab fa-firefox",
-            searchTerms: [ "browser" ]
+            title: "fas fa-fire-flame-curved",
+            searchTerms: []
         }, {
-            title: "fas fa-first-aid",
+            title: "fas fa-fire-flame-simple",
+            searchTerms: []
+        }, {
+            title: "fab fa-firefox",
+            searchTerms: []
+        }, {
+            title: "fab fa-firefox-browser",
             searchTerms: []
         }, {
             title: "fab fa-first-order",
@@ -2539,25 +3406,28 @@
             searchTerms: []
         }, {
             title: "fas fa-fish",
-            searchTerms: [ "fauna", "gold", "swimming" ]
+            searchTerms: []
         }, {
-            title: "fas fa-fist-raised",
-            searchTerms: [ "Dungeons & Dragons", "d&d", "dnd", "fantasy", "hand", "ki", "monk", "resist", "strength", "unarmed combat" ]
+            title: "fas fa-fish-fins",
+            searchTerms: []
         }, {
             title: "fas fa-flag",
-            searchTerms: [ "country", "notice", "notification", "notify", "pole", "report", "symbol" ]
+            searchTerms: []
         }, {
             title: "far fa-flag",
-            searchTerms: [ "country", "notice", "notification", "notify", "pole", "report", "symbol" ]
+            searchTerms: []
         }, {
             title: "fas fa-flag-checkered",
-            searchTerms: [ "notice", "notification", "notify", "pole", "racing", "report", "symbol" ]
+            searchTerms: []
         }, {
             title: "fas fa-flag-usa",
-            searchTerms: [ "betsy ross", "country", "old glory", "stars", "stripes", "symbol" ]
+            searchTerms: []
         }, {
             title: "fas fa-flask",
-            searchTerms: [ "beaker", "experimental", "labs", "science" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-flask-vial",
+            searchTerms: []
         }, {
             title: "fab fa-flickr",
             searchTerms: []
@@ -2565,11 +3435,14 @@
             title: "fab fa-flipboard",
             searchTerms: []
         }, {
-            title: "fas fa-flushed",
-            searchTerms: [ "embarrassed", "emoticon", "face" ]
+            title: "fas fa-floppy-disk",
+            searchTerms: []
         }, {
-            title: "far fa-flushed",
-            searchTerms: [ "embarrassed", "emoticon", "face" ]
+            title: "far fa-floppy-disk",
+            searchTerms: []
+        }, {
+            title: "fas fa-florin-sign",
+            searchTerms: []
         }, {
             title: "fab fa-fly",
             searchTerms: []
@@ -2580,8 +3453,14 @@
             title: "far fa-folder",
             searchTerms: []
         }, {
+            title: "fas fa-folder-closed",
+            searchTerms: []
+        }, {
+            title: "far fa-folder-closed",
+            searchTerms: []
+        }, {
             title: "fas fa-folder-minus",
-            searchTerms: [ "archive", "delete", "negative", "remove" ]
+            searchTerms: []
         }, {
             title: "fas fa-folder-open",
             searchTerms: []
@@ -2590,27 +3469,21 @@
             searchTerms: []
         }, {
             title: "fas fa-folder-plus",
-            searchTerms: [ "add", "create", "new", "positive" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-folder-tree",
+            searchTerms: []
         }, {
             title: "fas fa-font",
-            searchTerms: [ "text" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-font-awesome",
+            searchTerms: []
+        }, {
+            title: "far fa-font-awesome",
+            searchTerms: []
         }, {
             title: "fab fa-font-awesome",
-            searchTerms: [ "meanpath" ]
-        }, {
-            title: "fab fa-font-awesome-alt",
-            searchTerms: []
-        }, {
-            title: "fab fa-font-awesome-flag",
-            searchTerms: []
-        }, {
-            title: "far fa-font-awesome-logo-full",
-            searchTerms: []
-        }, {
-            title: "fas fa-font-awesome-logo-full",
-            searchTerms: []
-        }, {
-            title: "fab fa-font-awesome-logo-full",
             searchTerms: []
         }, {
             title: "fab fa-fonticons",
@@ -2619,22 +3492,31 @@
             title: "fab fa-fonticons-fi",
             searchTerms: []
         }, {
-            title: "fas fa-football-ball",
-            searchTerms: [ "fall", "pigskin", "seasonal" ]
+            title: "fas fa-football",
+            searchTerms: []
         }, {
             title: "fab fa-fort-awesome",
-            searchTerms: [ "castle" ]
+            searchTerms: []
         }, {
             title: "fab fa-fort-awesome-alt",
-            searchTerms: [ "castle" ]
+            searchTerms: []
         }, {
             title: "fab fa-forumbee",
             searchTerms: []
         }, {
             title: "fas fa-forward",
-            searchTerms: [ "forward", "next" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-forward-fast",
+            searchTerms: []
+        }, {
+            title: "fas fa-forward-step",
+            searchTerms: []
         }, {
             title: "fab fa-foursquare",
+            searchTerms: []
+        }, {
+            title: "fas fa-franc-sign",
             searchTerms: []
         }, {
             title: "fab fa-free-code-camp",
@@ -2644,52 +3526,58 @@
             searchTerms: []
         }, {
             title: "fas fa-frog",
-            searchTerms: [ "amphibian", "bullfrog", "fauna", "hop", "kermit", "kiss", "prince", "ribbit", "toad", "wart" ]
-        }, {
-            title: "fas fa-frown",
-            searchTerms: [ "disapprove", "emoticon", "face", "rating", "sad" ]
-        }, {
-            title: "far fa-frown",
-            searchTerms: [ "disapprove", "emoticon", "face", "rating", "sad" ]
-        }, {
-            title: "fas fa-frown-open",
-            searchTerms: [ "disapprove", "emoticon", "face", "rating", "sad" ]
-        }, {
-            title: "far fa-frown-open",
-            searchTerms: [ "disapprove", "emoticon", "face", "rating", "sad" ]
+            searchTerms: []
         }, {
             title: "fab fa-fulcrum",
             searchTerms: []
         }, {
-            title: "fas fa-funnel-dollar",
+            title: "fas fa-futbol",
             searchTerms: []
         }, {
-            title: "fas fa-futbol",
-            searchTerms: [ "ball", "football", "soccer" ]
-        }, {
             title: "far fa-futbol",
-            searchTerms: [ "ball", "football", "soccer" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-g",
+            searchTerms: []
         }, {
             title: "fab fa-galactic-republic",
-            searchTerms: [ "politics", "star wars" ]
+            searchTerms: []
         }, {
             title: "fab fa-galactic-senate",
-            searchTerms: [ "star wars" ]
+            searchTerms: []
         }, {
             title: "fas fa-gamepad",
-            searchTerms: [ "controller" ]
+            searchTerms: []
         }, {
             title: "fas fa-gas-pump",
             searchTerms: []
         }, {
+            title: "fas fa-gauge",
+            searchTerms: []
+        }, {
+            title: "fas fa-gauge-high",
+            searchTerms: []
+        }, {
+            title: "fas fa-gauge-simple",
+            searchTerms: []
+        }, {
+            title: "fas fa-gauge-simple-high",
+            searchTerms: []
+        }, {
             title: "fas fa-gavel",
-            searchTerms: [ "hammer", "judge", "lawyer", "opinion" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-gear",
+            searchTerms: []
+        }, {
+            title: "fas fa-gears",
+            searchTerms: []
         }, {
             title: "fas fa-gem",
-            searchTerms: [ "diamond" ]
+            searchTerms: []
         }, {
             title: "far fa-gem",
-            searchTerms: [ "diamond" ]
+            searchTerms: []
         }, {
             title: "fas fa-genderless",
             searchTerms: []
@@ -2704,43 +3592,43 @@
             searchTerms: []
         }, {
             title: "fas fa-ghost",
-            searchTerms: [ "apparition", "blinky", "clyde", "floating", "halloween", "holiday", "inky", "pinky", "spirit" ]
+            searchTerms: []
         }, {
             title: "fas fa-gift",
-            searchTerms: [ "generosity", "giving", "party", "present", "wrapped" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-gifts",
+            searchTerms: []
         }, {
             title: "fab fa-git",
             searchTerms: []
         }, {
-            title: "fab fa-git-square",
+            title: "fab fa-git-alt",
             searchTerms: []
         }, {
             title: "fab fa-github",
-            searchTerms: [ "octocat" ]
+            searchTerms: []
         }, {
             title: "fab fa-github-alt",
-            searchTerms: [ "octocat" ]
-        }, {
-            title: "fab fa-github-square",
-            searchTerms: [ "octocat" ]
+            searchTerms: []
         }, {
             title: "fab fa-gitkraken",
             searchTerms: []
         }, {
             title: "fab fa-gitlab",
-            searchTerms: [ "Axosoft" ]
+            searchTerms: []
         }, {
             title: "fab fa-gitter",
             searchTerms: []
         }, {
-            title: "fas fa-glass-martini",
-            searchTerms: [ "alcohol", "bar", "beverage", "drink", "glass", "liquor", "martini" ]
+            title: "fas fa-glass-water",
+            searchTerms: []
         }, {
-            title: "fas fa-glass-martini-alt",
+            title: "fas fa-glass-water-droplet",
             searchTerms: []
         }, {
             title: "fas fa-glasses",
-            searchTerms: [ "foureyes", "hipster", "nerd", "reading", "sight", "spectacles" ]
+            searchTerms: []
         }, {
             title: "fab fa-glide",
             searchTerms: []
@@ -2749,21 +3637,15 @@
             searchTerms: []
         }, {
             title: "fas fa-globe",
-            searchTerms: [ "all", "coordinates", "country", "earth", "global", "gps", "language", "localize", "location", "map", "online", "place", "planet", "translate", "travel", "world" ]
-        }, {
-            title: "fas fa-globe-africa",
-            searchTerms: [ "all", "country", "earth", "global", "gps", "language", "localize", "location", "map", "online", "place", "planet", "translate", "travel", "world" ]
-        }, {
-            title: "fas fa-globe-americas",
-            searchTerms: [ "all", "country", "earth", "global", "gps", "language", "localize", "location", "map", "online", "place", "planet", "translate", "travel", "world" ]
-        }, {
-            title: "fas fa-globe-asia",
-            searchTerms: [ "all", "country", "earth", "global", "gps", "language", "localize", "location", "map", "online", "place", "planet", "translate", "travel", "world" ]
+            searchTerms: []
         }, {
             title: "fab fa-gofore",
             searchTerms: []
         }, {
-            title: "fas fa-golf-ball",
+            title: "fab fa-golang",
+            searchTerms: []
+        }, {
+            title: "fas fa-golf-ball-tee",
             searchTerms: []
         }, {
             title: "fab fa-goodreads",
@@ -2778,29 +3660,29 @@
             title: "fab fa-google-drive",
             searchTerms: []
         }, {
+            title: "fab fa-google-pay",
+            searchTerms: []
+        }, {
             title: "fab fa-google-play",
             searchTerms: []
         }, {
             title: "fab fa-google-plus",
-            searchTerms: [ "google-plus-circle", "google-plus-official" ]
+            searchTerms: []
         }, {
             title: "fab fa-google-plus-g",
-            searchTerms: [ "google-plus", "social network" ]
-        }, {
-            title: "fab fa-google-plus-square",
-            searchTerms: [ "social network" ]
+            searchTerms: []
         }, {
             title: "fab fa-google-wallet",
             searchTerms: []
         }, {
             title: "fas fa-gopuram",
-            searchTerms: [ "building", "entrance", "hinduism", "temple", "tower" ]
+            searchTerms: []
         }, {
             title: "fas fa-graduation-cap",
-            searchTerms: [ "learning", "school", "student" ]
+            searchTerms: []
         }, {
             title: "fab fa-gratipay",
-            searchTerms: [ "favorite", "heart", "like", "love" ]
+            searchTerms: []
         }, {
             title: "fab fa-grav",
             searchTerms: []
@@ -2811,131 +3693,92 @@
             title: "fas fa-greater-than-equal",
             searchTerms: []
         }, {
-            title: "fas fa-grimace",
-            searchTerms: [ "cringe", "emoticon", "face" ]
+            title: "fas fa-grip",
+            searchTerms: []
         }, {
-            title: "far fa-grimace",
-            searchTerms: [ "cringe", "emoticon", "face" ]
+            title: "fas fa-grip-lines",
+            searchTerms: []
         }, {
-            title: "fas fa-grin",
-            searchTerms: [ "emoticon", "face", "laugh", "smile" ]
-        }, {
-            title: "far fa-grin",
-            searchTerms: [ "emoticon", "face", "laugh", "smile" ]
-        }, {
-            title: "fas fa-grin-alt",
-            searchTerms: [ "emoticon", "face", "laugh", "smile" ]
-        }, {
-            title: "far fa-grin-alt",
-            searchTerms: [ "emoticon", "face", "laugh", "smile" ]
-        }, {
-            title: "fas fa-grin-beam",
-            searchTerms: [ "emoticon", "face", "laugh", "smile" ]
-        }, {
-            title: "far fa-grin-beam",
-            searchTerms: [ "emoticon", "face", "laugh", "smile" ]
-        }, {
-            title: "fas fa-grin-beam-sweat",
-            searchTerms: [ "emoticon", "face", "smile" ]
-        }, {
-            title: "far fa-grin-beam-sweat",
-            searchTerms: [ "emoticon", "face", "smile" ]
-        }, {
-            title: "fas fa-grin-hearts",
-            searchTerms: [ "emoticon", "face", "love", "smile" ]
-        }, {
-            title: "far fa-grin-hearts",
-            searchTerms: [ "emoticon", "face", "love", "smile" ]
-        }, {
-            title: "fas fa-grin-squint",
-            searchTerms: [ "emoticon", "face", "laugh", "smile" ]
-        }, {
-            title: "far fa-grin-squint",
-            searchTerms: [ "emoticon", "face", "laugh", "smile" ]
-        }, {
-            title: "fas fa-grin-squint-tears",
-            searchTerms: [ "emoticon", "face", "happy", "smile" ]
-        }, {
-            title: "far fa-grin-squint-tears",
-            searchTerms: [ "emoticon", "face", "happy", "smile" ]
-        }, {
-            title: "fas fa-grin-stars",
-            searchTerms: [ "emoticon", "face", "star-struck" ]
-        }, {
-            title: "far fa-grin-stars",
-            searchTerms: [ "emoticon", "face", "star-struck" ]
-        }, {
-            title: "fas fa-grin-tears",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "far fa-grin-tears",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "fas fa-grin-tongue",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "far fa-grin-tongue",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "fas fa-grin-tongue-squint",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "far fa-grin-tongue-squint",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "fas fa-grin-tongue-wink",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "far fa-grin-tongue-wink",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "fas fa-grin-wink",
-            searchTerms: [ "emoticon", "face", "flirt", "laugh", "smile" ]
-        }, {
-            title: "far fa-grin-wink",
-            searchTerms: [ "emoticon", "face", "flirt", "laugh", "smile" ]
-        }, {
-            title: "fas fa-grip-horizontal",
-            searchTerms: [ "affordance", "drag", "drop", "grab", "handle" ]
+            title: "fas fa-grip-lines-vertical",
+            searchTerms: []
         }, {
             title: "fas fa-grip-vertical",
-            searchTerms: [ "affordance", "drag", "drop", "grab", "handle" ]
+            searchTerms: []
         }, {
             title: "fab fa-gripfire",
+            searchTerms: []
+        }, {
+            title: "fas fa-group-arrows-rotate",
             searchTerms: []
         }, {
             title: "fab fa-grunt",
             searchTerms: []
         }, {
+            title: "fas fa-guarani-sign",
+            searchTerms: []
+        }, {
+            title: "fab fa-guilded",
+            searchTerms: []
+        }, {
+            title: "fas fa-guitar",
+            searchTerms: []
+        }, {
             title: "fab fa-gulp",
             searchTerms: []
         }, {
-            title: "fas fa-h-square",
-            searchTerms: [ "hospital", "hotel" ]
-        }, {
-            title: "fab fa-hacker-news",
+            title: "fas fa-gun",
             searchTerms: []
         }, {
-            title: "fab fa-hacker-news-square",
+            title: "fas fa-h",
+            searchTerms: []
+        }, {
+            title: "fab fa-hacker-news",
             searchTerms: []
         }, {
             title: "fab fa-hackerrank",
             searchTerms: []
         }, {
             title: "fas fa-hammer",
-            searchTerms: [ "admin", "fix", "repair", "settings", "tool" ]
+            searchTerms: []
         }, {
             title: "fas fa-hamsa",
-            searchTerms: [ "amulet", "christianity", "islam", "jewish", "judaism", "muslim", "protection" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-hand",
+            searchTerms: []
+        }, {
+            title: "far fa-hand",
+            searchTerms: []
+        }, {
+            title: "fas fa-hand-back-fist",
+            searchTerms: []
+        }, {
+            title: "far fa-hand-back-fist",
+            searchTerms: []
+        }, {
+            title: "fas fa-hand-dots",
+            searchTerms: []
+        }, {
+            title: "fas fa-hand-fist",
+            searchTerms: []
         }, {
             title: "fas fa-hand-holding",
+            searchTerms: []
+        }, {
+            title: "fas fa-hand-holding-dollar",
+            searchTerms: []
+        }, {
+            title: "fas fa-hand-holding-droplet",
+            searchTerms: []
+        }, {
+            title: "fas fa-hand-holding-hand",
             searchTerms: []
         }, {
             title: "fas fa-hand-holding-heart",
             searchTerms: []
         }, {
-            title: "fas fa-hand-holding-usd",
-            searchTerms: [ "$", "dollar sign", "donation", "giving", "money", "price" ]
+            title: "fas fa-hand-holding-medical",
+            searchTerms: []
         }, {
             title: "fas fa-hand-lizard",
             searchTerms: []
@@ -2943,11 +3786,8 @@
             title: "far fa-hand-lizard",
             searchTerms: []
         }, {
-            title: "fas fa-hand-paper",
-            searchTerms: [ "stop" ]
-        }, {
-            title: "far fa-hand-paper",
-            searchTerms: [ "stop" ]
+            title: "fas fa-hand-middle-finger",
+            searchTerms: []
         }, {
             title: "fas fa-hand-peace",
             searchTerms: []
@@ -2956,39 +3796,33 @@
             searchTerms: []
         }, {
             title: "fas fa-hand-point-down",
-            searchTerms: [ "finger", "hand-o-down", "point" ]
-        }, {
-            title: "far fa-hand-point-down",
-            searchTerms: [ "finger", "hand-o-down", "point" ]
-        }, {
-            title: "fas fa-hand-point-left",
-            searchTerms: [ "back", "finger", "hand-o-left", "left", "point", "previous" ]
-        }, {
-            title: "far fa-hand-point-left",
-            searchTerms: [ "back", "finger", "hand-o-left", "left", "point", "previous" ]
-        }, {
-            title: "fas fa-hand-point-right",
-            searchTerms: [ "finger", "forward", "hand-o-right", "next", "point", "right" ]
-        }, {
-            title: "far fa-hand-point-right",
-            searchTerms: [ "finger", "forward", "hand-o-right", "next", "point", "right" ]
-        }, {
-            title: "fas fa-hand-point-up",
-            searchTerms: [ "finger", "hand-o-up", "point" ]
-        }, {
-            title: "far fa-hand-point-up",
-            searchTerms: [ "finger", "hand-o-up", "point" ]
-        }, {
-            title: "fas fa-hand-pointer",
-            searchTerms: [ "select" ]
-        }, {
-            title: "far fa-hand-pointer",
-            searchTerms: [ "select" ]
-        }, {
-            title: "fas fa-hand-rock",
             searchTerms: []
         }, {
-            title: "far fa-hand-rock",
+            title: "far fa-hand-point-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-hand-point-left",
+            searchTerms: []
+        }, {
+            title: "far fa-hand-point-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-hand-point-right",
+            searchTerms: []
+        }, {
+            title: "far fa-hand-point-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-hand-point-up",
+            searchTerms: []
+        }, {
+            title: "far fa-hand-point-up",
+            searchTerms: []
+        }, {
+            title: "fas fa-hand-pointer",
+            searchTerms: []
+        }, {
+            title: "far fa-hand-pointer",
             searchTerms: []
         }, {
             title: "fas fa-hand-scissors",
@@ -2997,74 +3831,164 @@
             title: "far fa-hand-scissors",
             searchTerms: []
         }, {
+            title: "fas fa-hand-sparkles",
+            searchTerms: []
+        }, {
             title: "fas fa-hand-spock",
             searchTerms: []
         }, {
             title: "far fa-hand-spock",
             searchTerms: []
         }, {
+            title: "fas fa-handcuffs",
+            searchTerms: []
+        }, {
             title: "fas fa-hands",
             searchTerms: []
         }, {
-            title: "fas fa-hands-helping",
-            searchTerms: [ "aid", "assistance", "partnership", "volunteering" ]
+            title: "fas fa-hands-asl-interpreting",
+            searchTerms: []
+        }, {
+            title: "fas fa-hands-bound",
+            searchTerms: []
+        }, {
+            title: "fas fa-hands-bubbles",
+            searchTerms: []
+        }, {
+            title: "fas fa-hands-clapping",
+            searchTerms: []
+        }, {
+            title: "fas fa-hands-holding",
+            searchTerms: []
+        }, {
+            title: "fas fa-hands-holding-child",
+            searchTerms: []
+        }, {
+            title: "fas fa-hands-holding-circle",
+            searchTerms: []
+        }, {
+            title: "fas fa-hands-praying",
+            searchTerms: []
         }, {
             title: "fas fa-handshake",
-            searchTerms: [ "greeting", "partnership" ]
+            searchTerms: []
         }, {
             title: "far fa-handshake",
-            searchTerms: [ "greeting", "partnership" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-handshake-angle",
+            searchTerms: []
+        }, {
+            title: "fas fa-handshake-simple",
+            searchTerms: []
+        }, {
+            title: "fas fa-handshake-simple-slash",
+            searchTerms: []
+        }, {
+            title: "fas fa-handshake-slash",
+            searchTerms: []
         }, {
             title: "fas fa-hanukiah",
-            searchTerms: [ "candle", "hanukkah", "jewish", "judaism", "light" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-hard-drive",
+            searchTerms: []
+        }, {
+            title: "far fa-hard-drive",
+            searchTerms: []
+        }, {
+            title: "fab fa-hashnode",
+            searchTerms: []
         }, {
             title: "fas fa-hashtag",
             searchTerms: []
         }, {
+            title: "fas fa-hat-cowboy",
+            searchTerms: []
+        }, {
+            title: "fas fa-hat-cowboy-side",
+            searchTerms: []
+        }, {
             title: "fas fa-hat-wizard",
-            searchTerms: [ "Dungeons & Dragons", "buckle", "cloth", "clothing", "d&d", "dnd", "fantasy", "halloween", "holiday", "mage", "magic", "pointy", "witch" ]
+            searchTerms: []
         }, {
-            title: "fas fa-haykal",
-            searchTerms: [ "bahai", "bahá'í", "star" ]
+            title: "fas fa-head-side-cough",
+            searchTerms: []
         }, {
-            title: "fas fa-hdd",
-            searchTerms: [ "cpu", "hard drive", "harddrive", "machine", "save", "storage" ]
+            title: "fas fa-head-side-cough-slash",
+            searchTerms: []
         }, {
-            title: "far fa-hdd",
-            searchTerms: [ "cpu", "hard drive", "harddrive", "machine", "save", "storage" ]
+            title: "fas fa-head-side-mask",
+            searchTerms: []
+        }, {
+            title: "fas fa-head-side-virus",
+            searchTerms: []
         }, {
             title: "fas fa-heading",
-            searchTerms: [ "header" ]
+            searchTerms: []
         }, {
             title: "fas fa-headphones",
-            searchTerms: [ "audio", "listen", "music", "sound", "speaker" ]
+            searchTerms: []
         }, {
-            title: "fas fa-headphones-alt",
-            searchTerms: [ "audio", "listen", "music", "sound", "speaker" ]
+            title: "fas fa-headphones-simple",
+            searchTerms: []
         }, {
             title: "fas fa-headset",
-            searchTerms: [ "audio", "gamer", "gaming", "listen", "live chat", "microphone", "shot caller", "sound", "support", "telemarketer" ]
+            searchTerms: []
         }, {
             title: "fas fa-heart",
-            searchTerms: [ "favorite", "like", "love" ]
+            searchTerms: []
         }, {
             title: "far fa-heart",
-            searchTerms: [ "favorite", "like", "love" ]
+            searchTerms: []
         }, {
-            title: "fas fa-heartbeat",
-            searchTerms: [ "ekg", "lifeline", "vital signs" ]
+            title: "fas fa-heart-circle-bolt",
+            searchTerms: []
+        }, {
+            title: "fas fa-heart-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-heart-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-heart-circle-minus",
+            searchTerms: []
+        }, {
+            title: "fas fa-heart-circle-plus",
+            searchTerms: []
+        }, {
+            title: "fas fa-heart-circle-xmark",
+            searchTerms: []
+        }, {
+            title: "fas fa-heart-crack",
+            searchTerms: []
+        }, {
+            title: "fas fa-heart-pulse",
+            searchTerms: []
         }, {
             title: "fas fa-helicopter",
-            searchTerms: [ "airwolf", "apache", "chopper", "flight", "fly" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-helicopter-symbol",
+            searchTerms: []
+        }, {
+            title: "fas fa-helmet-safety",
+            searchTerms: []
+        }, {
+            title: "fas fa-helmet-un",
+            searchTerms: []
         }, {
             title: "fas fa-highlighter",
-            searchTerms: [ "edit", "marker", "sharpie", "update", "write" ]
+            searchTerms: []
         }, {
-            title: "fas fa-hiking",
-            searchTerms: [ "activity", "backpack", "fall", "fitness", "outdoors", "seasonal", "walking" ]
+            title: "fas fa-hill-avalanche",
+            searchTerms: []
+        }, {
+            title: "fas fa-hill-rockslide",
+            searchTerms: []
         }, {
             title: "fas fa-hippo",
-            searchTerms: [ "fauna", "hungry", "mammmal" ]
+            searchTerms: []
         }, {
             title: "fab fa-hips",
             searchTerms: []
@@ -3072,14 +3996,14 @@
             title: "fab fa-hire-a-helper",
             searchTerms: []
         }, {
-            title: "fas fa-history",
+            title: "fab fa-hive",
             searchTerms: []
         }, {
             title: "fas fa-hockey-puck",
             searchTerms: []
         }, {
-            title: "fas fa-home",
-            searchTerms: [ "house", "main" ]
+            title: "fas fa-holly-berry",
+            searchTerms: []
         }, {
             title: "fab fa-hooli",
             searchTerms: []
@@ -3088,25 +4012,28 @@
             searchTerms: []
         }, {
             title: "fas fa-horse",
-            searchTerms: [ "equus", "fauna", "mammmal", "neigh" ]
-        }, {
-            title: "fas fa-hospital",
-            searchTerms: [ "building", "emergency room", "medical center" ]
-        }, {
-            title: "far fa-hospital",
-            searchTerms: [ "building", "emergency room", "medical center" ]
-        }, {
-            title: "fas fa-hospital-alt",
-            searchTerms: [ "building", "emergency room", "medical center" ]
-        }, {
-            title: "fas fa-hospital-symbol",
             searchTerms: []
         }, {
-            title: "fas fa-hot-tub",
+            title: "fas fa-horse-head",
+            searchTerms: []
+        }, {
+            title: "fas fa-hospital",
+            searchTerms: []
+        }, {
+            title: "far fa-hospital",
+            searchTerms: []
+        }, {
+            title: "fas fa-hospital-user",
+            searchTerms: []
+        }, {
+            title: "fas fa-hot-tub-person",
+            searchTerms: []
+        }, {
+            title: "fas fa-hotdog",
             searchTerms: []
         }, {
             title: "fas fa-hotel",
-            searchTerms: [ "building", "lodging" ]
+            searchTerms: []
         }, {
             title: "fab fa-hotjar",
             searchTerms: []
@@ -3123,17 +4050,89 @@
             title: "fas fa-hourglass-half",
             searchTerms: []
         }, {
+            title: "far fa-hourglass-half",
+            searchTerms: []
+        }, {
             title: "fas fa-hourglass-start",
             searchTerms: []
         }, {
-            title: "fas fa-house-damage",
-            searchTerms: [ "devastation", "home" ]
+            title: "fas fa-house",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-chimney",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-chimney-crack",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-chimney-medical",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-chimney-user",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-chimney-window",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-circle-xmark",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-crack",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-fire",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-flag",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-flood-water",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-flood-water-circle-arrow-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-laptop",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-lock",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-medical",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-medical-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-medical-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-medical-circle-xmark",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-medical-flag",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-signal",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-tsunami",
+            searchTerms: []
+        }, {
+            title: "fas fa-house-user",
+            searchTerms: []
         }, {
             title: "fab fa-houzz",
             searchTerms: []
         }, {
-            title: "fas fa-hryvnia",
-            searchTerms: [ "money" ]
+            title: "fas fa-hryvnia-sign",
+            searchTerms: []
         }, {
             title: "fab fa-html5",
             searchTerms: []
@@ -3141,7 +4140,22 @@
             title: "fab fa-hubspot",
             searchTerms: []
         }, {
+            title: "fas fa-hurricane",
+            searchTerms: []
+        }, {
+            title: "fas fa-i",
+            searchTerms: []
+        }, {
             title: "fas fa-i-cursor",
+            searchTerms: []
+        }, {
+            title: "fas fa-ice-cream",
+            searchTerms: []
+        }, {
+            title: "fas fa-icicles",
+            searchTerms: []
+        }, {
+            title: "fas fa-icons",
             searchTerms: []
         }, {
             title: "fas fa-id-badge",
@@ -3151,25 +4165,34 @@
             searchTerms: []
         }, {
             title: "fas fa-id-card",
-            searchTerms: [ "document", "identification", "issued" ]
+            searchTerms: []
         }, {
             title: "far fa-id-card",
-            searchTerms: [ "document", "identification", "issued" ]
+            searchTerms: []
         }, {
-            title: "fas fa-id-card-alt",
-            searchTerms: [ "demographics" ]
+            title: "fas fa-id-card-clip",
+            searchTerms: []
+        }, {
+            title: "fab fa-ideal",
+            searchTerms: []
+        }, {
+            title: "fas fa-igloo",
+            searchTerms: []
         }, {
             title: "fas fa-image",
-            searchTerms: [ "album", "photo", "picture" ]
+            searchTerms: []
         }, {
             title: "far fa-image",
-            searchTerms: [ "album", "photo", "picture" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-image-portrait",
+            searchTerms: []
         }, {
             title: "fas fa-images",
-            searchTerms: [ "album", "photo", "picture" ]
+            searchTerms: []
         }, {
             title: "far fa-images",
-            searchTerms: [ "album", "photo", "picture" ]
+            searchTerms: []
         }, {
             title: "fab fa-imdb",
             searchTerms: []
@@ -3180,29 +4203,41 @@
             title: "fas fa-indent",
             searchTerms: []
         }, {
+            title: "fas fa-indian-rupee-sign",
+            searchTerms: []
+        }, {
             title: "fas fa-industry",
-            searchTerms: [ "factory", "manufacturing" ]
+            searchTerms: []
         }, {
             title: "fas fa-infinity",
             searchTerms: []
         }, {
             title: "fas fa-info",
-            searchTerms: [ "details", "help", "information", "more" ]
-        }, {
-            title: "fas fa-info-circle",
-            searchTerms: [ "details", "help", "information", "more" ]
+            searchTerms: []
         }, {
             title: "fab fa-instagram",
             searchTerms: []
         }, {
+            title: "fab fa-instalod",
+            searchTerms: []
+        }, {
+            title: "fab fa-intercom",
+            searchTerms: []
+        }, {
             title: "fab fa-internet-explorer",
-            searchTerms: [ "browser", "ie" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-invision",
+            searchTerms: []
         }, {
             title: "fab fa-ioxhost",
             searchTerms: []
         }, {
             title: "fas fa-italic",
-            searchTerms: [ "italics" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-itch-io",
+            searchTerms: []
         }, {
             title: "fab fa-itunes",
             searchTerms: []
@@ -3210,62 +4245,80 @@
             title: "fab fa-itunes-note",
             searchTerms: []
         }, {
+            title: "fas fa-j",
+            searchTerms: []
+        }, {
+            title: "fas fa-jar",
+            searchTerms: []
+        }, {
+            title: "fas fa-jar-wheat",
+            searchTerms: []
+        }, {
             title: "fab fa-java",
             searchTerms: []
         }, {
             title: "fas fa-jedi",
-            searchTerms: [ "star wars" ]
+            searchTerms: []
         }, {
             title: "fab fa-jedi-order",
-            searchTerms: [ "star wars" ]
+            searchTerms: []
         }, {
             title: "fab fa-jenkins",
+            searchTerms: []
+        }, {
+            title: "fas fa-jet-fighter",
+            searchTerms: []
+        }, {
+            title: "fas fa-jet-fighter-up",
+            searchTerms: []
+        }, {
+            title: "fab fa-jira",
             searchTerms: []
         }, {
             title: "fab fa-joget",
             searchTerms: []
         }, {
             title: "fas fa-joint",
-            searchTerms: [ "blunt", "cannabis", "doobie", "drugs", "marijuana", "roach", "smoke", "smoking", "spliff" ]
+            searchTerms: []
         }, {
             title: "fab fa-joomla",
             searchTerms: []
         }, {
-            title: "fas fa-journal-whills",
-            searchTerms: [ "book", "jedi", "star wars", "the force" ]
-        }, {
             title: "fab fa-js",
-            searchTerms: []
-        }, {
-            title: "fab fa-js-square",
             searchTerms: []
         }, {
             title: "fab fa-jsfiddle",
             searchTerms: []
         }, {
+            title: "fas fa-jug-detergent",
+            searchTerms: []
+        }, {
+            title: "fas fa-k",
+            searchTerms: []
+        }, {
             title: "fas fa-kaaba",
-            searchTerms: [ "building", "cube", "islam", "muslim" ]
+            searchTerms: []
         }, {
             title: "fab fa-kaggle",
             searchTerms: []
         }, {
             title: "fas fa-key",
-            searchTerms: [ "password", "unlock" ]
+            searchTerms: []
         }, {
             title: "fab fa-keybase",
             searchTerms: []
         }, {
             title: "fas fa-keyboard",
-            searchTerms: [ "input", "type" ]
+            searchTerms: []
         }, {
             title: "far fa-keyboard",
-            searchTerms: [ "input", "type" ]
+            searchTerms: []
         }, {
             title: "fab fa-keycdn",
             searchTerms: []
         }, {
             title: "fas fa-khanda",
-            searchTerms: [ "chakkar", "sikh", "sikhism", "sword" ]
+            searchTerms: []
         }, {
             title: "fab fa-kickstarter",
             searchTerms: []
@@ -3273,89 +4326,80 @@
             title: "fab fa-kickstarter-k",
             searchTerms: []
         }, {
-            title: "fas fa-kiss",
-            searchTerms: [ "beso", "emoticon", "face", "love", "smooch" ]
+            title: "fas fa-kip-sign",
+            searchTerms: []
         }, {
-            title: "far fa-kiss",
-            searchTerms: [ "beso", "emoticon", "face", "love", "smooch" ]
+            title: "fas fa-kit-medical",
+            searchTerms: []
         }, {
-            title: "fas fa-kiss-beam",
-            searchTerms: [ "beso", "emoticon", "face", "love", "smooch" ]
-        }, {
-            title: "far fa-kiss-beam",
-            searchTerms: [ "beso", "emoticon", "face", "love", "smooch" ]
-        }, {
-            title: "fas fa-kiss-wink-heart",
-            searchTerms: [ "beso", "emoticon", "face", "love", "smooch" ]
-        }, {
-            title: "far fa-kiss-wink-heart",
-            searchTerms: [ "beso", "emoticon", "face", "love", "smooch" ]
+            title: "fas fa-kitchen-set",
+            searchTerms: []
         }, {
             title: "fas fa-kiwi-bird",
-            searchTerms: [ "bird", "fauna" ]
+            searchTerms: []
         }, {
             title: "fab fa-korvue",
             searchTerms: []
         }, {
+            title: "fas fa-l",
+            searchTerms: []
+        }, {
+            title: "fas fa-land-mine-on",
+            searchTerms: []
+        }, {
             title: "fas fa-landmark",
-            searchTerms: [ "building", "historic", "memoroable", "politics" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-landmark-dome",
+            searchTerms: []
+        }, {
+            title: "fas fa-landmark-flag",
+            searchTerms: []
         }, {
             title: "fas fa-language",
-            searchTerms: [ "dialect", "idiom", "localize", "speech", "translate", "vernacular" ]
+            searchTerms: []
         }, {
             title: "fas fa-laptop",
-            searchTerms: [ "computer", "cpu", "dell", "demo", "device", "dude you're getting", "mac", "macbook", "machine", "pc" ]
+            searchTerms: []
         }, {
             title: "fas fa-laptop-code",
+            searchTerms: []
+        }, {
+            title: "fas fa-laptop-file",
+            searchTerms: []
+        }, {
+            title: "fas fa-laptop-medical",
             searchTerms: []
         }, {
             title: "fab fa-laravel",
             searchTerms: []
         }, {
+            title: "fas fa-lari-sign",
+            searchTerms: []
+        }, {
             title: "fab fa-lastfm",
             searchTerms: []
         }, {
-            title: "fab fa-lastfm-square",
+            title: "fas fa-layer-group",
             searchTerms: []
         }, {
-            title: "fas fa-laugh",
-            searchTerms: [ "LOL", "emoticon", "face", "laugh" ]
-        }, {
-            title: "far fa-laugh",
-            searchTerms: [ "LOL", "emoticon", "face", "laugh" ]
-        }, {
-            title: "fas fa-laugh-beam",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "far fa-laugh-beam",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "fas fa-laugh-squint",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "far fa-laugh-squint",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "fas fa-laugh-wink",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "far fa-laugh-wink",
-            searchTerms: [ "LOL", "emoticon", "face" ]
-        }, {
-            title: "fas fa-layer-group",
-            searchTerms: [ "layers" ]
-        }, {
             title: "fas fa-leaf",
-            searchTerms: [ "eco", "flora", "nature", "plant" ]
+            searchTerms: []
         }, {
             title: "fab fa-leanpub",
             searchTerms: []
         }, {
+            title: "fas fa-left-long",
+            searchTerms: []
+        }, {
+            title: "fas fa-left-right",
+            searchTerms: []
+        }, {
             title: "fas fa-lemon",
-            searchTerms: [ "food" ]
+            searchTerms: []
         }, {
             title: "far fa-lemon",
-            searchTerms: [ "food" ]
+            searchTerms: []
         }, {
             title: "fab fa-less",
             searchTerms: []
@@ -3366,143 +4410,161 @@
             title: "fas fa-less-than-equal",
             searchTerms: []
         }, {
-            title: "fas fa-level-down-alt",
-            searchTerms: [ "level-down" ]
-        }, {
-            title: "fas fa-level-up-alt",
-            searchTerms: [ "level-up" ]
-        }, {
             title: "fas fa-life-ring",
-            searchTerms: [ "support" ]
+            searchTerms: []
         }, {
             title: "far fa-life-ring",
-            searchTerms: [ "support" ]
+            searchTerms: []
         }, {
             title: "fas fa-lightbulb",
-            searchTerms: [ "idea", "inspiration" ]
+            searchTerms: []
         }, {
             title: "far fa-lightbulb",
-            searchTerms: [ "idea", "inspiration" ]
+            searchTerms: []
         }, {
             title: "fab fa-line",
             searchTerms: []
         }, {
+            title: "fas fa-lines-leaning",
+            searchTerms: []
+        }, {
             title: "fas fa-link",
-            searchTerms: [ "chain" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-link-slash",
+            searchTerms: []
         }, {
             title: "fab fa-linkedin",
-            searchTerms: [ "linkedin-square" ]
+            searchTerms: []
         }, {
             title: "fab fa-linkedin-in",
-            searchTerms: [ "linkedin" ]
+            searchTerms: []
         }, {
             title: "fab fa-linode",
             searchTerms: []
         }, {
             title: "fab fa-linux",
-            searchTerms: [ "tux" ]
-        }, {
-            title: "fas fa-lira-sign",
-            searchTerms: [ "try", "turkish" ]
-        }, {
-            title: "fas fa-list",
-            searchTerms: [ "checklist", "completed", "done", "finished", "ol", "todo", "ul" ]
-        }, {
-            title: "fas fa-list-alt",
-            searchTerms: [ "checklist", "completed", "done", "finished", "ol", "todo", "ul" ]
-        }, {
-            title: "far fa-list-alt",
-            searchTerms: [ "checklist", "completed", "done", "finished", "ol", "todo", "ul" ]
-        }, {
-            title: "fas fa-list-ol",
-            searchTerms: [ "checklist", "list", "numbers", "ol", "todo", "ul" ]
-        }, {
-            title: "fas fa-list-ul",
-            searchTerms: [ "checklist", "list", "ol", "todo", "ul" ]
-        }, {
-            title: "fas fa-location-arrow",
-            searchTerms: [ "address", "coordinates", "gps", "location", "map", "place", "where" ]
-        }, {
-            title: "fas fa-lock",
-            searchTerms: [ "admin", "protect", "security" ]
-        }, {
-            title: "fas fa-lock-open",
-            searchTerms: [ "admin", "lock", "open", "password", "protect" ]
-        }, {
-            title: "fas fa-long-arrow-alt-down",
-            searchTerms: [ "long-arrow-down" ]
-        }, {
-            title: "fas fa-long-arrow-alt-left",
-            searchTerms: [ "back", "long-arrow-left", "previous" ]
-        }, {
-            title: "fas fa-long-arrow-alt-right",
-            searchTerms: [ "long-arrow-right" ]
-        }, {
-            title: "fas fa-long-arrow-alt-up",
-            searchTerms: [ "long-arrow-up" ]
-        }, {
-            title: "fas fa-low-vision",
             searchTerms: []
         }, {
-            title: "fas fa-luggage-cart",
+            title: "fas fa-lira-sign",
+            searchTerms: []
+        }, {
+            title: "fas fa-list",
+            searchTerms: []
+        }, {
+            title: "fas fa-list-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-list-ol",
+            searchTerms: []
+        }, {
+            title: "fas fa-list-ul",
+            searchTerms: []
+        }, {
+            title: "fas fa-litecoin-sign",
+            searchTerms: []
+        }, {
+            title: "fas fa-location-arrow",
+            searchTerms: []
+        }, {
+            title: "fas fa-location-crosshairs",
+            searchTerms: []
+        }, {
+            title: "fas fa-location-dot",
+            searchTerms: []
+        }, {
+            title: "fas fa-location-pin",
+            searchTerms: []
+        }, {
+            title: "fas fa-location-pin-lock",
+            searchTerms: []
+        }, {
+            title: "fas fa-lock",
+            searchTerms: []
+        }, {
+            title: "fas fa-lock-open",
+            searchTerms: []
+        }, {
+            title: "fas fa-locust",
+            searchTerms: []
+        }, {
+            title: "fas fa-lungs",
+            searchTerms: []
+        }, {
+            title: "fas fa-lungs-virus",
             searchTerms: []
         }, {
             title: "fab fa-lyft",
             searchTerms: []
         }, {
-            title: "fab fa-magento",
+            title: "fas fa-m",
             searchTerms: []
         }, {
-            title: "fas fa-magic",
-            searchTerms: [ "autocomplete", "automatic", "mage", "magic", "spell", "witch", "wizard" ]
+            title: "fab fa-magento",
+            searchTerms: []
         }, {
             title: "fas fa-magnet",
             searchTerms: []
         }, {
-            title: "fas fa-mail-bulk",
+            title: "fas fa-magnifying-glass",
+            searchTerms: []
+        }, {
+            title: "fas fa-magnifying-glass-arrow-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-magnifying-glass-chart",
+            searchTerms: []
+        }, {
+            title: "fas fa-magnifying-glass-dollar",
+            searchTerms: []
+        }, {
+            title: "fas fa-magnifying-glass-location",
+            searchTerms: []
+        }, {
+            title: "fas fa-magnifying-glass-minus",
+            searchTerms: []
+        }, {
+            title: "fas fa-magnifying-glass-plus",
             searchTerms: []
         }, {
             title: "fab fa-mailchimp",
             searchTerms: []
         }, {
-            title: "fas fa-male",
-            searchTerms: [ "human", "man", "person", "profile", "user" ]
+            title: "fas fa-manat-sign",
+            searchTerms: []
         }, {
             title: "fab fa-mandalorian",
             searchTerms: []
         }, {
             title: "fas fa-map",
-            searchTerms: [ "coordinates", "location", "paper", "place", "travel" ]
+            searchTerms: []
         }, {
             title: "far fa-map",
-            searchTerms: [ "coordinates", "location", "paper", "place", "travel" ]
+            searchTerms: []
         }, {
-            title: "fas fa-map-marked",
-            searchTerms: [ "address", "coordinates", "destination", "gps", "localize", "location", "map", "paper", "pin", "place", "point of interest", "position", "route", "travel", "where" ]
+            title: "fas fa-map-location",
+            searchTerms: []
         }, {
-            title: "fas fa-map-marked-alt",
-            searchTerms: [ "address", "coordinates", "destination", "gps", "localize", "location", "map", "paper", "pin", "place", "point of interest", "position", "route", "travel", "where" ]
-        }, {
-            title: "fas fa-map-marker",
-            searchTerms: [ "address", "coordinates", "gps", "localize", "location", "map", "pin", "place", "position", "travel", "where" ]
-        }, {
-            title: "fas fa-map-marker-alt",
-            searchTerms: [ "address", "coordinates", "gps", "localize", "location", "map", "pin", "place", "position", "travel", "where" ]
+            title: "fas fa-map-location-dot",
+            searchTerms: []
         }, {
             title: "fas fa-map-pin",
-            searchTerms: [ "address", "coordinates", "gps", "localize", "location", "map", "marker", "place", "position", "travel", "where" ]
-        }, {
-            title: "fas fa-map-signs",
             searchTerms: []
         }, {
             title: "fab fa-markdown",
             searchTerms: []
         }, {
             title: "fas fa-marker",
-            searchTerms: [ "edit", "sharpie", "update", "write" ]
+            searchTerms: []
         }, {
             title: "fas fa-mars",
-            searchTerms: [ "male" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-mars-and-venus",
+            searchTerms: []
+        }, {
+            title: "fas fa-mars-and-venus-burst",
+            searchTerms: []
         }, {
             title: "fas fa-mars-double",
             searchTerms: []
@@ -3510,19 +4572,46 @@
             title: "fas fa-mars-stroke",
             searchTerms: []
         }, {
-            title: "fas fa-mars-stroke-h",
+            title: "fas fa-mars-stroke-right",
             searchTerms: []
         }, {
-            title: "fas fa-mars-stroke-v",
+            title: "fas fa-mars-stroke-up",
+            searchTerms: []
+        }, {
+            title: "fas fa-martini-glass",
+            searchTerms: []
+        }, {
+            title: "fas fa-martini-glass-citrus",
+            searchTerms: []
+        }, {
+            title: "fas fa-martini-glass-empty",
             searchTerms: []
         }, {
             title: "fas fa-mask",
-            searchTerms: [ "costume", "disguise", "halloween", "holiday", "secret", "super hero" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-mask-face",
+            searchTerms: []
+        }, {
+            title: "fas fa-mask-ventilator",
+            searchTerms: []
+        }, {
+            title: "fas fa-masks-theater",
+            searchTerms: []
         }, {
             title: "fab fa-mastodon",
             searchTerms: []
         }, {
+            title: "fas fa-mattress-pillow",
+            searchTerms: []
+        }, {
             title: "fab fa-maxcdn",
+            searchTerms: []
+        }, {
+            title: "fas fa-maximize",
+            searchTerms: []
+        }, {
+            title: "fab fa-mdb",
             searchTerms: []
         }, {
             title: "fas fa-medal",
@@ -3534,12 +4623,6 @@
             title: "fab fa-medium",
             searchTerms: []
         }, {
-            title: "fab fa-medium-m",
-            searchTerms: []
-        }, {
-            title: "fas fa-medkit",
-            searchTerms: [ "first aid", "firstaid", "health", "help", "support" ]
-        }, {
             title: "fab fa-medrt",
             searchTerms: []
         }, {
@@ -3549,50 +4632,47 @@
             title: "fab fa-megaport",
             searchTerms: []
         }, {
-            title: "fas fa-meh",
-            searchTerms: [ "emoticon", "face", "neutral", "rating" ]
-        }, {
-            title: "far fa-meh",
-            searchTerms: [ "emoticon", "face", "neutral", "rating" ]
-        }, {
-            title: "fas fa-meh-blank",
-            searchTerms: [ "emoticon", "face", "neutral", "rating" ]
-        }, {
-            title: "far fa-meh-blank",
-            searchTerms: [ "emoticon", "face", "neutral", "rating" ]
-        }, {
-            title: "fas fa-meh-rolling-eyes",
-            searchTerms: [ "emoticon", "face", "neutral", "rating" ]
-        }, {
-            title: "far fa-meh-rolling-eyes",
-            searchTerms: [ "emoticon", "face", "neutral", "rating" ]
-        }, {
             title: "fas fa-memory",
-            searchTerms: [ "DIMM", "RAM" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-mendeley",
+            searchTerms: []
         }, {
             title: "fas fa-menorah",
-            searchTerms: [ "candle", "hanukkah", "jewish", "judaism", "light" ]
+            searchTerms: []
         }, {
             title: "fas fa-mercury",
-            searchTerms: [ "transgender" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-message",
+            searchTerms: []
+        }, {
+            title: "far fa-message",
+            searchTerms: []
+        }, {
+            title: "fab fa-meta",
+            searchTerms: []
         }, {
             title: "fas fa-meteor",
             searchTerms: []
         }, {
+            title: "fab fa-microblog",
+            searchTerms: []
+        }, {
             title: "fas fa-microchip",
-            searchTerms: [ "cpu", "processor" ]
+            searchTerms: []
         }, {
             title: "fas fa-microphone",
-            searchTerms: [ "record", "sound", "voice" ]
+            searchTerms: []
         }, {
-            title: "fas fa-microphone-alt",
-            searchTerms: [ "record", "sound", "voice" ]
+            title: "fas fa-microphone-lines",
+            searchTerms: []
         }, {
-            title: "fas fa-microphone-alt-slash",
-            searchTerms: [ "disable", "mute", "record", "sound", "voice" ]
+            title: "fas fa-microphone-lines-slash",
+            searchTerms: []
         }, {
             title: "fas fa-microphone-slash",
-            searchTerms: [ "disable", "mute", "record", "sound", "voice" ]
+            searchTerms: []
         }, {
             title: "fas fa-microscope",
             searchTerms: []
@@ -3600,17 +4680,17 @@
             title: "fab fa-microsoft",
             searchTerms: []
         }, {
+            title: "fas fa-mill-sign",
+            searchTerms: []
+        }, {
+            title: "fas fa-minimize",
+            searchTerms: []
+        }, {
             title: "fas fa-minus",
-            searchTerms: [ "collapse", "delete", "hide", "minify", "negative", "remove", "trash" ]
+            searchTerms: []
         }, {
-            title: "fas fa-minus-circle",
-            searchTerms: [ "delete", "hide", "negative", "remove", "trash" ]
-        }, {
-            title: "fas fa-minus-square",
-            searchTerms: [ "collapse", "delete", "hide", "minify", "negative", "remove", "trash" ]
-        }, {
-            title: "far fa-minus-square",
-            searchTerms: [ "collapse", "delete", "hide", "minify", "negative", "remove", "trash" ]
+            title: "fas fa-mitten",
+            searchTerms: []
         }, {
             title: "fab fa-mix",
             searchTerms: []
@@ -3618,14 +4698,26 @@
             title: "fab fa-mixcloud",
             searchTerms: []
         }, {
+            title: "fab fa-mixer",
+            searchTerms: []
+        }, {
             title: "fab fa-mizuni",
             searchTerms: []
         }, {
             title: "fas fa-mobile",
-            searchTerms: [ "apple", "call", "cell phone", "cellphone", "device", "iphone", "number", "screen", "telephone", "text" ]
+            searchTerms: []
         }, {
-            title: "fas fa-mobile-alt",
-            searchTerms: [ "apple", "call", "cell phone", "cellphone", "device", "iphone", "number", "screen", "telephone", "text" ]
+            title: "fas fa-mobile-button",
+            searchTerms: []
+        }, {
+            title: "fas fa-mobile-retro",
+            searchTerms: []
+        }, {
+            title: "fas fa-mobile-screen",
+            searchTerms: []
+        }, {
+            title: "fas fa-mobile-screen-button",
+            searchTerms: []
         }, {
             title: "fab fa-modx",
             searchTerms: []
@@ -3634,52 +4726,88 @@
             searchTerms: []
         }, {
             title: "fas fa-money-bill",
-            searchTerms: [ "buy", "cash", "checkout", "money", "payment", "price", "purchase" ]
+            searchTerms: []
         }, {
-            title: "fas fa-money-bill-alt",
-            searchTerms: [ "buy", "cash", "checkout", "money", "payment", "price", "purchase" ]
+            title: "fas fa-money-bill-1",
+            searchTerms: []
         }, {
-            title: "far fa-money-bill-alt",
-            searchTerms: [ "buy", "cash", "checkout", "money", "payment", "price", "purchase" ]
+            title: "far fa-money-bill-1",
+            searchTerms: []
+        }, {
+            title: "fas fa-money-bill-1-wave",
+            searchTerms: []
+        }, {
+            title: "fas fa-money-bill-transfer",
+            searchTerms: []
+        }, {
+            title: "fas fa-money-bill-trend-up",
+            searchTerms: []
         }, {
             title: "fas fa-money-bill-wave",
             searchTerms: []
         }, {
-            title: "fas fa-money-bill-wave-alt",
+            title: "fas fa-money-bill-wheat",
+            searchTerms: []
+        }, {
+            title: "fas fa-money-bills",
             searchTerms: []
         }, {
             title: "fas fa-money-check",
-            searchTerms: [ "bank check", "cheque" ]
+            searchTerms: []
         }, {
-            title: "fas fa-money-check-alt",
-            searchTerms: [ "bank check", "cheque" ]
+            title: "fas fa-money-check-dollar",
+            searchTerms: []
         }, {
             title: "fas fa-monument",
-            searchTerms: [ "building", "historic", "memoroable" ]
+            searchTerms: []
         }, {
             title: "fas fa-moon",
-            searchTerms: [ "contrast", "crescent", "darker", "lunar", "night" ]
+            searchTerms: []
         }, {
             title: "far fa-moon",
-            searchTerms: [ "contrast", "crescent", "darker", "lunar", "night" ]
+            searchTerms: []
         }, {
             title: "fas fa-mortar-pestle",
-            searchTerms: [ "crush", "culinary", "grind", "medical", "mix", "spices" ]
+            searchTerms: []
         }, {
             title: "fas fa-mosque",
-            searchTerms: [ "building", "islam", "muslim" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-mosquito",
+            searchTerms: []
+        }, {
+            title: "fas fa-mosquito-net",
+            searchTerms: []
         }, {
             title: "fas fa-motorcycle",
-            searchTerms: [ "bike", "machine", "transportation", "vehicle" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-mound",
+            searchTerms: []
         }, {
             title: "fas fa-mountain",
             searchTerms: []
         }, {
-            title: "fas fa-mouse-pointer",
-            searchTerms: [ "select" ]
+            title: "fas fa-mountain-city",
+            searchTerms: []
+        }, {
+            title: "fas fa-mountain-sun",
+            searchTerms: []
+        }, {
+            title: "fas fa-mug-hot",
+            searchTerms: []
+        }, {
+            title: "fas fa-mug-saucer",
+            searchTerms: []
         }, {
             title: "fas fa-music",
-            searchTerms: [ "note", "sound" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-n",
+            searchTerms: []
+        }, {
+            title: "fas fa-naira-sign",
+            searchTerms: []
         }, {
             title: "fab fa-napster",
             searchTerms: []
@@ -3694,15 +4822,18 @@
             searchTerms: []
         }, {
             title: "fas fa-newspaper",
-            searchTerms: [ "article", "press" ]
-        }, {
-            title: "far fa-newspaper",
-            searchTerms: [ "article", "press" ]
-        }, {
-            title: "fab fa-nimblr",
             searchTerms: []
         }, {
-            title: "fab fa-nintendo-switch",
+            title: "far fa-newspaper",
+            searchTerms: []
+        }, {
+            title: "fab fa-nfc-directional",
+            searchTerms: []
+        }, {
+            title: "fab fa-nfc-symbol",
+            searchTerms: []
+        }, {
+            title: "fab fa-nimblr",
             searchTerms: []
         }, {
             title: "fab fa-node",
@@ -3712,6 +4843,12 @@
             searchTerms: []
         }, {
             title: "fas fa-not-equal",
+            searchTerms: []
+        }, {
+            title: "fas fa-note-sticky",
+            searchTerms: []
+        }, {
+            title: "far fa-note-sticky",
             searchTerms: []
         }, {
             title: "fas fa-notes-medical",
@@ -3726,32 +4863,38 @@
             title: "fab fa-nutritionix",
             searchTerms: []
         }, {
-            title: "fas fa-object-group",
-            searchTerms: [ "design" ]
-        }, {
-            title: "far fa-object-group",
-            searchTerms: [ "design" ]
-        }, {
-            title: "fas fa-object-ungroup",
-            searchTerms: [ "design" ]
-        }, {
-            title: "far fa-object-ungroup",
-            searchTerms: [ "design" ]
-        }, {
-            title: "fab fa-odnoklassniki",
+            title: "fas fa-o",
             searchTerms: []
         }, {
-            title: "fab fa-odnoklassniki-square",
+            title: "fas fa-object-group",
+            searchTerms: []
+        }, {
+            title: "far fa-object-group",
+            searchTerms: []
+        }, {
+            title: "fas fa-object-ungroup",
+            searchTerms: []
+        }, {
+            title: "far fa-object-ungroup",
+            searchTerms: []
+        }, {
+            title: "fab fa-octopus-deploy",
+            searchTerms: []
+        }, {
+            title: "fab fa-odnoklassniki",
             searchTerms: []
         }, {
             title: "fas fa-oil-can",
             searchTerms: []
         }, {
+            title: "fas fa-oil-well",
+            searchTerms: []
+        }, {
             title: "fab fa-old-republic",
-            searchTerms: [ "politics", "star wars" ]
+            searchTerms: []
         }, {
             title: "fas fa-om",
-            searchTerms: [ "buddhism", "hinduism", "jainism", "mantra" ]
+            searchTerms: []
         }, {
             title: "fab fa-opencart",
             searchTerms: []
@@ -3765,34 +4908,49 @@
             title: "fab fa-optin-monster",
             searchTerms: []
         }, {
+            title: "fab fa-orcid",
+            searchTerms: []
+        }, {
             title: "fab fa-osi",
             searchTerms: []
         }, {
             title: "fas fa-otter",
-            searchTerms: [ "fauna", "mammmal" ]
+            searchTerms: []
         }, {
             title: "fas fa-outdent",
+            searchTerms: []
+        }, {
+            title: "fas fa-p",
+            searchTerms: []
+        }, {
+            title: "fab fa-padlet",
             searchTerms: []
         }, {
             title: "fab fa-page4",
             searchTerms: []
         }, {
             title: "fab fa-pagelines",
-            searchTerms: [ "eco", "flora", "leaf", "leaves", "nature", "plant", "tree" ]
+            searchTerms: []
         }, {
-            title: "fas fa-paint-brush",
+            title: "fas fa-pager",
             searchTerms: []
         }, {
             title: "fas fa-paint-roller",
-            searchTerms: [ "brush", "painting", "tool" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-paintbrush",
+            searchTerms: []
         }, {
             title: "fas fa-palette",
-            searchTerms: [ "colors", "painting" ]
+            searchTerms: []
         }, {
             title: "fab fa-palfed",
             searchTerms: []
         }, {
             title: "fas fa-pallet",
+            searchTerms: []
+        }, {
+            title: "fas fa-panorama",
             searchTerms: []
         }, {
             title: "fas fa-paper-plane",
@@ -3802,40 +4960,31 @@
             searchTerms: []
         }, {
             title: "fas fa-paperclip",
-            searchTerms: [ "attachment" ]
+            searchTerms: []
         }, {
             title: "fas fa-parachute-box",
-            searchTerms: [ "aid", "assistance", "rescue", "supplies" ]
+            searchTerms: []
         }, {
             title: "fas fa-paragraph",
             searchTerms: []
         }, {
-            title: "fas fa-parking",
+            title: "fas fa-passport",
             searchTerms: []
         }, {
-            title: "fas fa-passport",
-            searchTerms: [ "document", "identification", "issued" ]
-        }, {
-            title: "fas fa-pastafarianism",
-            searchTerms: [ "agnosticism", "atheism", "flying spaghetti monster", "fsm" ]
-        }, {
             title: "fas fa-paste",
-            searchTerms: [ "clipboard", "copy" ]
+            searchTerms: []
+        }, {
+            title: "far fa-paste",
+            searchTerms: []
         }, {
             title: "fab fa-patreon",
             searchTerms: []
         }, {
             title: "fas fa-pause",
-            searchTerms: [ "wait" ]
-        }, {
-            title: "fas fa-pause-circle",
-            searchTerms: []
-        }, {
-            title: "far fa-pause-circle",
             searchTerms: []
         }, {
             title: "fas fa-paw",
-            searchTerms: [ "animal", "pet" ]
+            searchTerms: []
         }, {
             title: "fab fa-paypal",
             searchTerms: []
@@ -3844,43 +4993,205 @@
             searchTerms: []
         }, {
             title: "fas fa-pen",
-            searchTerms: [ "design", "edit", "update", "write" ]
+            searchTerms: []
         }, {
-            title: "fas fa-pen-alt",
-            searchTerms: [ "design", "edit", "update", "write" ]
+            title: "fas fa-pen-clip",
+            searchTerms: []
         }, {
             title: "fas fa-pen-fancy",
-            searchTerms: [ "design", "edit", "fountain pen", "update", "write" ]
+            searchTerms: []
         }, {
             title: "fas fa-pen-nib",
-            searchTerms: [ "design", "edit", "fountain pen", "update", "write" ]
-        }, {
-            title: "fas fa-pen-square",
-            searchTerms: [ "edit", "pencil-square", "update", "write" ]
-        }, {
-            title: "fas fa-pencil-alt",
-            searchTerms: [ "design", "edit", "pencil", "update", "write" ]
-        }, {
-            title: "fas fa-pencil-ruler",
             searchTerms: []
         }, {
-            title: "fab fa-penny-arcade",
-            searchTerms: [ "Dungeons & Dragons", "d&d", "dnd", "fantasy", "game", "gaming", "pax", "tabletop" ]
+            title: "fas fa-pen-ruler",
+            searchTerms: []
         }, {
-            title: "fas fa-people-carry",
-            searchTerms: [ "movers" ]
+            title: "fas fa-pen-to-square",
+            searchTerms: []
+        }, {
+            title: "far fa-pen-to-square",
+            searchTerms: []
+        }, {
+            title: "fas fa-pencil",
+            searchTerms: []
+        }, {
+            title: "fas fa-people-arrows",
+            searchTerms: []
+        }, {
+            title: "fas fa-people-carry-box",
+            searchTerms: []
+        }, {
+            title: "fas fa-people-group",
+            searchTerms: []
+        }, {
+            title: "fas fa-people-line",
+            searchTerms: []
+        }, {
+            title: "fas fa-people-pulling",
+            searchTerms: []
+        }, {
+            title: "fas fa-people-robbery",
+            searchTerms: []
+        }, {
+            title: "fas fa-people-roof",
+            searchTerms: []
+        }, {
+            title: "fas fa-pepper-hot",
+            searchTerms: []
+        }, {
+            title: "fab fa-perbyte",
+            searchTerms: []
         }, {
             title: "fas fa-percent",
-            searchTerms: []
-        }, {
-            title: "fas fa-percentage",
             searchTerms: []
         }, {
             title: "fab fa-periscope",
             searchTerms: []
         }, {
+            title: "fas fa-person",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-arrow-down-to-line",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-arrow-up-from-line",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-biking",
+            searchTerms: []
+        }, {
             title: "fas fa-person-booth",
-            searchTerms: [ "changing", "changing room", "election", "human", "person", "vote", "voting" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-person-breastfeeding",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-burst",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-cane",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-chalkboard",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-circle-minus",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-circle-plus",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-circle-question",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-circle-xmark",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-digging",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-dots-from-line",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-dress",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-dress-burst",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-drowning",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-falling",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-falling-burst",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-half-dress",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-harassing",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-hiking",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-military-pointing",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-military-rifle",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-military-to-person",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-praying",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-pregnant",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-rays",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-rifle",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-running",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-shelter",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-skating",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-skiing",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-skiing-nordic",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-snowboarding",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-swimming",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-through-window",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-walking",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-walking-arrow-loop-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-walking-arrow-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-walking-dashed-line-arrow-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-walking-luggage",
+            searchTerms: []
+        }, {
+            title: "fas fa-person-walking-with-cane",
+            searchTerms: []
+        }, {
+            title: "fas fa-peseta-sign",
+            searchTerms: []
+        }, {
+            title: "fas fa-peso-sign",
+            searchTerms: []
         }, {
             title: "fab fa-phabricator",
             searchTerms: []
@@ -3892,16 +5203,19 @@
             searchTerms: []
         }, {
             title: "fas fa-phone",
-            searchTerms: [ "call", "earphone", "number", "support", "telephone", "voice" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-phone-flip",
+            searchTerms: []
         }, {
             title: "fas fa-phone-slash",
             searchTerms: []
         }, {
-            title: "fas fa-phone-square",
-            searchTerms: [ "call", "number", "support", "telephone", "voice" ]
-        }, {
             title: "fas fa-phone-volume",
-            searchTerms: [ "telephone", "volume-control-phone" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-photo-film",
+            searchTerms: []
         }, {
             title: "fab fa-php",
             searchTerms: []
@@ -3913,16 +5227,16 @@
             searchTerms: []
         }, {
             title: "fab fa-pied-piper-hat",
-            searchTerms: [ "clothing" ]
+            searchTerms: []
         }, {
             title: "fab fa-pied-piper-pp",
             searchTerms: []
         }, {
             title: "fas fa-piggy-bank",
-            searchTerms: [ "save", "savings" ]
+            searchTerms: []
         }, {
             title: "fas fa-pills",
-            searchTerms: [ "drugs", "medicine" ]
+            searchTerms: []
         }, {
             title: "fab fa-pinterest",
             searchTerms: []
@@ -3930,127 +5244,136 @@
             title: "fab fa-pinterest-p",
             searchTerms: []
         }, {
-            title: "fab fa-pinterest-square",
+            title: "fab fa-pix",
+            searchTerms: []
+        }, {
+            title: "fas fa-pizza-slice",
             searchTerms: []
         }, {
             title: "fas fa-place-of-worship",
             searchTerms: []
         }, {
             title: "fas fa-plane",
-            searchTerms: [ "airplane", "destination", "fly", "location", "mode", "travel", "trip" ]
+            searchTerms: []
         }, {
             title: "fas fa-plane-arrival",
-            searchTerms: [ "airplane", "arriving", "destination", "fly", "land", "landing", "location", "mode", "travel", "trip" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-plane-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-plane-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-plane-circle-xmark",
+            searchTerms: []
         }, {
             title: "fas fa-plane-departure",
-            searchTerms: [ "airplane", "departing", "destination", "fly", "location", "mode", "take off", "taking off", "travel", "trip" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-plane-lock",
+            searchTerms: []
+        }, {
+            title: "fas fa-plane-slash",
+            searchTerms: []
+        }, {
+            title: "fas fa-plane-up",
+            searchTerms: []
+        }, {
+            title: "fas fa-plant-wilt",
+            searchTerms: []
+        }, {
+            title: "fas fa-plate-wheat",
+            searchTerms: []
         }, {
             title: "fas fa-play",
-            searchTerms: [ "music", "playing", "sound", "start" ]
-        }, {
-            title: "fas fa-play-circle",
-            searchTerms: [ "playing", "start" ]
-        }, {
-            title: "far fa-play-circle",
-            searchTerms: [ "playing", "start" ]
+            searchTerms: []
         }, {
             title: "fab fa-playstation",
             searchTerms: []
         }, {
             title: "fas fa-plug",
-            searchTerms: [ "connect", "online", "power" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-plug-circle-bolt",
+            searchTerms: []
+        }, {
+            title: "fas fa-plug-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-plug-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-plug-circle-minus",
+            searchTerms: []
+        }, {
+            title: "fas fa-plug-circle-plus",
+            searchTerms: []
+        }, {
+            title: "fas fa-plug-circle-xmark",
+            searchTerms: []
         }, {
             title: "fas fa-plus",
-            searchTerms: [ "add", "create", "expand", "new", "positive" ]
+            searchTerms: []
         }, {
-            title: "fas fa-plus-circle",
-            searchTerms: [ "add", "create", "expand", "new", "positive" ]
-        }, {
-            title: "fas fa-plus-square",
-            searchTerms: [ "add", "create", "expand", "new", "positive" ]
-        }, {
-            title: "far fa-plus-square",
-            searchTerms: [ "add", "create", "expand", "new", "positive" ]
+            title: "fas fa-plus-minus",
+            searchTerms: []
         }, {
             title: "fas fa-podcast",
             searchTerms: []
-        }, {
-            title: "fas fa-poll",
-            searchTerms: [ "results", "survey", "vote", "voting" ]
-        }, {
-            title: "fas fa-poll-h",
-            searchTerms: [ "results", "survey", "vote", "voting" ]
         }, {
             title: "fas fa-poo",
             searchTerms: []
         }, {
             title: "fas fa-poo-storm",
-            searchTerms: [ "mess", "poop", "shit" ]
+            searchTerms: []
         }, {
             title: "fas fa-poop",
             searchTerms: []
         }, {
-            title: "fas fa-portrait",
-            searchTerms: []
-        }, {
-            title: "fas fa-pound-sign",
-            searchTerms: [ "gbp" ]
-        }, {
             title: "fas fa-power-off",
-            searchTerms: [ "on", "reboot", "restart" ]
-        }, {
-            title: "fas fa-pray",
-            searchTerms: []
-        }, {
-            title: "fas fa-praying-hands",
             searchTerms: []
         }, {
             title: "fas fa-prescription",
-            searchTerms: [ "drugs", "medical", "medicine", "rx" ]
-        }, {
-            title: "fas fa-prescription-bottle",
-            searchTerms: [ "drugs", "medical", "medicine", "rx" ]
-        }, {
-            title: "fas fa-prescription-bottle-alt",
-            searchTerms: [ "drugs", "medical", "medicine", "rx" ]
-        }, {
-            title: "fas fa-print",
             searchTerms: []
         }, {
-            title: "fas fa-procedures",
+            title: "fas fa-prescription-bottle",
+            searchTerms: []
+        }, {
+            title: "fas fa-prescription-bottle-medical",
+            searchTerms: []
+        }, {
+            title: "fas fa-print",
             searchTerms: []
         }, {
             title: "fab fa-product-hunt",
             searchTerms: []
         }, {
-            title: "fas fa-project-diagram",
+            title: "fas fa-pump-medical",
+            searchTerms: []
+        }, {
+            title: "fas fa-pump-soap",
             searchTerms: []
         }, {
             title: "fab fa-pushed",
             searchTerms: []
         }, {
             title: "fas fa-puzzle-piece",
-            searchTerms: [ "add-on", "addon", "section" ]
+            searchTerms: []
         }, {
             title: "fab fa-python",
+            searchTerms: []
+        }, {
+            title: "fas fa-q",
             searchTerms: []
         }, {
             title: "fab fa-qq",
             searchTerms: []
         }, {
             title: "fas fa-qrcode",
-            searchTerms: [ "scan" ]
+            searchTerms: []
         }, {
             title: "fas fa-question",
-            searchTerms: [ "help", "information", "support", "unknown" ]
-        }, {
-            title: "fas fa-question-circle",
-            searchTerms: [ "help", "information", "support", "unknown" ]
-        }, {
-            title: "far fa-question-circle",
-            searchTerms: [ "help", "information", "support", "unknown" ]
-        }, {
-            title: "fas fa-quidditch",
             searchTerms: []
         }, {
             title: "fab fa-quinscape",
@@ -4065,17 +5388,26 @@
             title: "fas fa-quote-right",
             searchTerms: []
         }, {
-            title: "fas fa-quran",
-            searchTerms: [ "book", "islam", "muslim" ]
+            title: "fas fa-r",
+            searchTerms: []
         }, {
             title: "fab fa-r-project",
+            searchTerms: []
+        }, {
+            title: "fas fa-radiation",
+            searchTerms: []
+        }, {
+            title: "fas fa-radio",
             searchTerms: []
         }, {
             title: "fas fa-rainbow",
             searchTerms: []
         }, {
-            title: "fas fa-random",
-            searchTerms: [ "shuffle", "sort" ]
+            title: "fas fa-ranking-star",
+            searchTerms: []
+        }, {
+            title: "fab fa-raspberry-pi",
+            searchTerms: []
         }, {
             title: "fab fa-ravelry",
             searchTerms: []
@@ -4093,7 +5425,25 @@
             searchTerms: []
         }, {
             title: "fas fa-receipt",
-            searchTerms: [ "check", "invoice", "table" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-record-vinyl",
+            searchTerms: []
+        }, {
+            title: "fas fa-rectangle-ad",
+            searchTerms: []
+        }, {
+            title: "fas fa-rectangle-list",
+            searchTerms: []
+        }, {
+            title: "far fa-rectangle-list",
+            searchTerms: []
+        }, {
+            title: "fas fa-rectangle-xmark",
+            searchTerms: []
+        }, {
+            title: "far fa-rectangle-xmark",
+            searchTerms: []
         }, {
             title: "fas fa-recycle",
             searchTerms: []
@@ -4107,14 +5457,8 @@
             title: "fab fa-reddit-alien",
             searchTerms: []
         }, {
-            title: "fab fa-reddit-square",
+            title: "fab fa-redhat",
             searchTerms: []
-        }, {
-            title: "fas fa-redo",
-            searchTerms: [ "forward", "refresh", "reload", "repeat" ]
-        }, {
-            title: "fas fa-redo-alt",
-            searchTerms: [ "forward", "refresh", "reload", "repeat" ]
         }, {
             title: "fas fa-registered",
             searchTerms: []
@@ -4123,6 +5467,9 @@
             searchTerms: []
         }, {
             title: "fab fa-renren",
+            searchTerms: []
+        }, {
+            title: "fas fa-repeat",
             searchTerms: []
         }, {
             title: "fas fa-reply",
@@ -4135,7 +5482,7 @@
             searchTerms: []
         }, {
             title: "fas fa-republican",
-            searchTerms: [ "american", "conservative", "election", "elephant", "politics", "republican party", "right", "right-wing", "usa" ]
+            searchTerms: []
         }, {
             title: "fab fa-researchgate",
             searchTerms: []
@@ -4143,26 +5490,62 @@
             title: "fab fa-resolving",
             searchTerms: []
         }, {
+            title: "fas fa-restroom",
+            searchTerms: []
+        }, {
             title: "fas fa-retweet",
-            searchTerms: [ "refresh", "reload", "share", "swap" ]
+            searchTerms: []
         }, {
             title: "fab fa-rev",
             searchTerms: []
         }, {
             title: "fas fa-ribbon",
-            searchTerms: [ "badge", "cause", "lapel", "pin" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-right-from-bracket",
+            searchTerms: []
+        }, {
+            title: "fas fa-right-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-right-long",
+            searchTerms: []
+        }, {
+            title: "fas fa-right-to-bracket",
+            searchTerms: []
         }, {
             title: "fas fa-ring",
-            searchTerms: [ "Dungeons & Dragons", "Gollum", "band", "binding", "d&d", "dnd", "fantasy", "jewelry", "precious" ]
+            searchTerms: []
         }, {
             title: "fas fa-road",
-            searchTerms: [ "street" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-road-barrier",
+            searchTerms: []
+        }, {
+            title: "fas fa-road-bridge",
+            searchTerms: []
+        }, {
+            title: "fas fa-road-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-road-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-road-circle-xmark",
+            searchTerms: []
+        }, {
+            title: "fas fa-road-lock",
+            searchTerms: []
+        }, {
+            title: "fas fa-road-spikes",
+            searchTerms: []
         }, {
             title: "fas fa-robot",
             searchTerms: []
         }, {
             title: "fas fa-rocket",
-            searchTerms: [ "app" ]
+            searchTerms: []
         }, {
             title: "fab fa-rocketchat",
             searchTerms: []
@@ -4170,17 +5553,26 @@
             title: "fab fa-rockrms",
             searchTerms: []
         }, {
+            title: "fas fa-rotate",
+            searchTerms: []
+        }, {
+            title: "fas fa-rotate-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-rotate-right",
+            searchTerms: []
+        }, {
             title: "fas fa-route",
             searchTerms: []
         }, {
             title: "fas fa-rss",
-            searchTerms: [ "blog" ]
-        }, {
-            title: "fas fa-rss-square",
-            searchTerms: [ "blog", "feed" ]
+            searchTerms: []
         }, {
             title: "fas fa-ruble-sign",
-            searchTerms: [ "rub" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-rug",
+            searchTerms: []
         }, {
             title: "fas fa-ruler",
             searchTerms: []
@@ -4194,35 +5586,50 @@
             title: "fas fa-ruler-vertical",
             searchTerms: []
         }, {
-            title: "fas fa-running",
-            searchTerms: [ "jog", "sprint" ]
-        }, {
             title: "fas fa-rupee-sign",
-            searchTerms: [ "indian", "inr" ]
+            searchTerms: []
         }, {
-            title: "fas fa-sad-cry",
-            searchTerms: [ "emoticon", "face", "tear", "tears" ]
+            title: "fas fa-rupiah-sign",
+            searchTerms: []
         }, {
-            title: "far fa-sad-cry",
-            searchTerms: [ "emoticon", "face", "tear", "tears" ]
+            title: "fab fa-rust",
+            searchTerms: []
         }, {
-            title: "fas fa-sad-tear",
-            searchTerms: [ "emoticon", "face", "tear", "tears" ]
+            title: "fas fa-s",
+            searchTerms: []
         }, {
-            title: "far fa-sad-tear",
-            searchTerms: [ "emoticon", "face", "tear", "tears" ]
+            title: "fas fa-sack-dollar",
+            searchTerms: []
+        }, {
+            title: "fas fa-sack-xmark",
+            searchTerms: []
         }, {
             title: "fab fa-safari",
-            searchTerms: [ "browser" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-sailboat",
+            searchTerms: []
+        }, {
+            title: "fab fa-salesforce",
+            searchTerms: []
         }, {
             title: "fab fa-sass",
             searchTerms: []
         }, {
-            title: "fas fa-save",
-            searchTerms: [ "floppy", "floppy-o" ]
+            title: "fas fa-satellite",
+            searchTerms: []
         }, {
-            title: "far fa-save",
-            searchTerms: [ "floppy", "floppy-o" ]
+            title: "fas fa-satellite-dish",
+            searchTerms: []
+        }, {
+            title: "fas fa-scale-balanced",
+            searchTerms: []
+        }, {
+            title: "fas fa-scale-unbalanced",
+            searchTerms: []
+        }, {
+            title: "fas fa-scale-unbalanced-flip",
+            searchTerms: []
         }, {
             title: "fab fa-schlix",
             searchTerms: []
@@ -4230,92 +5637,128 @@
             title: "fas fa-school",
             searchTerms: []
         }, {
+            title: "fas fa-school-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-school-circle-exclamation",
+            searchTerms: []
+        }, {
+            title: "fas fa-school-circle-xmark",
+            searchTerms: []
+        }, {
+            title: "fas fa-school-flag",
+            searchTerms: []
+        }, {
+            title: "fas fa-school-lock",
+            searchTerms: []
+        }, {
+            title: "fas fa-scissors",
+            searchTerms: []
+        }, {
+            title: "fab fa-screenpal",
+            searchTerms: []
+        }, {
             title: "fas fa-screwdriver",
-            searchTerms: [ "admin", "fix", "repair", "settings", "tool" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-screwdriver-wrench",
+            searchTerms: []
         }, {
             title: "fab fa-scribd",
             searchTerms: []
         }, {
             title: "fas fa-scroll",
-            searchTerms: [ "Dungeons & Dragons", "announcement", "d&d", "dnd", "fantasy", "paper" ]
-        }, {
-            title: "fas fa-search",
-            searchTerms: [ "bigger", "enlarge", "magnify", "preview", "zoom" ]
-        }, {
-            title: "fas fa-search-dollar",
             searchTerms: []
         }, {
-            title: "fas fa-search-location",
+            title: "fas fa-scroll-torah",
             searchTerms: []
         }, {
-            title: "fas fa-search-minus",
-            searchTerms: [ "minify", "negative", "smaller", "zoom", "zoom out" ]
-        }, {
-            title: "fas fa-search-plus",
-            searchTerms: [ "bigger", "enlarge", "magnify", "positive", "zoom", "zoom in" ]
+            title: "fas fa-sd-card",
+            searchTerms: []
         }, {
             title: "fab fa-searchengin",
+            searchTerms: []
+        }, {
+            title: "fas fa-section",
             searchTerms: []
         }, {
             title: "fas fa-seedling",
             searchTerms: []
         }, {
             title: "fab fa-sellcast",
-            searchTerms: [ "eercast" ]
+            searchTerms: []
         }, {
             title: "fab fa-sellsy",
             searchTerms: []
         }, {
             title: "fas fa-server",
-            searchTerms: [ "cpu" ]
+            searchTerms: []
         }, {
             title: "fab fa-servicestack",
             searchTerms: []
         }, {
             title: "fas fa-shapes",
-            searchTerms: [ "circle", "square", "triangle" ]
+            searchTerms: []
         }, {
             title: "fas fa-share",
             searchTerms: []
         }, {
-            title: "fas fa-share-alt",
+            title: "fas fa-share-from-square",
             searchTerms: []
         }, {
-            title: "fas fa-share-alt-square",
+            title: "far fa-share-from-square",
             searchTerms: []
         }, {
-            title: "fas fa-share-square",
-            searchTerms: [ "send", "social" ]
+            title: "fas fa-share-nodes",
+            searchTerms: []
         }, {
-            title: "far fa-share-square",
-            searchTerms: [ "send", "social" ]
+            title: "fas fa-sheet-plastic",
+            searchTerms: []
         }, {
             title: "fas fa-shekel-sign",
-            searchTerms: [ "ils" ]
+            searchTerms: []
         }, {
-            title: "fas fa-shield-alt",
-            searchTerms: [ "achievement", "award", "block", "defend", "security", "winner" ]
+            title: "fas fa-shield",
+            searchTerms: []
+        }, {
+            title: "fas fa-shield-cat",
+            searchTerms: []
+        }, {
+            title: "fas fa-shield-dog",
+            searchTerms: []
+        }, {
+            title: "fas fa-shield-halved",
+            searchTerms: []
+        }, {
+            title: "fas fa-shield-heart",
+            searchTerms: []
+        }, {
+            title: "fas fa-shield-virus",
+            searchTerms: []
         }, {
             title: "fas fa-ship",
-            searchTerms: [ "boat", "sea" ]
+            searchTerms: []
         }, {
-            title: "fas fa-shipping-fast",
+            title: "fas fa-shirt",
             searchTerms: []
         }, {
             title: "fab fa-shirtsinbulk",
             searchTerms: []
         }, {
             title: "fas fa-shoe-prints",
-            searchTerms: [ "feet", "footprints", "steps" ]
-        }, {
-            title: "fas fa-shopping-bag",
             searchTerms: []
         }, {
-            title: "fas fa-shopping-basket",
+            title: "fas fa-shop",
             searchTerms: []
         }, {
-            title: "fas fa-shopping-cart",
-            searchTerms: [ "buy", "checkout", "payment", "purchase" ]
+            title: "fas fa-shop-lock",
+            searchTerms: []
+        }, {
+            title: "fas fa-shop-slash",
+            searchTerms: []
+        }, {
+            title: "fab fa-shopify",
+            searchTerms: []
         }, {
             title: "fab fa-shopware",
             searchTerms: []
@@ -4323,44 +5766,56 @@
             title: "fas fa-shower",
             searchTerms: []
         }, {
-            title: "fas fa-shuttle-van",
-            searchTerms: [ "machine", "public-transportation", "transportation", "vehicle" ]
-        }, {
-            title: "fas fa-sign",
+            title: "fas fa-shrimp",
             searchTerms: []
         }, {
-            title: "fas fa-sign-in-alt",
-            searchTerms: [ "arrow", "enter", "join", "log in", "login", "sign in", "sign up", "sign-in", "signin", "signup" ]
-        }, {
-            title: "fas fa-sign-language",
+            title: "fas fa-shuffle",
             searchTerms: []
         }, {
-            title: "fas fa-sign-out-alt",
-            searchTerms: [ "arrow", "exit", "leave", "log out", "logout", "sign-out" ]
+            title: "fas fa-shuttle-space",
+            searchTerms: []
+        }, {
+            title: "fas fa-sign-hanging",
+            searchTerms: []
         }, {
             title: "fas fa-signal",
-            searchTerms: [ "bars", "graph", "online", "status" ]
+            searchTerms: []
         }, {
             title: "fas fa-signature",
-            searchTerms: [ "John Hancock", "cursive", "name", "writing" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-signs-post",
+            searchTerms: []
+        }, {
+            title: "fas fa-sim-card",
+            searchTerms: []
         }, {
             title: "fab fa-simplybuilt",
+            searchTerms: []
+        }, {
+            title: "fas fa-sink",
             searchTerms: []
         }, {
             title: "fab fa-sistrix",
             searchTerms: []
         }, {
             title: "fas fa-sitemap",
-            searchTerms: [ "directory", "hierarchy", "ia", "information architecture", "organization" ]
+            searchTerms: []
         }, {
             title: "fab fa-sith",
             searchTerms: []
         }, {
+            title: "fab fa-sitrox",
+            searchTerms: []
+        }, {
+            title: "fab fa-sketch",
+            searchTerms: []
+        }, {
             title: "fas fa-skull",
-            searchTerms: [ "bones", "skeleton", "yorick" ]
+            searchTerms: []
         }, {
             title: "fas fa-skull-crossbones",
-            searchTerms: [ "Dungeons & Dragons", "alert", "bones", "d&d", "danger", "dead", "deadly", "death", "dnd", "fantasy", "halloween", "holiday", "jolly-roger", "pirate", "poison", "skeleton", "warning" ]
+            searchTerms: []
         }, {
             title: "fab fa-skyatlas",
             searchTerms: []
@@ -4369,114 +5824,93 @@
             searchTerms: []
         }, {
             title: "fab fa-slack",
-            searchTerms: [ "anchor", "hash", "hashtag" ]
-        }, {
-            title: "fab fa-slack-hash",
-            searchTerms: [ "anchor", "hash", "hashtag" ]
+            searchTerms: []
         }, {
             title: "fas fa-slash",
             searchTerms: []
         }, {
-            title: "fas fa-sliders-h",
-            searchTerms: [ "settings", "sliders" ]
+            title: "fas fa-sleigh",
+            searchTerms: []
+        }, {
+            title: "fas fa-sliders",
+            searchTerms: []
         }, {
             title: "fab fa-slideshare",
             searchTerms: []
         }, {
-            title: "fas fa-smile",
-            searchTerms: [ "approve", "emoticon", "face", "happy", "rating", "satisfied" ]
-        }, {
-            title: "far fa-smile",
-            searchTerms: [ "approve", "emoticon", "face", "happy", "rating", "satisfied" ]
-        }, {
-            title: "fas fa-smile-beam",
-            searchTerms: [ "emoticon", "face", "happy", "positive" ]
-        }, {
-            title: "far fa-smile-beam",
-            searchTerms: [ "emoticon", "face", "happy", "positive" ]
-        }, {
-            title: "fas fa-smile-wink",
-            searchTerms: [ "emoticon", "face", "happy" ]
-        }, {
-            title: "far fa-smile-wink",
-            searchTerms: [ "emoticon", "face", "happy" ]
-        }, {
             title: "fas fa-smog",
-            searchTerms: [ "dragon" ]
+            searchTerms: []
         }, {
             title: "fas fa-smoking",
-            searchTerms: [ "cigarette", "nicotine", "smoking status" ]
-        }, {
-            title: "fas fa-smoking-ban",
-            searchTerms: [ "no smoking", "non-smoking" ]
+            searchTerms: []
         }, {
             title: "fab fa-snapchat",
             searchTerms: []
         }, {
-            title: "fab fa-snapchat-ghost",
-            searchTerms: []
-        }, {
-            title: "fab fa-snapchat-square",
-            searchTerms: []
-        }, {
             title: "fas fa-snowflake",
-            searchTerms: [ "precipitation", "seasonal", "winter" ]
+            searchTerms: []
         }, {
             title: "far fa-snowflake",
-            searchTerms: [ "precipitation", "seasonal", "winter" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-snowman",
+            searchTerms: []
+        }, {
+            title: "fas fa-snowplow",
+            searchTerms: []
+        }, {
+            title: "fas fa-soap",
+            searchTerms: []
         }, {
             title: "fas fa-socks",
-            searchTerms: [ "business socks", "business time", "flight of the conchords", "wednesday" ]
+            searchTerms: []
         }, {
             title: "fas fa-solar-panel",
-            searchTerms: [ "clean", "eco-friendly", "energy", "green", "sun" ]
+            searchTerms: []
         }, {
             title: "fas fa-sort",
-            searchTerms: [ "order" ]
-        }, {
-            title: "fas fa-sort-alpha-down",
-            searchTerms: [ "sort-alpha-asc" ]
-        }, {
-            title: "fas fa-sort-alpha-up",
-            searchTerms: [ "sort-alpha-desc" ]
-        }, {
-            title: "fas fa-sort-amount-down",
-            searchTerms: [ "sort-amount-asc" ]
-        }, {
-            title: "fas fa-sort-amount-up",
-            searchTerms: [ "sort-amount-desc" ]
+            searchTerms: []
         }, {
             title: "fas fa-sort-down",
-            searchTerms: [ "arrow", "descending", "sort-desc" ]
-        }, {
-            title: "fas fa-sort-numeric-down",
-            searchTerms: [ "numbers", "sort-numeric-asc" ]
-        }, {
-            title: "fas fa-sort-numeric-up",
-            searchTerms: [ "numbers", "sort-numeric-desc" ]
+            searchTerms: []
         }, {
             title: "fas fa-sort-up",
-            searchTerms: [ "arrow", "ascending", "sort-asc" ]
+            searchTerms: []
         }, {
             title: "fab fa-soundcloud",
             searchTerms: []
         }, {
-            title: "fas fa-spa",
-            searchTerms: [ "flora", "mindfullness", "plant", "wellness" ]
+            title: "fab fa-sourcetree",
+            searchTerms: []
         }, {
-            title: "fas fa-space-shuttle",
-            searchTerms: [ "astronaut", "machine", "nasa", "rocket", "transportation" ]
+            title: "fas fa-spa",
+            searchTerms: []
+        }, {
+            title: "fab fa-space-awesome",
+            searchTerms: []
+        }, {
+            title: "fas fa-spaghetti-monster-flying",
+            searchTerms: []
         }, {
             title: "fab fa-speakap",
             searchTerms: []
         }, {
+            title: "fab fa-speaker-deck",
+            searchTerms: []
+        }, {
+            title: "fas fa-spell-check",
+            searchTerms: []
+        }, {
             title: "fas fa-spider",
-            searchTerms: [ "arachnid", "bug", "charlotte", "crawl", "eight", "halloween", "holiday" ]
+            searchTerms: []
         }, {
             title: "fas fa-spinner",
-            searchTerms: [ "loading", "progress" ]
+            searchTerms: []
         }, {
             title: "fas fa-splotch",
+            searchTerms: []
+        }, {
+            title: "fas fa-spoon",
             searchTerms: []
         }, {
             title: "fab fa-spotify",
@@ -4485,16 +5919,190 @@
             title: "fas fa-spray-can",
             searchTerms: []
         }, {
+            title: "fas fa-spray-can-sparkles",
+            searchTerms: []
+        }, {
             title: "fas fa-square",
-            searchTerms: [ "block", "box" ]
+            searchTerms: []
         }, {
             title: "far fa-square",
-            searchTerms: [ "block", "box" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-square-arrow-up-right",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-behance",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-caret-down",
+            searchTerms: []
+        }, {
+            title: "far fa-square-caret-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-caret-left",
+            searchTerms: []
+        }, {
+            title: "far fa-square-caret-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-caret-right",
+            searchTerms: []
+        }, {
+            title: "far fa-square-caret-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-caret-up",
+            searchTerms: []
+        }, {
+            title: "far fa-square-caret-up",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-check",
+            searchTerms: []
+        }, {
+            title: "far fa-square-check",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-dribbble",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-envelope",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-facebook",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-font-awesome",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-font-awesome-stroke",
+            searchTerms: []
         }, {
             title: "fas fa-square-full",
             searchTerms: []
         }, {
-            title: "fas fa-square-root-alt",
+            title: "far fa-square-full",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-git",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-github",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-gitlab",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-google-plus",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-h",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-hacker-news",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-instagram",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-js",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-lastfm",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-minus",
+            searchTerms: []
+        }, {
+            title: "far fa-square-minus",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-nfi",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-odnoklassniki",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-parking",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-pen",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-person-confined",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-phone",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-phone-flip",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-pied-piper",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-pinterest",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-plus",
+            searchTerms: []
+        }, {
+            title: "far fa-square-plus",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-poll-horizontal",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-poll-vertical",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-reddit",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-root-variable",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-rss",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-share-nodes",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-snapchat",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-steam",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-tumblr",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-twitter",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-up-right",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-viadeo",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-vimeo",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-virus",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-whatsapp",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-xing",
+            searchTerms: []
+        }, {
+            title: "fas fa-square-xmark",
+            searchTerms: []
+        }, {
+            title: "fab fa-square-youtube",
             searchTerms: []
         }, {
             title: "fab fa-squarespace",
@@ -4506,29 +6114,44 @@
             title: "fab fa-stack-overflow",
             searchTerms: []
         }, {
+            title: "fab fa-stackpath",
+            searchTerms: []
+        }, {
+            title: "fas fa-staff-snake",
+            searchTerms: []
+        }, {
+            title: "fas fa-stairs",
+            searchTerms: []
+        }, {
             title: "fas fa-stamp",
             searchTerms: []
         }, {
+            title: "fas fa-stapler",
+            searchTerms: []
+        }, {
             title: "fas fa-star",
-            searchTerms: [ "achievement", "award", "favorite", "important", "night", "rating", "score" ]
+            searchTerms: []
         }, {
             title: "far fa-star",
-            searchTerms: [ "achievement", "award", "favorite", "important", "night", "rating", "score" ]
+            searchTerms: []
         }, {
             title: "fas fa-star-and-crescent",
-            searchTerms: [ "islam", "muslim" ]
+            searchTerms: []
         }, {
             title: "fas fa-star-half",
-            searchTerms: [ "achievement", "award", "rating", "score", "star-half-empty", "star-half-full" ]
+            searchTerms: []
         }, {
             title: "far fa-star-half",
-            searchTerms: [ "achievement", "award", "rating", "score", "star-half-empty", "star-half-full" ]
+            searchTerms: []
         }, {
-            title: "fas fa-star-half-alt",
-            searchTerms: [ "achievement", "award", "rating", "score", "star-half-empty", "star-half-full" ]
+            title: "fas fa-star-half-stroke",
+            searchTerms: []
+        }, {
+            title: "far fa-star-half-stroke",
+            searchTerms: []
         }, {
             title: "fas fa-star-of-david",
-            searchTerms: [ "jewish", "judaism" ]
+            searchTerms: []
         }, {
             title: "fas fa-star-of-life",
             searchTerms: []
@@ -4539,17 +6162,11 @@
             title: "fab fa-steam",
             searchTerms: []
         }, {
-            title: "fab fa-steam-square",
-            searchTerms: []
-        }, {
             title: "fab fa-steam-symbol",
             searchTerms: []
         }, {
-            title: "fas fa-step-backward",
-            searchTerms: [ "beginning", "first", "previous", "rewind", "start" ]
-        }, {
-            title: "fas fa-step-forward",
-            searchTerms: [ "end", "last", "next" ]
+            title: "fas fa-sterling-sign",
+            searchTerms: []
         }, {
             title: "fas fa-stethoscope",
             searchTerms: []
@@ -4557,38 +6174,26 @@
             title: "fab fa-sticker-mule",
             searchTerms: []
         }, {
-            title: "fas fa-sticky-note",
-            searchTerms: []
-        }, {
-            title: "far fa-sticky-note",
-            searchTerms: []
-        }, {
             title: "fas fa-stop",
-            searchTerms: [ "block", "box", "square" ]
-        }, {
-            title: "fas fa-stop-circle",
-            searchTerms: []
-        }, {
-            title: "far fa-stop-circle",
             searchTerms: []
         }, {
             title: "fas fa-stopwatch",
-            searchTerms: [ "time" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-stopwatch-20",
+            searchTerms: []
         }, {
             title: "fas fa-store",
             searchTerms: []
         }, {
-            title: "fas fa-store-alt",
+            title: "fas fa-store-slash",
             searchTerms: []
         }, {
             title: "fab fa-strava",
             searchTerms: []
         }, {
-            title: "fas fa-stream",
-            searchTerms: []
-        }, {
             title: "fas fa-street-view",
-            searchTerms: [ "map" ]
+            searchTerms: []
         }, {
             title: "fas fa-strikethrough",
             searchTerms: []
@@ -4600,7 +6205,7 @@
             searchTerms: []
         }, {
             title: "fas fa-stroopwafel",
-            searchTerms: [ "dessert", "food", "sweets", "waffle" ]
+            searchTerms: []
         }, {
             title: "fab fa-studiovinari",
             searchTerms: []
@@ -4614,89 +6219,104 @@
             title: "fas fa-subscript",
             searchTerms: []
         }, {
-            title: "fas fa-subway",
-            searchTerms: [ "machine", "railway", "train", "transportation", "vehicle" ]
-        }, {
             title: "fas fa-suitcase",
-            searchTerms: [ "baggage", "luggage", "move", "suitcase", "travel", "trip" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-suitcase-medical",
+            searchTerms: []
         }, {
             title: "fas fa-suitcase-rolling",
             searchTerms: []
         }, {
             title: "fas fa-sun",
-            searchTerms: [ "brighten", "contrast", "day", "lighter", "sol", "solar", "star", "weather" ]
+            searchTerms: []
         }, {
             title: "far fa-sun",
-            searchTerms: [ "brighten", "contrast", "day", "lighter", "sol", "solar", "star", "weather" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-sun-plant-wilt",
+            searchTerms: []
         }, {
             title: "fab fa-superpowers",
             searchTerms: []
         }, {
             title: "fas fa-superscript",
-            searchTerms: [ "exponential" ]
+            searchTerms: []
         }, {
             title: "fab fa-supple",
             searchTerms: []
         }, {
-            title: "fas fa-surprise",
-            searchTerms: [ "emoticon", "face", "shocked" ]
-        }, {
-            title: "far fa-surprise",
-            searchTerms: [ "emoticon", "face", "shocked" ]
+            title: "fab fa-suse",
+            searchTerms: []
         }, {
             title: "fas fa-swatchbook",
             searchTerms: []
         }, {
-            title: "fas fa-swimmer",
-            searchTerms: [ "athlete", "head", "man", "person", "water" ]
+            title: "fab fa-swift",
+            searchTerms: []
         }, {
-            title: "fas fa-swimming-pool",
-            searchTerms: [ "ladder", "recreation", "water" ]
+            title: "fab fa-symfony",
+            searchTerms: []
         }, {
             title: "fas fa-synagogue",
-            searchTerms: [ "building", "jewish", "judaism", "star of david", "temple" ]
-        }, {
-            title: "fas fa-sync",
-            searchTerms: [ "exchange", "refresh", "reload", "rotate", "swap" ]
-        }, {
-            title: "fas fa-sync-alt",
-            searchTerms: [ "refresh", "reload", "rotate" ]
+            searchTerms: []
         }, {
             title: "fas fa-syringe",
-            searchTerms: [ "immunizations", "needle" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-t",
+            searchTerms: []
         }, {
             title: "fas fa-table",
-            searchTerms: [ "data", "excel", "spreadsheet" ]
+            searchTerms: []
         }, {
-            title: "fas fa-table-tennis",
+            title: "fas fa-table-cells",
+            searchTerms: []
+        }, {
+            title: "fas fa-table-cells-large",
+            searchTerms: []
+        }, {
+            title: "fas fa-table-columns",
+            searchTerms: []
+        }, {
+            title: "fas fa-table-list",
+            searchTerms: []
+        }, {
+            title: "fas fa-table-tennis-paddle-ball",
             searchTerms: []
         }, {
             title: "fas fa-tablet",
-            searchTerms: [ "apple", "device", "ipad", "kindle", "screen" ]
+            searchTerms: []
         }, {
-            title: "fas fa-tablet-alt",
-            searchTerms: [ "apple", "device", "ipad", "kindle", "screen" ]
+            title: "fas fa-tablet-button",
+            searchTerms: []
+        }, {
+            title: "fas fa-tablet-screen-button",
+            searchTerms: []
         }, {
             title: "fas fa-tablets",
-            searchTerms: [ "drugs", "medicine" ]
+            searchTerms: []
         }, {
-            title: "fas fa-tachometer-alt",
-            searchTerms: [ "dashboard", "tachometer" ]
+            title: "fas fa-tachograph-digital",
+            searchTerms: []
         }, {
             title: "fas fa-tag",
-            searchTerms: [ "label" ]
+            searchTerms: []
         }, {
             title: "fas fa-tags",
-            searchTerms: [ "labels" ]
+            searchTerms: []
         }, {
             title: "fas fa-tape",
             searchTerms: []
         }, {
-            title: "fas fa-tasks",
-            searchTerms: [ "downloading", "downloads", "loading", "progress", "settings" ]
+            title: "fas fa-tarp",
+            searchTerms: []
+        }, {
+            title: "fas fa-tarp-droplet",
+            searchTerms: []
         }, {
             title: "fas fa-taxi",
-            searchTerms: [ "cab", "cabbie", "car", "car service", "lyft", "machine", "transportation", "uber", "vehicle" ]
+            searchTerms: []
         }, {
             title: "fab fa-teamspeak",
             searchTerms: []
@@ -4710,40 +6330,70 @@
             title: "fab fa-telegram",
             searchTerms: []
         }, {
-            title: "fab fa-telegram-plane",
+            title: "fas fa-temperature-arrow-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-temperature-arrow-up",
+            searchTerms: []
+        }, {
+            title: "fas fa-temperature-empty",
+            searchTerms: []
+        }, {
+            title: "fas fa-temperature-full",
+            searchTerms: []
+        }, {
+            title: "fas fa-temperature-half",
             searchTerms: []
         }, {
             title: "fas fa-temperature-high",
-            searchTerms: [ "mercury", "thermometer", "warm" ]
+            searchTerms: []
         }, {
             title: "fas fa-temperature-low",
-            searchTerms: [ "cool", "mercury", "thermometer" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-temperature-quarter",
+            searchTerms: []
+        }, {
+            title: "fas fa-temperature-three-quarters",
+            searchTerms: []
         }, {
             title: "fab fa-tencent-weibo",
             searchTerms: []
         }, {
+            title: "fas fa-tenge-sign",
+            searchTerms: []
+        }, {
+            title: "fas fa-tent",
+            searchTerms: []
+        }, {
+            title: "fas fa-tent-arrow-down-to-line",
+            searchTerms: []
+        }, {
+            title: "fas fa-tent-arrow-left-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-tent-arrow-turn-left",
+            searchTerms: []
+        }, {
+            title: "fas fa-tent-arrows-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-tents",
+            searchTerms: []
+        }, {
             title: "fas fa-terminal",
-            searchTerms: [ "code", "command", "console", "prompt" ]
+            searchTerms: []
         }, {
             title: "fas fa-text-height",
+            searchTerms: []
+        }, {
+            title: "fas fa-text-slash",
             searchTerms: []
         }, {
             title: "fas fa-text-width",
             searchTerms: []
         }, {
-            title: "fas fa-th",
-            searchTerms: [ "blocks", "boxes", "grid", "squares" ]
-        }, {
-            title: "fas fa-th-large",
-            searchTerms: [ "blocks", "boxes", "grid", "squares" ]
-        }, {
-            title: "fas fa-th-list",
-            searchTerms: [ "checklist", "completed", "done", "finished", "ol", "todo", "ul" ]
-        }, {
             title: "fab fa-the-red-yeti",
-            searchTerms: []
-        }, {
-            title: "fas fa-theater-masks",
             searchTerms: []
         }, {
             title: "fab fa-themeco",
@@ -4753,85 +6403,79 @@
             searchTerms: []
         }, {
             title: "fas fa-thermometer",
-            searchTerms: [ "mercury", "status", "temperature" ]
-        }, {
-            title: "fas fa-thermometer-empty",
-            searchTerms: [ "mercury", "status", "temperature" ]
-        }, {
-            title: "fas fa-thermometer-full",
-            searchTerms: [ "fever", "mercury", "status", "temperature" ]
-        }, {
-            title: "fas fa-thermometer-half",
-            searchTerms: [ "mercury", "status", "temperature" ]
-        }, {
-            title: "fas fa-thermometer-quarter",
-            searchTerms: [ "mercury", "status", "temperature" ]
-        }, {
-            title: "fas fa-thermometer-three-quarters",
-            searchTerms: [ "mercury", "status", "temperature" ]
+            searchTerms: []
         }, {
             title: "fab fa-think-peaks",
             searchTerms: []
         }, {
             title: "fas fa-thumbs-down",
-            searchTerms: [ "disagree", "disapprove", "dislike", "hand", "thumbs-o-down" ]
-        }, {
-            title: "far fa-thumbs-down",
-            searchTerms: [ "disagree", "disapprove", "dislike", "hand", "thumbs-o-down" ]
-        }, {
-            title: "fas fa-thumbs-up",
-            searchTerms: [ "agree", "approve", "favorite", "hand", "like", "ok", "okay", "success", "thumbs-o-up", "yes", "you got it dude" ]
-        }, {
-            title: "far fa-thumbs-up",
-            searchTerms: [ "agree", "approve", "favorite", "hand", "like", "ok", "okay", "success", "thumbs-o-up", "yes", "you got it dude" ]
-        }, {
-            title: "fas fa-thumbtack",
-            searchTerms: [ "coordinates", "location", "marker", "pin", "thumb-tack" ]
-        }, {
-            title: "fas fa-ticket-alt",
-            searchTerms: [ "ticket" ]
-        }, {
-            title: "fas fa-times",
-            searchTerms: [ "close", "cross", "error", "exit", "incorrect", "notice", "notification", "notify", "problem", "wrong", "x" ]
-        }, {
-            title: "fas fa-times-circle",
-            searchTerms: [ "close", "cross", "exit", "incorrect", "notice", "notification", "notify", "problem", "wrong", "x" ]
-        }, {
-            title: "far fa-times-circle",
-            searchTerms: [ "close", "cross", "exit", "incorrect", "notice", "notification", "notify", "problem", "wrong", "x" ]
-        }, {
-            title: "fas fa-tint",
-            searchTerms: [ "drop", "droplet", "raindrop", "waterdrop" ]
-        }, {
-            title: "fas fa-tint-slash",
             searchTerms: []
         }, {
-            title: "fas fa-tired",
-            searchTerms: [ "emoticon", "face", "grumpy" ]
+            title: "far fa-thumbs-down",
+            searchTerms: []
         }, {
-            title: "far fa-tired",
-            searchTerms: [ "emoticon", "face", "grumpy" ]
+            title: "fas fa-thumbs-up",
+            searchTerms: []
+        }, {
+            title: "far fa-thumbs-up",
+            searchTerms: []
+        }, {
+            title: "fas fa-thumbtack",
+            searchTerms: []
+        }, {
+            title: "fas fa-ticket",
+            searchTerms: []
+        }, {
+            title: "fas fa-ticket-simple",
+            searchTerms: []
+        }, {
+            title: "fab fa-tiktok",
+            searchTerms: []
+        }, {
+            title: "fas fa-timeline",
+            searchTerms: []
         }, {
             title: "fas fa-toggle-off",
-            searchTerms: [ "switch" ]
+            searchTerms: []
         }, {
             title: "fas fa-toggle-on",
-            searchTerms: [ "switch" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-toilet",
+            searchTerms: []
         }, {
             title: "fas fa-toilet-paper",
-            searchTerms: [ "bathroom", "halloween", "holiday", "lavatory", "prank", "restroom", "roll" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-toilet-paper-slash",
+            searchTerms: []
+        }, {
+            title: "fas fa-toilet-portable",
+            searchTerms: []
+        }, {
+            title: "fas fa-toilets-portable",
+            searchTerms: []
         }, {
             title: "fas fa-toolbox",
-            searchTerms: [ "admin", "container", "fix", "repair", "settings", "tools" ]
+            searchTerms: []
         }, {
             title: "fas fa-tooth",
-            searchTerms: [ "bicuspid", "dental", "molar", "mouth", "teeth" ]
-        }, {
-            title: "fas fa-torah",
-            searchTerms: [ "book", "jewish", "judaism" ]
+            searchTerms: []
         }, {
             title: "fas fa-torii-gate",
-            searchTerms: [ "building", "shintoism" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-tornado",
+            searchTerms: []
+        }, {
+            title: "fas fa-tower-broadcast",
+            searchTerms: []
+        }, {
+            title: "fas fa-tower-cell",
+            searchTerms: []
+        }, {
+            title: "fas fa-tower-observation",
+            searchTerms: []
         }, {
             title: "fas fa-tractor",
             searchTerms: []
@@ -4845,40 +6489,79 @@
             title: "fas fa-traffic-light",
             searchTerms: []
         }, {
+            title: "fas fa-trailer",
+            searchTerms: []
+        }, {
             title: "fas fa-train",
-            searchTerms: [ "bullet", "locomotive", "railway" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-train-subway",
+            searchTerms: []
+        }, {
+            title: "fas fa-train-tram",
+            searchTerms: []
         }, {
             title: "fas fa-transgender",
-            searchTerms: [ "intersex" ]
-        }, {
-            title: "fas fa-transgender-alt",
             searchTerms: []
         }, {
             title: "fas fa-trash",
-            searchTerms: [ "delete", "garbage", "hide", "remove" ]
+            searchTerms: []
         }, {
-            title: "fas fa-trash-alt",
-            searchTerms: [ "delete", "garbage", "hide", "remove", "trash", "trash-o" ]
+            title: "fas fa-trash-arrow-up",
+            searchTerms: []
         }, {
-            title: "far fa-trash-alt",
-            searchTerms: [ "delete", "garbage", "hide", "remove", "trash", "trash-o" ]
+            title: "fas fa-trash-can",
+            searchTerms: []
+        }, {
+            title: "far fa-trash-can",
+            searchTerms: []
+        }, {
+            title: "fas fa-trash-can-arrow-up",
+            searchTerms: []
         }, {
             title: "fas fa-tree",
-            searchTerms: [ "bark", "fall", "flora", "forest", "nature", "plant", "seasonal" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-tree-city",
+            searchTerms: []
         }, {
             title: "fab fa-trello",
             searchTerms: []
         }, {
-            title: "fab fa-tripadvisor",
+            title: "fas fa-triangle-exclamation",
             searchTerms: []
         }, {
             title: "fas fa-trophy",
-            searchTerms: [ "achievement", "award", "cup", "game", "winner" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-trowel",
+            searchTerms: []
+        }, {
+            title: "fas fa-trowel-bricks",
+            searchTerms: []
         }, {
             title: "fas fa-truck",
-            searchTerms: [ "delivery", "shipping" ]
+            searchTerms: []
         }, {
-            title: "fas fa-truck-loading",
+            title: "fas fa-truck-arrow-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-truck-droplet",
+            searchTerms: []
+        }, {
+            title: "fas fa-truck-fast",
+            searchTerms: []
+        }, {
+            title: "fas fa-truck-field",
+            searchTerms: []
+        }, {
+            title: "fas fa-truck-field-un",
+            searchTerms: []
+        }, {
+            title: "fas fa-truck-front",
+            searchTerms: []
+        }, {
+            title: "fas fa-truck-medical",
             searchTerms: []
         }, {
             title: "fas fa-truck-monster",
@@ -4890,8 +6573,11 @@
             title: "fas fa-truck-pickup",
             searchTerms: []
         }, {
-            title: "fas fa-tshirt",
-            searchTerms: [ "cloth", "clothing" ]
+            title: "fas fa-truck-plane",
+            searchTerms: []
+        }, {
+            title: "fas fa-truck-ramp-box",
+            searchTerms: []
         }, {
             title: "fas fa-tty",
             searchTerms: []
@@ -4899,175 +6585,232 @@
             title: "fab fa-tumblr",
             searchTerms: []
         }, {
-            title: "fab fa-tumblr-square",
+            title: "fas fa-turkish-lira-sign",
+            searchTerms: []
+        }, {
+            title: "fas fa-turn-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-turn-up",
             searchTerms: []
         }, {
             title: "fas fa-tv",
-            searchTerms: [ "computer", "display", "monitor", "television" ]
+            searchTerms: []
         }, {
             title: "fab fa-twitch",
             searchTerms: []
         }, {
             title: "fab fa-twitter",
-            searchTerms: [ "social network", "tweet" ]
-        }, {
-            title: "fab fa-twitter-square",
-            searchTerms: [ "social network", "tweet" ]
+            searchTerms: []
         }, {
             title: "fab fa-typo3",
+            searchTerms: []
+        }, {
+            title: "fas fa-u",
             searchTerms: []
         }, {
             title: "fab fa-uber",
             searchTerms: []
         }, {
+            title: "fab fa-ubuntu",
+            searchTerms: []
+        }, {
             title: "fab fa-uikit",
             searchTerms: []
         }, {
+            title: "fab fa-umbraco",
+            searchTerms: []
+        }, {
             title: "fas fa-umbrella",
-            searchTerms: [ "protection", "rain" ]
+            searchTerms: []
         }, {
             title: "fas fa-umbrella-beach",
-            searchTerms: [ "protection", "recreation", "sun" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-uncharted",
+            searchTerms: []
         }, {
             title: "fas fa-underline",
             searchTerms: []
         }, {
-            title: "fas fa-undo",
-            searchTerms: [ "back", "control z", "exchange", "oops", "return", "rotate", "swap" ]
-        }, {
-            title: "fas fa-undo-alt",
-            searchTerms: [ "back", "control z", "exchange", "oops", "return", "swap" ]
-        }, {
             title: "fab fa-uniregistry",
+            searchTerms: []
+        }, {
+            title: "fab fa-unity",
             searchTerms: []
         }, {
             title: "fas fa-universal-access",
             searchTerms: []
         }, {
-            title: "fas fa-university",
-            searchTerms: [ "bank", "institution" ]
-        }, {
-            title: "fas fa-unlink",
-            searchTerms: [ "chain", "chain-broken", "remove" ]
-        }, {
             title: "fas fa-unlock",
-            searchTerms: [ "admin", "lock", "password", "protect" ]
+            searchTerms: []
         }, {
-            title: "fas fa-unlock-alt",
-            searchTerms: [ "admin", "lock", "password", "protect" ]
+            title: "fas fa-unlock-keyhole",
+            searchTerms: []
+        }, {
+            title: "fab fa-unsplash",
+            searchTerms: []
         }, {
             title: "fab fa-untappd",
             searchTerms: []
         }, {
+            title: "fas fa-up-down",
+            searchTerms: []
+        }, {
+            title: "fas fa-up-down-left-right",
+            searchTerms: []
+        }, {
+            title: "fas fa-up-long",
+            searchTerms: []
+        }, {
+            title: "fas fa-up-right-and-down-left-from-center",
+            searchTerms: []
+        }, {
+            title: "fas fa-up-right-from-square",
+            searchTerms: []
+        }, {
             title: "fas fa-upload",
-            searchTerms: [ "export", "publish" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-ups",
+            searchTerms: []
         }, {
             title: "fab fa-usb",
             searchTerms: []
         }, {
             title: "fas fa-user",
-            searchTerms: [ "account", "avatar", "head", "human", "man", "person", "profile" ]
+            searchTerms: []
         }, {
             title: "far fa-user",
-            searchTerms: [ "account", "avatar", "head", "human", "man", "person", "profile" ]
-        }, {
-            title: "fas fa-user-alt",
-            searchTerms: [ "account", "avatar", "head", "human", "man", "person", "profile" ]
-        }, {
-            title: "fas fa-user-alt-slash",
             searchTerms: []
         }, {
             title: "fas fa-user-astronaut",
-            searchTerms: [ "avatar", "clothing", "cosmonaut", "space", "suit" ]
+            searchTerms: []
         }, {
             title: "fas fa-user-check",
             searchTerms: []
         }, {
-            title: "fas fa-user-circle",
-            searchTerms: [ "account", "avatar", "head", "human", "man", "person", "profile" ]
-        }, {
-            title: "far fa-user-circle",
-            searchTerms: [ "account", "avatar", "head", "human", "man", "person", "profile" ]
-        }, {
             title: "fas fa-user-clock",
             searchTerms: []
         }, {
-            title: "fas fa-user-cog",
+            title: "fas fa-user-doctor",
             searchTerms: []
         }, {
-            title: "fas fa-user-edit",
-            searchTerms: []
-        }, {
-            title: "fas fa-user-friends",
+            title: "fas fa-user-gear",
             searchTerms: []
         }, {
             title: "fas fa-user-graduate",
-            searchTerms: [ "cap", "clothing", "commencement", "gown", "graduation", "student" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-user-group",
+            searchTerms: []
         }, {
             title: "fas fa-user-injured",
-            searchTerms: [ "cast", "ouch", "sling" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-user-large",
+            searchTerms: []
+        }, {
+            title: "fas fa-user-large-slash",
+            searchTerms: []
         }, {
             title: "fas fa-user-lock",
             searchTerms: []
         }, {
-            title: "fas fa-user-md",
-            searchTerms: [ "doctor", "job", "medical", "nurse", "occupation", "profile" ]
-        }, {
             title: "fas fa-user-minus",
-            searchTerms: [ "delete", "negative", "remove" ]
+            searchTerms: []
         }, {
             title: "fas fa-user-ninja",
-            searchTerms: [ "assassin", "avatar", "dangerous", "deadly", "sneaky" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-user-nurse",
+            searchTerms: []
+        }, {
+            title: "fas fa-user-pen",
+            searchTerms: []
         }, {
             title: "fas fa-user-plus",
-            searchTerms: [ "positive", "sign up", "signup" ]
+            searchTerms: []
         }, {
             title: "fas fa-user-secret",
-            searchTerms: [ "clothing", "coat", "hat", "incognito", "privacy", "spy", "whisper" ]
+            searchTerms: []
         }, {
             title: "fas fa-user-shield",
             searchTerms: []
         }, {
             title: "fas fa-user-slash",
-            searchTerms: [ "ban", "remove" ]
+            searchTerms: []
         }, {
             title: "fas fa-user-tag",
             searchTerms: []
         }, {
             title: "fas fa-user-tie",
-            searchTerms: [ "avatar", "business", "clothing", "formal" ]
+            searchTerms: []
         }, {
-            title: "fas fa-user-times",
-            searchTerms: [ "archive", "delete", "remove", "x" ]
+            title: "fas fa-user-xmark",
+            searchTerms: []
         }, {
             title: "fas fa-users",
-            searchTerms: [ "people", "persons", "profiles" ]
+            searchTerms: []
         }, {
-            title: "fas fa-users-cog",
+            title: "fas fa-users-between-lines",
+            searchTerms: []
+        }, {
+            title: "fas fa-users-gear",
+            searchTerms: []
+        }, {
+            title: "fas fa-users-line",
+            searchTerms: []
+        }, {
+            title: "fas fa-users-rays",
+            searchTerms: []
+        }, {
+            title: "fas fa-users-rectangle",
+            searchTerms: []
+        }, {
+            title: "fas fa-users-slash",
+            searchTerms: []
+        }, {
+            title: "fas fa-users-viewfinder",
+            searchTerms: []
+        }, {
+            title: "fab fa-usps",
             searchTerms: []
         }, {
             title: "fab fa-ussunnah",
             searchTerms: []
         }, {
-            title: "fas fa-utensil-spoon",
-            searchTerms: [ "spoon" ]
-        }, {
             title: "fas fa-utensils",
-            searchTerms: [ "cutlery", "dinner", "eat", "food", "knife", "restaurant", "spoon" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-v",
+            searchTerms: []
         }, {
             title: "fab fa-vaadin",
             searchTerms: []
         }, {
+            title: "fas fa-van-shuttle",
+            searchTerms: []
+        }, {
+            title: "fas fa-vault",
+            searchTerms: []
+        }, {
             title: "fas fa-vector-square",
-            searchTerms: [ "anchors", "lines", "object" ]
+            searchTerms: []
         }, {
             title: "fas fa-venus",
-            searchTerms: [ "female" ]
+            searchTerms: []
         }, {
             title: "fas fa-venus-double",
             searchTerms: []
         }, {
             title: "fas fa-venus-mars",
+            searchTerms: []
+        }, {
+            title: "fas fa-vest",
+            searchTerms: []
+        }, {
+            title: "fas fa-vest-patches",
             searchTerms: []
         }, {
             title: "fab fa-viacoin",
@@ -5076,37 +6819,52 @@
             title: "fab fa-viadeo",
             searchTerms: []
         }, {
-            title: "fab fa-viadeo-square",
+            title: "fas fa-vial",
             searchTerms: []
         }, {
-            title: "fas fa-vial",
-            searchTerms: [ "test tube" ]
+            title: "fas fa-vial-circle-check",
+            searchTerms: []
+        }, {
+            title: "fas fa-vial-virus",
+            searchTerms: []
         }, {
             title: "fas fa-vials",
-            searchTerms: [ "lab results", "test tubes" ]
+            searchTerms: []
         }, {
             title: "fab fa-viber",
             searchTerms: []
         }, {
             title: "fas fa-video",
-            searchTerms: [ "camera", "film", "movie", "record", "video-camera" ]
+            searchTerms: []
         }, {
             title: "fas fa-video-slash",
             searchTerms: []
         }, {
             title: "fas fa-vihara",
-            searchTerms: [ "buddhism", "buddhist", "building", "monastery" ]
+            searchTerms: []
         }, {
             title: "fab fa-vimeo",
             searchTerms: []
         }, {
-            title: "fab fa-vimeo-square",
+            title: "fab fa-vimeo-v",
             searchTerms: []
         }, {
-            title: "fab fa-vimeo-v",
-            searchTerms: [ "vimeo" ]
-        }, {
             title: "fab fa-vine",
+            searchTerms: []
+        }, {
+            title: "fas fa-virus",
+            searchTerms: []
+        }, {
+            title: "fas fa-virus-covid",
+            searchTerms: []
+        }, {
+            title: "fas fa-virus-covid-slash",
+            searchTerms: []
+        }, {
+            title: "fas fa-virus-slash",
+            searchTerms: []
+        }, {
+            title: "fas fa-viruses",
             searchTerms: []
         }, {
             title: "fab fa-vk",
@@ -5115,40 +6873,67 @@
             title: "fab fa-vnv",
             searchTerms: []
         }, {
-            title: "fas fa-volleyball-ball",
+            title: "fas fa-voicemail",
             searchTerms: []
         }, {
-            title: "fas fa-volume-down",
-            searchTerms: [ "audio", "lower", "music", "quieter", "sound", "speaker" ]
+            title: "fas fa-volcano",
+            searchTerms: []
         }, {
-            title: "fas fa-volume-mute",
+            title: "fas fa-volleyball",
+            searchTerms: []
+        }, {
+            title: "fas fa-volume-high",
+            searchTerms: []
+        }, {
+            title: "fas fa-volume-low",
             searchTerms: []
         }, {
             title: "fas fa-volume-off",
-            searchTerms: [ "audio", "music", "mute", "sound" ]
+            searchTerms: []
         }, {
-            title: "fas fa-volume-up",
-            searchTerms: [ "audio", "higher", "louder", "music", "sound", "speaker" ]
-        }, {
-            title: "fas fa-vote-yea",
-            searchTerms: [ "accept", "cast", "election", "politics", "positive", "yes" ]
+            title: "fas fa-volume-xmark",
+            searchTerms: []
         }, {
             title: "fas fa-vr-cardboard",
-            searchTerms: [ "google", "reality", "virtual" ]
+            searchTerms: []
         }, {
             title: "fab fa-vuejs",
             searchTerms: []
         }, {
-            title: "fas fa-walking",
+            title: "fas fa-w",
+            searchTerms: []
+        }, {
+            title: "fas fa-walkie-talkie",
             searchTerms: []
         }, {
             title: "fas fa-wallet",
             searchTerms: []
         }, {
+            title: "fas fa-wand-magic",
+            searchTerms: []
+        }, {
+            title: "fas fa-wand-magic-sparkles",
+            searchTerms: []
+        }, {
+            title: "fas fa-wand-sparkles",
+            searchTerms: []
+        }, {
             title: "fas fa-warehouse",
             searchTerms: []
         }, {
+            title: "fab fa-watchman-monitoring",
+            searchTerms: []
+        }, {
             title: "fas fa-water",
+            searchTerms: []
+        }, {
+            title: "fas fa-water-ladder",
+            searchTerms: []
+        }, {
+            title: "fas fa-wave-square",
+            searchTerms: []
+        }, {
+            title: "fab fa-waze",
             searchTerms: []
         }, {
             title: "fab fa-weebly",
@@ -5157,11 +6942,11 @@
             title: "fab fa-weibo",
             searchTerms: []
         }, {
-            title: "fas fa-weight",
-            searchTerms: [ "measurement", "scale", "weight" ]
-        }, {
             title: "fas fa-weight-hanging",
-            searchTerms: [ "anvil", "heavy", "measurement" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-weight-scale",
+            searchTerms: []
         }, {
             title: "fab fa-weixin",
             searchTerms: []
@@ -5169,11 +6954,20 @@
             title: "fab fa-whatsapp",
             searchTerms: []
         }, {
-            title: "fab fa-whatsapp-square",
+            title: "fas fa-wheat-awn",
+            searchTerms: []
+        }, {
+            title: "fas fa-wheat-awn-circle-exclamation",
             searchTerms: []
         }, {
             title: "fas fa-wheelchair",
-            searchTerms: [ "handicap", "person" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-wheelchair-move",
+            searchTerms: []
+        }, {
+            title: "fas fa-whiskey-glass",
+            searchTerms: []
         }, {
             title: "fab fa-whmcs",
             searchTerms: []
@@ -5185,12 +6979,6 @@
             searchTerms: []
         }, {
             title: "fas fa-wind",
-            searchTerms: [ "air", "blow", "breeze", "fall", "seasonal" ]
-        }, {
-            title: "fas fa-window-close",
-            searchTerms: []
-        }, {
-            title: "far fa-window-close",
             searchTerms: []
         }, {
             title: "fas fa-window-maximize",
@@ -5212,33 +7000,42 @@
             searchTerms: []
         }, {
             title: "fab fa-windows",
-            searchTerms: [ "microsoft" ]
+            searchTerms: []
         }, {
             title: "fas fa-wine-bottle",
-            searchTerms: [ "alcohol", "beverage", "drink", "glass", "grapes" ]
+            searchTerms: []
         }, {
             title: "fas fa-wine-glass",
-            searchTerms: [ "alcohol", "beverage", "drink", "grapes" ]
+            searchTerms: []
         }, {
-            title: "fas fa-wine-glass-alt",
-            searchTerms: [ "alcohol", "beverage", "drink", "grapes" ]
+            title: "fas fa-wine-glass-empty",
+            searchTerms: []
+        }, {
+            title: "fab fa-wirsindhandwerk",
+            searchTerms: []
         }, {
             title: "fab fa-wix",
             searchTerms: []
         }, {
             title: "fab fa-wizards-of-the-coast",
-            searchTerms: [ "Dungeons & Dragons", "d&d", "dnd", "fantasy", "game", "gaming", "tabletop" ]
+            searchTerms: []
+        }, {
+            title: "fab fa-wodu",
+            searchTerms: []
         }, {
             title: "fab fa-wolf-pack-battalion",
             searchTerms: []
         }, {
             title: "fas fa-won-sign",
-            searchTerms: [ "krw" ]
+            searchTerms: []
         }, {
             title: "fab fa-wordpress",
             searchTerms: []
         }, {
             title: "fab fa-wordpress-simple",
+            searchTerms: []
+        }, {
+            title: "fas fa-worm",
             searchTerms: []
         }, {
             title: "fab fa-wpbeginner",
@@ -5251,13 +7048,16 @@
             searchTerms: []
         }, {
             title: "fab fa-wpressr",
-            searchTerms: [ "rendact" ]
+            searchTerms: []
         }, {
             title: "fas fa-wrench",
-            searchTerms: [ "fix", "settings", "spanner", "tool", "update" ]
+            searchTerms: []
+        }, {
+            title: "fas fa-x",
+            searchTerms: []
         }, {
             title: "fas fa-x-ray",
-            searchTerms: [ "radiological images", "radiology" ]
+            searchTerms: []
         }, {
             title: "fab fa-xbox",
             searchTerms: []
@@ -5265,7 +7065,13 @@
             title: "fab fa-xing",
             searchTerms: []
         }, {
-            title: "fab fa-xing-square",
+            title: "fas fa-xmark",
+            searchTerms: []
+        }, {
+            title: "fas fa-xmarks-lines",
+            searchTerms: []
+        }, {
+            title: "fas fa-y",
             searchTerms: []
         }, {
             title: "fab fa-y-combinator",
@@ -5274,28 +7080,34 @@
             title: "fab fa-yahoo",
             searchTerms: []
         }, {
+            title: "fab fa-yammer",
+            searchTerms: []
+        }, {
             title: "fab fa-yandex",
             searchTerms: []
         }, {
             title: "fab fa-yandex-international",
             searchTerms: []
         }, {
+            title: "fab fa-yarn",
+            searchTerms: []
+        }, {
             title: "fab fa-yelp",
             searchTerms: []
         }, {
             title: "fas fa-yen-sign",
-            searchTerms: [ "jpy", "money" ]
+            searchTerms: []
         }, {
             title: "fas fa-yin-yang",
-            searchTerms: [ "daoism", "opposites", "taoism" ]
+            searchTerms: []
         }, {
             title: "fab fa-yoast",
             searchTerms: []
         }, {
             title: "fab fa-youtube",
-            searchTerms: [ "film", "video", "youtube-play", "youtube-square" ]
+            searchTerms: []
         }, {
-            title: "fab fa-youtube-square",
+            title: "fas fa-z",
             searchTerms: []
         }, {
             title: "fab fa-zhihu",
