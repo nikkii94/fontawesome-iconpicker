@@ -50,6 +50,11 @@ module.exports = function(grunt) {
                                         title: 'fa-solid ' + icon,
                                         searchTerms: ele.search.terms
                                     });
+                                } else if (style.startsWith('regular')) {
+                                    targetJSON.icons.push({
+                                        title: 'fa-regular ' + icon,
+                                        searchTerms: ele.search.terms
+                                    });
                                 }
                             });
                         });

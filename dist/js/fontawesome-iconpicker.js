@@ -1113,7 +1113,13 @@
             title: "fa-solid fa-address-book",
             searchTerms: []
         }, {
+            title: "fa-regular fa-address-book",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-address-card",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-address-card",
             searchTerms: []
         }, {
             title: "fa-brands fa-adn",
@@ -1539,10 +1545,16 @@
             title: "fa-solid fa-bell",
             searchTerms: []
         }, {
+            title: "fa-regular fa-bell",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-bell-concierge",
             searchTerms: []
         }, {
             title: "fa-solid fa-bell-slash",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-bell-slash",
             searchTerms: []
         }, {
             title: "fa-solid fa-bezier-curve",
@@ -1654,6 +1666,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-bookmark",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-bookmark",
             searchTerms: []
         }, {
             title: "fa-brands fa-bootstrap",
@@ -1773,6 +1788,9 @@
             title: "fa-solid fa-building",
             searchTerms: []
         }, {
+            title: "fa-regular fa-building",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-building-circle-arrow-right",
             searchTerms: []
         }, {
@@ -1854,7 +1872,13 @@
             title: "fa-solid fa-calendar",
             searchTerms: []
         }, {
+            title: "fa-regular fa-calendar",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-calendar-check",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-calendar-check",
             searchTerms: []
         }, {
             title: "fa-solid fa-calendar-day",
@@ -1863,16 +1887,28 @@
             title: "fa-solid fa-calendar-days",
             searchTerms: []
         }, {
+            title: "fa-regular fa-calendar-days",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-calendar-minus",
             searchTerms: []
         }, {
+            title: "fa-regular fa-calendar-minus",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-calendar-plus",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-calendar-plus",
             searchTerms: []
         }, {
             title: "fa-solid fa-calendar-week",
             searchTerms: []
         }, {
             title: "fa-solid fa-calendar-xmark",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-calendar-xmark",
             searchTerms: []
         }, {
             title: "fa-solid fa-camera",
@@ -2025,6 +2061,9 @@
             title: "fa-solid fa-chart-bar",
             searchTerms: []
         }, {
+            title: "fa-regular fa-chart-bar",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-chart-column",
             searchTerms: []
         }, {
@@ -2058,22 +2097,40 @@
             title: "fa-solid fa-chess-bishop",
             searchTerms: []
         }, {
+            title: "fa-regular fa-chess-bishop",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-chess-board",
             searchTerms: []
         }, {
             title: "fa-solid fa-chess-king",
             searchTerms: []
         }, {
+            title: "fa-regular fa-chess-king",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-chess-knight",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-chess-knight",
             searchTerms: []
         }, {
             title: "fa-solid fa-chess-pawn",
             searchTerms: []
         }, {
+            title: "fa-regular fa-chess-pawn",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-chess-queen",
             searchTerms: []
         }, {
+            title: "fa-regular fa-chess-queen",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-chess-rook",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-chess-rook",
             searchTerms: []
         }, {
             title: "fa-solid fa-chevron-down",
@@ -2115,6 +2172,9 @@
             title: "fa-solid fa-circle",
             searchTerms: []
         }, {
+            title: "fa-regular fa-circle",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-circle-arrow-down",
             searchTerms: []
         }, {
@@ -2128,6 +2188,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-circle-check",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-circle-check",
             searchTerms: []
         }, {
             title: "fa-solid fa-circle-chevron-down",
@@ -2148,7 +2211,13 @@
             title: "fa-solid fa-circle-dot",
             searchTerms: []
         }, {
+            title: "fa-regular fa-circle-dot",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-circle-down",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-circle-down",
             searchTerms: []
         }, {
             title: "fa-solid fa-circle-exclamation",
@@ -2166,6 +2235,9 @@
             title: "fa-solid fa-circle-left",
             searchTerms: []
         }, {
+            title: "fa-regular fa-circle-left",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-circle-minus",
             searchTerms: []
         }, {
@@ -2178,7 +2250,13 @@
             title: "fa-solid fa-circle-pause",
             searchTerms: []
         }, {
+            title: "fa-regular fa-circle-pause",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-circle-play",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-circle-play",
             searchTerms: []
         }, {
             title: "fa-solid fa-circle-plus",
@@ -2187,22 +2265,40 @@
             title: "fa-solid fa-circle-question",
             searchTerms: []
         }, {
+            title: "fa-regular fa-circle-question",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-circle-radiation",
             searchTerms: []
         }, {
             title: "fa-solid fa-circle-right",
             searchTerms: []
         }, {
+            title: "fa-regular fa-circle-right",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-circle-stop",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-circle-stop",
             searchTerms: []
         }, {
             title: "fa-solid fa-circle-up",
             searchTerms: []
         }, {
+            title: "fa-regular fa-circle-up",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-circle-user",
             searchTerms: []
         }, {
+            title: "fa-regular fa-circle-user",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-circle-xmark",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-circle-xmark",
             searchTerms: []
         }, {
             title: "fa-solid fa-city",
@@ -2212,6 +2308,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-clipboard",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-clipboard",
             searchTerms: []
         }, {
             title: "fa-solid fa-clipboard-check",
@@ -2229,13 +2328,22 @@
             title: "fa-solid fa-clock",
             searchTerms: []
         }, {
+            title: "fa-regular fa-clock",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-clock-rotate-left",
             searchTerms: []
         }, {
             title: "fa-solid fa-clone",
             searchTerms: []
         }, {
+            title: "fa-regular fa-clone",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-closed-captioning",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-closed-captioning",
             searchTerms: []
         }, {
             title: "fa-solid fa-cloud",
@@ -2328,10 +2436,16 @@
             title: "fa-solid fa-comment",
             searchTerms: []
         }, {
+            title: "fa-regular fa-comment",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-comment-dollar",
             searchTerms: []
         }, {
             title: "fa-solid fa-comment-dots",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-comment-dots",
             searchTerms: []
         }, {
             title: "fa-solid fa-comment-medical",
@@ -2346,6 +2460,9 @@
             title: "fa-solid fa-comments",
             searchTerms: []
         }, {
+            title: "fa-regular fa-comments",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-comments-dollar",
             searchTerms: []
         }, {
@@ -2353,6 +2470,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-compass",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-compass",
             searchTerms: []
         }, {
             title: "fa-solid fa-compass-drafting",
@@ -2385,7 +2505,13 @@
             title: "fa-solid fa-copy",
             searchTerms: []
         }, {
+            title: "fa-regular fa-copy",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-copyright",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-copyright",
             searchTerms: []
         }, {
             title: "fa-brands fa-cotton-bureau",
@@ -2443,6 +2569,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-credit-card",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-credit-card",
             searchTerms: []
         }, {
             title: "fa-brands fa-critical-role",
@@ -2763,10 +2892,16 @@
             title: "fa-solid fa-envelope",
             searchTerms: []
         }, {
+            title: "fa-regular fa-envelope",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-envelope-circle-check",
             searchTerms: []
         }, {
             title: "fa-solid fa-envelope-open",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-envelope-open",
             searchTerms: []
         }, {
             title: "fa-solid fa-envelope-open-text",
@@ -2817,6 +2952,9 @@
             title: "fa-solid fa-eye",
             searchTerms: []
         }, {
+            title: "fa-regular fa-eye",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-eye-dropper",
             searchTerms: []
         }, {
@@ -2826,115 +2964,226 @@
             title: "fa-solid fa-eye-slash",
             searchTerms: []
         }, {
+            title: "fa-regular fa-eye-slash",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-f",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-angry",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-angry",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-dizzy",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-dizzy",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-flushed",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-flushed",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-frown",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-frown",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-frown-open",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-frown-open",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-grimace",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-grimace",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-grin",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-grin",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-grin-beam",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-grin-beam",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-grin-beam-sweat",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-grin-beam-sweat",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-grin-hearts",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-grin-hearts",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-grin-squint",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-grin-squint",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-grin-squint-tears",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-grin-squint-tears",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-grin-stars",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-grin-stars",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-grin-tears",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-grin-tears",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-grin-tongue",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-grin-tongue",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-grin-tongue-squint",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-grin-tongue-squint",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-grin-tongue-wink",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-grin-tongue-wink",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-grin-wide",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-grin-wide",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-grin-wink",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-grin-wink",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-kiss",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-kiss",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-kiss-beam",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-kiss-beam",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-kiss-wink-heart",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-kiss-wink-heart",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-laugh",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-laugh",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-laugh-beam",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-laugh-beam",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-laugh-squint",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-laugh-squint",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-laugh-wink",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-laugh-wink",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-meh",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-meh",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-meh-blank",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-meh-blank",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-rolling-eyes",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-rolling-eyes",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-sad-cry",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-sad-cry",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-sad-tear",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-sad-tear",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-smile",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-smile",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-smile-beam",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-smile-beam",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-smile-wink",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-smile-wink",
             searchTerms: []
         }, {
             title: "fa-solid fa-face-surprise",
             searchTerms: []
         }, {
+            title: "fa-regular fa-face-surprise",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-face-tired",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-face-tired",
             searchTerms: []
         }, {
             title: "fa-brands fa-facebook",
@@ -2982,6 +3231,9 @@
             title: "fa-solid fa-file",
             searchTerms: []
         }, {
+            title: "fa-regular fa-file",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-file-arrow-down",
             searchTerms: []
         }, {
@@ -2989,6 +3241,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-file-audio",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-file-audio",
             searchTerms: []
         }, {
             title: "fa-solid fa-file-circle-check",
@@ -3012,6 +3267,9 @@
             title: "fa-solid fa-file-code",
             searchTerms: []
         }, {
+            title: "fa-regular fa-file-code",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-file-contract",
             searchTerms: []
         }, {
@@ -3021,10 +3279,16 @@
             title: "fa-solid fa-file-excel",
             searchTerms: []
         }, {
+            title: "fa-regular fa-file-excel",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-file-export",
             searchTerms: []
         }, {
             title: "fa-solid fa-file-image",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-file-image",
             searchTerms: []
         }, {
             title: "fa-solid fa-file-import",
@@ -3039,16 +3303,25 @@
             title: "fa-solid fa-file-lines",
             searchTerms: []
         }, {
+            title: "fa-regular fa-file-lines",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-file-medical",
             searchTerms: []
         }, {
             title: "fa-solid fa-file-pdf",
             searchTerms: []
         }, {
+            title: "fa-regular fa-file-pdf",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-file-pen",
             searchTerms: []
         }, {
             title: "fa-solid fa-file-powerpoint",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-file-powerpoint",
             searchTerms: []
         }, {
             title: "fa-solid fa-file-prescription",
@@ -3063,13 +3336,22 @@
             title: "fa-solid fa-file-video",
             searchTerms: []
         }, {
+            title: "fa-regular fa-file-video",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-file-waveform",
             searchTerms: []
         }, {
             title: "fa-solid fa-file-word",
             searchTerms: []
         }, {
+            title: "fa-regular fa-file-word",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-file-zipper",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-file-zipper",
             searchTerms: []
         }, {
             title: "fa-solid fa-fill",
@@ -3132,6 +3414,9 @@
             title: "fa-solid fa-flag",
             searchTerms: []
         }, {
+            title: "fa-regular fa-flag",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-flag-checkered",
             searchTerms: []
         }, {
@@ -3153,6 +3438,9 @@
             title: "fa-solid fa-floppy-disk",
             searchTerms: []
         }, {
+            title: "fa-regular fa-floppy-disk",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-florin-sign",
             searchTerms: []
         }, {
@@ -3162,13 +3450,22 @@
             title: "fa-solid fa-folder",
             searchTerms: []
         }, {
+            title: "fa-regular fa-folder",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-folder-closed",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-folder-closed",
             searchTerms: []
         }, {
             title: "fa-solid fa-folder-minus",
             searchTerms: []
         }, {
             title: "fa-solid fa-folder-open",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-folder-open",
             searchTerms: []
         }, {
             title: "fa-solid fa-folder-plus",
@@ -3181,6 +3478,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-font-awesome",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-font-awesome",
             searchTerms: []
         }, {
             title: "fa-brands fa-font-awesome",
@@ -3234,6 +3534,9 @@
             title: "fa-solid fa-futbol",
             searchTerms: []
         }, {
+            title: "fa-regular fa-futbol",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-g",
             searchTerms: []
         }, {
@@ -3271,6 +3574,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-gem",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-gem",
             searchTerms: []
         }, {
             title: "fa-solid fa-genderless",
@@ -3441,7 +3747,13 @@
             title: "fa-solid fa-hand",
             searchTerms: []
         }, {
+            title: "fa-regular fa-hand",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-hand-back-fist",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-hand-back-fist",
             searchTerms: []
         }, {
             title: "fa-solid fa-hand-dots",
@@ -3471,34 +3783,61 @@
             title: "fa-solid fa-hand-lizard",
             searchTerms: []
         }, {
+            title: "fa-regular fa-hand-lizard",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-hand-middle-finger",
             searchTerms: []
         }, {
             title: "fa-solid fa-hand-peace",
             searchTerms: []
         }, {
+            title: "fa-regular fa-hand-peace",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-hand-point-down",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-hand-point-down",
             searchTerms: []
         }, {
             title: "fa-solid fa-hand-point-left",
             searchTerms: []
         }, {
+            title: "fa-regular fa-hand-point-left",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-hand-point-right",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-hand-point-right",
             searchTerms: []
         }, {
             title: "fa-solid fa-hand-point-up",
             searchTerms: []
         }, {
+            title: "fa-regular fa-hand-point-up",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-hand-pointer",
             searchTerms: []
         }, {
+            title: "fa-regular fa-hand-pointer",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-hand-scissors",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-hand-scissors",
             searchTerms: []
         }, {
             title: "fa-solid fa-hand-sparkles",
             searchTerms: []
         }, {
             title: "fa-solid fa-hand-spock",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-hand-spock",
             searchTerms: []
         }, {
             title: "fa-solid fa-handcuffs",
@@ -3534,6 +3873,9 @@
             title: "fa-solid fa-handshake",
             searchTerms: []
         }, {
+            title: "fa-regular fa-handshake",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-handshake-angle",
             searchTerms: []
         }, {
@@ -3550,6 +3892,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-hard-drive",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-hard-drive",
             searchTerms: []
         }, {
             title: "fa-brands fa-hashnode",
@@ -3592,6 +3937,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-heart",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-heart",
             searchTerms: []
         }, {
             title: "fa-solid fa-heart-circle-bolt",
@@ -3672,6 +4020,9 @@
             title: "fa-solid fa-hospital",
             searchTerms: []
         }, {
+            title: "fa-regular fa-hospital",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-hospital-user",
             searchTerms: []
         }, {
@@ -3690,10 +4041,16 @@
             title: "fa-solid fa-hourglass",
             searchTerms: []
         }, {
+            title: "fa-regular fa-hourglass",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-hourglass-end",
             searchTerms: []
         }, {
             title: "fa-solid fa-hourglass-half",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-hourglass-half",
             searchTerms: []
         }, {
             title: "fa-solid fa-hourglass-start",
@@ -3804,7 +4161,13 @@
             title: "fa-solid fa-id-badge",
             searchTerms: []
         }, {
+            title: "fa-regular fa-id-badge",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-id-card",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-id-card",
             searchTerms: []
         }, {
             title: "fa-solid fa-id-card-clip",
@@ -3819,10 +4182,16 @@
             title: "fa-solid fa-image",
             searchTerms: []
         }, {
+            title: "fa-regular fa-image",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-image-portrait",
             searchTerms: []
         }, {
             title: "fa-solid fa-images",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-images",
             searchTerms: []
         }, {
             title: "fa-brands fa-imdb",
@@ -3942,6 +4311,9 @@
             title: "fa-solid fa-keyboard",
             searchTerms: []
         }, {
+            title: "fa-regular fa-keyboard",
+            searchTerms: []
+        }, {
             title: "fa-brands fa-keycdn",
             searchTerms: []
         }, {
@@ -4026,6 +4398,9 @@
             title: "fa-solid fa-lemon",
             searchTerms: []
         }, {
+            title: "fa-regular fa-lemon",
+            searchTerms: []
+        }, {
             title: "fa-brands fa-less",
             searchTerms: []
         }, {
@@ -4038,7 +4413,13 @@
             title: "fa-solid fa-life-ring",
             searchTerms: []
         }, {
+            title: "fa-regular fa-life-ring",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-lightbulb",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-lightbulb",
             searchTerms: []
         }, {
             title: "fa-brands fa-line",
@@ -4158,6 +4539,9 @@
             title: "fa-solid fa-map",
             searchTerms: []
         }, {
+            title: "fa-regular fa-map",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-map-location",
             searchTerms: []
         }, {
@@ -4263,6 +4647,9 @@
             title: "fa-solid fa-message",
             searchTerms: []
         }, {
+            title: "fa-regular fa-message",
+            searchTerms: []
+        }, {
             title: "fa-brands fa-meta",
             searchTerms: []
         }, {
@@ -4344,6 +4731,9 @@
             title: "fa-solid fa-money-bill-1",
             searchTerms: []
         }, {
+            title: "fa-regular fa-money-bill-1",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-money-bill-1-wave",
             searchTerms: []
         }, {
@@ -4372,6 +4762,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-moon",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-moon",
             searchTerms: []
         }, {
             title: "fa-solid fa-mortar-pestle",
@@ -4431,6 +4824,9 @@
             title: "fa-solid fa-newspaper",
             searchTerms: []
         }, {
+            title: "fa-regular fa-newspaper",
+            searchTerms: []
+        }, {
             title: "fa-brands fa-nfc-directional",
             searchTerms: []
         }, {
@@ -4452,6 +4848,9 @@
             title: "fa-solid fa-note-sticky",
             searchTerms: []
         }, {
+            title: "fa-regular fa-note-sticky",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-notes-medical",
             searchTerms: []
         }, {
@@ -4470,7 +4869,13 @@
             title: "fa-solid fa-object-group",
             searchTerms: []
         }, {
+            title: "fa-regular fa-object-group",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-object-ungroup",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-object-ungroup",
             searchTerms: []
         }, {
             title: "fa-brands fa-octopus-deploy",
@@ -4551,6 +4956,9 @@
             title: "fa-solid fa-paper-plane",
             searchTerms: []
         }, {
+            title: "fa-regular fa-paper-plane",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-paperclip",
             searchTerms: []
         }, {
@@ -4564,6 +4972,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-paste",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-paste",
             searchTerms: []
         }, {
             title: "fa-brands fa-patreon",
@@ -4597,6 +5008,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-pen-to-square",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-pen-to-square",
             searchTerms: []
         }, {
             title: "fa-solid fa-pencil",
@@ -5022,7 +5436,13 @@
             title: "fa-solid fa-rectangle-list",
             searchTerms: []
         }, {
+            title: "fa-regular fa-rectangle-list",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-rectangle-xmark",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-rectangle-xmark",
             searchTerms: []
         }, {
             title: "fa-solid fa-recycle",
@@ -5041,6 +5461,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-registered",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-registered",
             searchTerms: []
         }, {
             title: "fa-brands fa-renren",
@@ -5283,6 +5706,9 @@
             title: "fa-solid fa-share-from-square",
             searchTerms: []
         }, {
+            title: "fa-regular fa-share-from-square",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-share-nodes",
             searchTerms: []
         }, {
@@ -5424,6 +5850,9 @@
             title: "fa-solid fa-snowflake",
             searchTerms: []
         }, {
+            title: "fa-regular fa-snowflake",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-snowman",
             searchTerms: []
         }, {
@@ -5496,6 +5925,9 @@
             title: "fa-solid fa-square",
             searchTerms: []
         }, {
+            title: "fa-regular fa-square",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-square-arrow-up-right",
             searchTerms: []
         }, {
@@ -5505,16 +5937,31 @@
             title: "fa-solid fa-square-caret-down",
             searchTerms: []
         }, {
+            title: "fa-regular fa-square-caret-down",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-square-caret-left",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-square-caret-left",
             searchTerms: []
         }, {
             title: "fa-solid fa-square-caret-right",
             searchTerms: []
         }, {
+            title: "fa-regular fa-square-caret-right",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-square-caret-up",
             searchTerms: []
         }, {
+            title: "fa-regular fa-square-caret-up",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-square-check",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-square-check",
             searchTerms: []
         }, {
             title: "fa-brands fa-square-dribbble",
@@ -5533,6 +5980,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-square-full",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-square-full",
             searchTerms: []
         }, {
             title: "fa-brands fa-square-git",
@@ -5565,6 +6015,9 @@
             title: "fa-solid fa-square-minus",
             searchTerms: []
         }, {
+            title: "fa-regular fa-square-minus",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-square-nfi",
             searchTerms: []
         }, {
@@ -5593,6 +6046,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-square-plus",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-square-plus",
             searchTerms: []
         }, {
             title: "fa-solid fa-square-poll-horizontal",
@@ -5676,13 +6132,22 @@
             title: "fa-solid fa-star",
             searchTerms: []
         }, {
+            title: "fa-regular fa-star",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-star-and-crescent",
             searchTerms: []
         }, {
             title: "fa-solid fa-star-half",
             searchTerms: []
         }, {
+            title: "fa-regular fa-star-half",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-star-half-stroke",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-star-half-stroke",
             searchTerms: []
         }, {
             title: "fa-solid fa-star-of-david",
@@ -5764,6 +6229,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-sun",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-sun",
             searchTerms: []
         }, {
             title: "fa-solid fa-sun-plant-wilt",
@@ -5943,7 +6411,13 @@
             title: "fa-solid fa-thumbs-down",
             searchTerms: []
         }, {
+            title: "fa-regular fa-thumbs-down",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-thumbs-up",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-thumbs-up",
             searchTerms: []
         }, {
             title: "fa-solid fa-thumbtack",
@@ -6037,6 +6511,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-trash-can",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-trash-can",
             searchTerms: []
         }, {
             title: "fa-solid fa-trash-can-arrow-up",
@@ -6202,6 +6679,9 @@
             searchTerms: []
         }, {
             title: "fa-solid fa-user",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-user",
             searchTerms: []
         }, {
             title: "fa-solid fa-user-astronaut",
@@ -6504,10 +6984,19 @@
             title: "fa-solid fa-window-maximize",
             searchTerms: []
         }, {
+            title: "fa-regular fa-window-maximize",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-window-minimize",
             searchTerms: []
         }, {
+            title: "fa-regular fa-window-minimize",
+            searchTerms: []
+        }, {
             title: "fa-solid fa-window-restore",
+            searchTerms: []
+        }, {
+            title: "fa-regular fa-window-restore",
             searchTerms: []
         }, {
             title: "fa-brands fa-windows",
