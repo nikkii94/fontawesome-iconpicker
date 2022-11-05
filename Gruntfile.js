@@ -42,22 +42,12 @@ module.exports = function(grunt) {
                                 style = style.toLowerCase();
                                 if (style.startsWith('brand')) {
                                     targetJSON.icons.push({
-                                        title: 'fab ' + icon,
+                                        title: 'fa-brands ' + icon,
                                         searchTerms: ele.search.terms
                                     });
                                 } else if (style.startsWith('solid')) {
                                     targetJSON.icons.push({
-                                        title: 'fas ' + icon,
-                                        searchTerms: ele.search.terms
-                                    });
-                                } else if (style.startsWith('regular')) {
-                                    targetJSON.icons.push({
-                                        title: 'far ' + icon,
-                                        searchTerms: ele.search.terms
-                                    });
-                                } else if (style.startsWith('light')) {
-                                    targetJSON.icons.push({
-                                        title: 'fal ' + icon,
+                                        title: 'fa-solid ' + icon,
                                         searchTerms: ele.search.terms
                                     });
                                 }
